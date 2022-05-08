@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.qubitpi.athena</groupId>
+        <artifactId>athena-examples</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <artifactId>athena-example-books</artifactId>
+    <packaging>war</packaging>
+    <name>Athena: Example Application - Books</name>
+    <description>
+        Athena Books Example serves as a standalone app using core Athena services to stand in front any Swift setup and
+        automatically configure
+    </description>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.qubitpi.athena</groupId>
+            <artifactId>athena-examples</artifactId>
+            <version>${version.athena}</version>
+            <type>pom</type>
+        </dependency>
+
+        <dependency>
+            <groupId>com.qubitpi.athena</groupId>
+            <artifactId>athena-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.qubitpi.athena</groupId>
+            <artifactId>athena-filestore-swift</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.qubitpi.athena</groupId>
+            <artifactId>athena-metastore-graphql</artifactId>
+        </dependency>
+
+        <!-- Apache Commons -->
+        <dependency> <!-- Prefer DBCP over JDBI since lookup should provide low-level speed operations -->
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-dbcp2</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derby</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>${version.maven.war.plugin}</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                    <attachClasses>true</attachClasses> <!-- https://stackoverflow.com/a/10090564 -->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
