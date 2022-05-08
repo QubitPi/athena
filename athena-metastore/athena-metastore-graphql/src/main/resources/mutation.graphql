@@ -1,0 +1,6 @@
+mutation createMetaData {
+    createMetaData(fileId: "%s", fileName: "%s", fileType: "%s") {
+        fileName,
+        fileType
+    }
+}

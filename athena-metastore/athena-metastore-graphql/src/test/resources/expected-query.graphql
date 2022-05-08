@@ -1,0 +1,6 @@
+query {
+    metaData(fileId: "fileId123") {
+        fileType
+        fileName
+    }
+}

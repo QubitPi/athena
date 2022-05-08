@@ -1,0 +1,12 @@
+type Query {
+    metaData(fileId: ID): MetaData
+}
+
+type Mutation {
+    createMetaData(fileId: ID, fileName: String, fileType: String): MetaData
+}
+
+type MetaData {
+    fileName: String
+    fileType: String
+}
