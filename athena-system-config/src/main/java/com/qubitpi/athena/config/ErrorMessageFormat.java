@@ -77,7 +77,6 @@ public enum ErrorMessageFormat implements MessageFormatter {
         this.loggingFormat = Objects.requireNonNull(loggingFormat);
     }
 
-
     @Override
     public String getMessageFormat() {
         return messageFormat;
