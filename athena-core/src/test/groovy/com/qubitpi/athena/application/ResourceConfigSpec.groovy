@@ -70,4 +70,15 @@ class ResourceConfigSpec extends Specification {
         1 * clicker.accept(MockingBinderFactory.BUILD_BIND)
         1 * clicker.accept(_ as ResourceConfig)
     }
+
+    def "When binding factory is not found, error is thrown"() {
+        setup: "binder factory description config is removed"
+        SYSTEM_CONFIG.clearProperty(BINDER_KEY)
+
+        when: "resource config is constructed"
+        ResourceConfig config = resourceConfigClass.newInstance()
+
+        then: "error is thrown"
+        thrown(IllegalStateException)
+    }
 }

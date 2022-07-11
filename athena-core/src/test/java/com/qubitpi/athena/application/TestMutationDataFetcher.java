@@ -13,20 +13,57 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.qubitpi.athena.application;
+package com.qubitpi.athena.example.books.graphql;
+
+import static java.util.AbstractMap.SimpleImmutableEntry;
 
 import com.qubitpi.athena.metadata.MetaData;
 
 import graphql.schema.DataFetcher;
 import graphql.schema.DataFetchingEnvironment;
+import net.jcip.annotations.Immutable;
+import net.jcip.annotations.ThreadSafe;
+
+import java.util.Map;
+import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
- * Test app mutation data fetcher.
+ * An in-memory mutation {@link DataFetcher} associated with file metadata field in GraphQL.
  */
+@Immutable
+@ThreadSafe
 public class TestMutationDataFetcher implements DataFetcher<MetaData> {
 
+    private final Map<String, MetaData> metadataByFileId;
+
+    /**
+     * Constructor.
+     *
+     * @param metadataByFileId a write-only in-memory store for books mapped by book/file ID.
+     *
+     * @throws NullPointerException if {@code bookMetaData} is {@code null}
+     */
+    public TestMutationDataFetcher(final Map<String, MetaData> metadataByFileId) {
+        this.metadataByFileId = Objects.requireNonNull(metadataByFileId);
+    }
+
     @Override
-    public MetaData get(final DataFetchingEnvironment dataFetchingEnvironment) throws Exception {
-        return null;
+    public MetaData get(final DataFetchingEnvironment dataFetchingEnvironment) {
+        final MetaData newMetaData = MetaData.of(
+                Stream.of(
+                        new SimpleImmutableEntry<>(
+                                MetaData.FILE_NAME,
+                                dataFetchingEnvironment.getArgument(MetaData.FILE_NAME)
+                        ),
+                        new SimpleImmutableEntry<>(
+                                MetaData.FILE_TYPE,
+                                dataFetchingEnvironment.getArgument(MetaData.FILE_TYPE)
+                        )
+                ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue))
+        );
+        metadataByFileId.put(dataFetchingEnvironment.getArgument("fileId"), newMetaData);
+        return newMetaData;
     }
 }

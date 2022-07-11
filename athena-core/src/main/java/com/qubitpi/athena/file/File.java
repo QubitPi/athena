@@ -18,6 +18,8 @@ package com.qubitpi.athena.file;
 import com.qubitpi.athena.metadata.MetaData;
 
 import jakarta.validation.constraints.NotNull;
+import net.jcip.annotations.Immutable;
+import net.jcip.annotations.ThreadSafe;
 
 import java.io.InputStream;
 import java.util.Objects;
@@ -31,6 +33,8 @@ import java.util.Objects;
  *     <li> file {@link MetaData metadata}
  * </ol>
  */
+@Immutable
+@ThreadSafe
 public class File {
 
     private final MetaData metaData;

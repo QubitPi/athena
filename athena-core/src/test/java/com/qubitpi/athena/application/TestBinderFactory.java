@@ -15,15 +15,21 @@
  */
 package com.qubitpi.athena.application;
 
+import com.qubitpi.athena.example.books.graphql.TestMutationDataFetcher;
+import com.qubitpi.athena.example.books.graphql.TestQueryDataFetcher;
 import com.qubitpi.athena.filestore.FileStore;
 import com.qubitpi.athena.filestore.TestFileStore;
 import com.qubitpi.athena.metadata.MetaData;
 import com.qubitpi.athena.metastore.MetaStore;
 import com.qubitpi.athena.metastore.TestMetaStore;
 
+import org.glassfish.hk2.api.TypeLiteral;
 import org.glassfish.hk2.utilities.binding.AbstractBinder;
 
 import graphql.schema.DataFetcher;
+
+import java.util.List;
+import java.util.function.BiFunction;
 
 /**
  * Athena test app configuration binder.
@@ -40,6 +46,16 @@ public class TestBinderFactory extends AbstractBinderFactory {
      */
     public boolean afterRegistrationHookWasCalled = false;
 
+    private final ApplicationState applicationState;
+
+    public TestBinderFactory() {
+        this.applicationState = new ApplicationState();
+    }
+
+    public TestBinderFactory(ApplicationState applicationState) {
+        this.applicationState = applicationState;
+    }
+
     @Override
     protected Class<? extends FileStore> buildFileStore() {
         return TestFileStore.class;
@@ -52,12 +68,12 @@ public class TestBinderFactory extends AbstractBinderFactory {
 
     @Override
     protected DataFetcher<MetaData> buildQueryDataFetcher() {
-        return new TestQueryDataFetcher();
+        return new TestQueryDataFetcher(applicationState.metadataByFileId);
     }
 
     @Override
     protected DataFetcher<MetaData> buildMutationDataFetcher() {
-        return new TestMutationDataFetcher();
+        return new TestMutationDataFetcher(applicationState.metadataByFileId);
     }
 
     @Override
@@ -67,6 +83,13 @@ public class TestBinderFactory extends AbstractBinderFactory {
 
     @Override
     protected void afterBinding(final AbstractBinder abstractBinder) {
+        abstractBinder.bind(applicationState.queryFormatter)
+                .named("queryFormatter")
+                .to(new TypeLiteral<BiFunction<String, List<String>, String>>() { });
+        abstractBinder.bind(applicationState.mutationFormatter)
+                .named("mutationFormatter")
+                .to(new TypeLiteral<BiFunction<String, MetaData, String>>() { });
+
         afterBindingHookWasCalled = true;
     }
 }

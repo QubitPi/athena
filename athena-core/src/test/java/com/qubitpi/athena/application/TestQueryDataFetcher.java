@@ -13,20 +13,42 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.qubitpi.athena.application;
+package com.qubitpi.athena.example.books.graphql;
 
 import com.qubitpi.athena.metadata.MetaData;
 
 import graphql.schema.DataFetcher;
 import graphql.schema.DataFetchingEnvironment;
+import jakarta.validation.constraints.NotNull;
+import net.jcip.annotations.Immutable;
+import net.jcip.annotations.ThreadSafe;
+
+import java.util.Map;
+import java.util.Objects;
 
 /**
- * Test app query data fetcher.
+ * An in-memory query {@link DataFetcher} associated with file metadata field in GraphQL.
  */
+@Immutable
+@ThreadSafe
 public class TestQueryDataFetcher implements DataFetcher<MetaData> {
 
+    private final Map<String, MetaData> metadataByFileId;
+
+    /**
+     * Constructor.
+     *
+     * @param bookMetaData a read-only in-memory store for books mapped by book/file ID.
+     *
+     * @throws NullPointerException if {@code bookMetaData} is {@code null}
+     */
+    public TestQueryDataFetcher(final @NotNull Map<String, MetaData> bookMetaData) {
+        this.metadataByFileId = Objects.requireNonNull(bookMetaData);
+    }
+
     @Override
-    public MetaData get(final DataFetchingEnvironment dataFetchingEnvironment) throws Exception {
-        return null;
+    public MetaData get(final DataFetchingEnvironment dataFetchingEnvironment) {
+        final String fileId = dataFetchingEnvironment.getArgument("fileId");
+        return metadataByFileId.get(fileId);
     }
 }

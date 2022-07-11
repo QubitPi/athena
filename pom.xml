@@ -196,6 +196,18 @@
                 <artifactId>jersey-media-json-jackson</artifactId>
                 <version>${version.jersey}</version>
             </dependency>
+            <dependency><!-- Client for running local "integration-style" tests -->
+                <groupId>org.glassfish.jersey.test-framework</groupId>
+                <artifactId>jersey-test-framework-core</artifactId>
+                <version>${version.jersey}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency><!-- Container for running local "integration-style" tests -->
+                <groupId>org.glassfish.jersey.test-framework.providers</groupId>
+                <artifactId>jersey-test-framework-provider-grizzly2</artifactId>
+                <version>${version.jersey}</version>
+                <scope>test</scope>
+            </dependency>
 
             <!-- Injection -->
             <dependency>
