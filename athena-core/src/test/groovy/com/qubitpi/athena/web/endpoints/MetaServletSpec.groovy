@@ -19,6 +19,7 @@ import com.qubitpi.athena.application.ApplicationState
 import com.qubitpi.athena.application.JerseyTestBinder
 import com.qubitpi.athena.metadata.FileType
 import com.qubitpi.athena.metadata.MetaData
+import com.qubitpi.athena.metastore.MetaStore
 
 import groovy.json.JsonSlurper
 import spock.lang.Specification
@@ -31,8 +32,10 @@ import javax.ws.rs.core.MediaType
 class MetaServletSpec extends Specification {
 
     static final String FILE_ID = "fileId"
-    static final String FILE_NAME = "pride-and-prejudice.txt"
     static final FileType FILE_TYPE = FileType.TXT
+    static final String FILE_NAME = "pride-and-prejudice.txt"
+
+    @SuppressWarnings("GroovyAccessibility")
     static final MetaData META_DATA = new MetaData(FILE_NAME, FILE_TYPE)
 
     JerseyTestBinder jerseyTestBinder
@@ -77,18 +80,18 @@ class MetaServletSpec extends Specification {
     }
 
     def "File meta data can be accessed through GraphQL GET endpoint"() {
-        when: "we send a GET request"
+        when: "we get meta data via GraphQL GET"
         String actual = jerseyTestBinder.makeRequest(
                 "/metadata/graphql",
                 [query: URLEncoder.encode("""{metaData(fileId:"$FILE_ID"){fileName\nfileType}}""", "UTF-8")]
         ).get(String.class)
 
-        then: "the response is what we expect"
+        then: "the response contains all requested metadata info without error"
         new JsonSlurper().parseText(actual) == new JsonSlurper().parseText(expectedMultiFieldMetadataResponse())
     }
 
     def "File metadata can be accessed through GraphQL POST endpoint"() {
-        when: "we send a POST request"
+        when: "we get meta data via GraphQL POST"
         String actual = jerseyTestBinder.makeRequest("/metadata/graphql")
                 .post(
                         Entity.entity(
@@ -104,8 +107,28 @@ class MetaServletSpec extends Specification {
                 )
                 .readEntity(String.class)
 
-        then:
+        then: "the response contains all requested metadata info without error"
         new JsonSlurper().parseText(actual) == new JsonSlurper().parseText(expectedMultiFieldMetadataResponse())
+    }
+
+    def "Reading file meta data through POST cannot have field list empty"() {
+        given:
+        MetaServlet metaServlet = new MetaServlet(Mock(MetaStore))
+
+        and:
+        String graphQLDocument = """
+                {
+                    "query":"{\\n  metaData(fileId:\\"2\\") {\\n      }\\n}",
+                    "variables":null
+                }
+                """
+
+        when:
+        metaServlet.post(graphQLDocument)
+
+        then:
+        Exception exception = thrown(IllegalArgumentException)
+        exception.message == "Athena could not process the request because no metadata field was found: '$graphQLDocument'"
     }
 
     def expectedMultiFieldMetadataResponse() {

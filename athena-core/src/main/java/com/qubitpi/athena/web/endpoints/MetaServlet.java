@@ -19,6 +19,7 @@ import static com.qubitpi.athena.config.ErrorMessageFormat.INVALID_GRAPHQL_REQUE
 import static com.qubitpi.athena.config.ErrorMessageFormat.JSON_DESERIALIZATION_ERROR;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.qubitpi.athena.metadata.MetaData;
 import com.qubitpi.athena.metastore.MetaStore;
@@ -127,10 +128,10 @@ public class MetaServlet {
 
         final List<String> requestedMetadataFields = getFields(graphQLDocument);
         if (requestedMetadataFields.isEmpty()) {
-            LOG.error(INVALID_GRAPHQL_REQUEST.logFormat(
-                    String.format("No metadata field found in query '%s'", graphQLDocument))
+            LOG.error(INVALID_GRAPHQL_REQUEST.logFormat("No metadata field found", graphQLDocument));
+            throw new IllegalArgumentException(
+                    INVALID_GRAPHQL_REQUEST.format("no metadata field was found", graphQLDocument)
             );
-            throw new IllegalArgumentException(INVALID_GRAPHQL_REQUEST.format(graphQLDocument));
         }
 
         return Response
@@ -238,12 +239,22 @@ public class MetaServlet {
      */
     @NotNull
     private String getQuery(final @NotNull String graphQLDocument) {
+        JsonNode jsonDocument;
         try {
-            return JSON_MAPPER.readTree(graphQLDocument).get(QUERY).asText();
+            jsonDocument = JSON_MAPPER.readTree(graphQLDocument);
         } catch (final JsonProcessingException exception) {
             LOG.error(JSON_DESERIALIZATION_ERROR.logFormat(graphQLDocument));
             throw new IllegalArgumentException(JSON_DESERIALIZATION_ERROR.format(graphQLDocument), exception);
         }
+
+        if (!jsonDocument.has(QUERY)) {
+            LOG.error(INVALID_GRAPHQL_REQUEST.logFormat("No 'query' field", graphQLDocument));
+            throw new IllegalArgumentException(
+                    INVALID_GRAPHQL_REQUEST.format("payload is missing 'query' field", graphQLDocument)
+            );
+        }
+
+        return jsonDocument.get(QUERY).asText();
     }
 
     @NotNull

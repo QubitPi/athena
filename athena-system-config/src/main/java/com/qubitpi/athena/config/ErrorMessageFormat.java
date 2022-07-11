@@ -56,8 +56,8 @@ public enum ErrorMessageFormat implements MessageFormatter {
      * When an invalid GraphQL query is seen.
      */
     INVALID_GRAPHQL_REQUEST(
-            "Athena could not process the request because of invalid GraphQL query: '%s'",
-            "Invalid GraphQL query because '%s'"
+            "Athena could not process the request because %s: '%s'",
+            "Invalid GraphQL query (cause: %s): '%s'"
     )
     ;
 
