@@ -31,6 +31,8 @@ import graphql.schema.idl.SchemaGenerator;
 import graphql.schema.idl.SchemaParser;
 import graphql.schema.idl.TypeDefinitionRegistry;
 import jakarta.validation.constraints.NotNull;
+import net.jcip.annotations.GuardedBy;
+import net.jcip.annotations.NotThreadSafe;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -43,14 +45,33 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
- * Test app meta store.
+ * A {@link MetaStore} test stub that facilitates {@link com.qubitpi.athena.web.endpoints.MetaServletSpec} mocking
+ * through {@link com.qubitpi.athena.application.TestBinderFactory} and
+ * {@link com.qubitpi.athena.application.JerseyTestBinder}.
+ * <p>
+ * The canned answer to calls made to {@link MetaStore} during the test is defined by
+ * {@link com.qubitpi.athena.application.TestQueryDataFetcher} and
+ * {@link com.qubitpi.athena.application.TestMutationDataFetcher}
  */
+@NotThreadSafe
 public class TestMetaStore implements MetaStore {
 
     private final GraphQL api;
     private final BiFunction<String, List<String>, String> queryFormatter;
+
+    @GuardedBy("this")
     private final BiFunction<String, MetaData, String> mutationFormatter;
 
+    /**
+     * DI Constructor.
+     *
+     * @param queryDataFetcher  A test defined logic for retrieving file metadata from memory
+     * @param mutationDataFetcher  A test defined logic for saving/updating file metadata into memory
+     * @param queryFormatter  A per-test def defined logic that overrides the file meta data GraphQL query
+     * @param mutationFormatter  A per-test def defined logic that overrides the file meta data GraphQL mutation query
+     *
+     * @throws IOException if an error occurs while reading GraphQL schema file
+     */
     @Inject
     public TestMetaStore(
             final @NotNull @Named("queryDataFetcher") DataFetcher<MetaData> queryDataFetcher,

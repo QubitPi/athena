@@ -15,8 +15,8 @@
  */
 package com.qubitpi.athena.application;
 
-import com.qubitpi.athena.example.books.graphql.TestMutationDataFetcher;
-import com.qubitpi.athena.example.books.graphql.TestQueryDataFetcher;
+import com.qubitpi.athena.file.File;
+import com.qubitpi.athena.file.identifier.FileIdGenerator;
 import com.qubitpi.athena.filestore.FileStore;
 import com.qubitpi.athena.filestore.TestFileStore;
 import com.qubitpi.athena.metadata.MetaData;
@@ -29,6 +29,7 @@ import org.glassfish.hk2.utilities.binding.AbstractBinder;
 import graphql.schema.DataFetcher;
 
 import java.util.List;
+import java.util.Map;
 import java.util.function.BiFunction;
 
 /**
@@ -48,11 +49,25 @@ public class TestBinderFactory extends AbstractBinderFactory {
 
     private final ApplicationState applicationState;
 
+    /**
+     * Constructor used for unit-testing {@link AbstractBinderFactory} extension capability to make sure all bindings
+     * occurs
+     *
+     * @see AbstractBinderFactorySpec
+     */
     public TestBinderFactory() {
         this.applicationState = new ApplicationState();
     }
 
-    public TestBinderFactory(ApplicationState applicationState) {
+    /**
+     * Constructor for servlet testing where JerseyTest harness and relevant DI are involved.
+     *
+     * @param applicationState  An entry point for setting up test data
+     *
+     * @see com.qubitpi.athena.web.endpoints.MetaServletSpec
+     * @see com.qubitpi.athena.web.endpoints.FileServletSpec
+     */
+    public TestBinderFactory(final ApplicationState applicationState) {
         this.applicationState = applicationState;
     }
 
@@ -89,6 +104,12 @@ public class TestBinderFactory extends AbstractBinderFactory {
         abstractBinder.bind(applicationState.mutationFormatter)
                 .named("mutationFormatter")
                 .to(new TypeLiteral<BiFunction<String, MetaData, String>>() { });
+        abstractBinder.bind(applicationState.fileByFileId)
+                .named("fileByFileId")
+                .to(new TypeLiteral<Map<String, String>>() { });
+        abstractBinder.bind(applicationState.fileIdGenerator)
+                .named("fileIdGenerator")
+                .to(FileIdGenerator.class);
 
         afterBindingHookWasCalled = true;
     }

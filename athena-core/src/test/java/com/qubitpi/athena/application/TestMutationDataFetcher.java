@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.qubitpi.athena.example.books.graphql;
+package com.qubitpi.athena.application;
 
 import static java.util.AbstractMap.SimpleImmutableEntry;
 
@@ -21,7 +21,10 @@ import com.qubitpi.athena.metadata.MetaData;
 
 import graphql.schema.DataFetcher;
 import graphql.schema.DataFetchingEnvironment;
+import jakarta.validation.constraints.NotNull;
+import net.jcip.annotations.GuardedBy;
 import net.jcip.annotations.Immutable;
+import net.jcip.annotations.NotThreadSafe;
 import net.jcip.annotations.ThreadSafe;
 
 import java.util.Map;
@@ -30,27 +33,30 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * An in-memory mutation {@link DataFetcher} associated with file metadata field in GraphQL.
+ * An in-memory mutation {@link DataFetcher} associated with GraphQL file metadata field.
  */
-@Immutable
-@ThreadSafe
+@NotThreadSafe
 public class TestMutationDataFetcher implements DataFetcher<MetaData> {
 
-    private final Map<String, MetaData> metadataByFileId;
+    private static final String FILE_ID = "fileId";
+
+    @GuardedBy("this")
+    private final Map<String, MetaData> metaDataByFileId;
 
     /**
      * Constructor.
      *
-     * @param metadataByFileId a write-only in-memory store for books mapped by book/file ID.
+     * @param metaDataByFileId an initial in-memory store state holding file metadata mapped by file ID
      *
-     * @throws NullPointerException if {@code bookMetaData} is {@code null}
+     * @throws NullPointerException if {@code metaDataByFileId} is {@code null}
      */
-    public TestMutationDataFetcher(final Map<String, MetaData> metadataByFileId) {
-        this.metadataByFileId = Objects.requireNonNull(metadataByFileId);
+    public TestMutationDataFetcher(final Map<String, MetaData> metaDataByFileId) {
+        this.metaDataByFileId = Objects.requireNonNull(metaDataByFileId);
     }
 
     @Override
     public MetaData get(final DataFetchingEnvironment dataFetchingEnvironment) {
+        final String fileId = dataFetchingEnvironment.getArgument(FILE_ID);
         final MetaData newMetaData = MetaData.of(
                 Stream.of(
                         new SimpleImmutableEntry<>(
@@ -63,7 +69,14 @@ public class TestMutationDataFetcher implements DataFetcher<MetaData> {
                         )
                 ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue))
         );
-        metadataByFileId.put(dataFetchingEnvironment.getArgument("fileId"), newMetaData);
+
+        getMetaDataByFileId().put(fileId, newMetaData);
+
         return newMetaData;
+    }
+
+    @NotNull
+    private Map<String, MetaData> getMetaDataByFileId() {
+        return metaDataByFileId;
     }
 }

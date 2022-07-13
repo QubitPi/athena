@@ -16,6 +16,8 @@
 package com.qubitpi.athena.application;
 
 import org.glassfish.hk2.utilities.binding.AbstractBinder;
+import org.glassfish.jersey.client.ClientConfig;
+import org.glassfish.jersey.media.multipart.MultiPartFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.test.JerseyTest;
 import org.glassfish.jersey.test.TestProperties;
@@ -137,12 +139,23 @@ public class JerseyTestBinder {
         this.resourceConfig.register(this.binder);
 
         this.harness = new JerseyTest() {
+
             @Override
             protected Application configure() {
                 // Find first available port.
                 forceSet(TestProperties.CONTAINER_PORT, RANDOM_PORT);
 
                 return resourceConfig;
+            }
+
+            @Override
+            protected void configureClient(ClientConfig config) {
+                // https://stackoverflow.com/questions/19668426/how-to-resolve-messagebodywriter-not-found-for-media-type-multipart-form-data-er
+                for (Class<?> cls : resourceClasses) {
+                    if (cls.getSimpleName().equals(MultiPartFeature.class.getSimpleName())) {
+                        config.register(MultiPartFeature.class);
+                    }
+                }
             }
         };
 
@@ -166,12 +179,30 @@ public class JerseyTestBinder {
     }
 
     /**
-     * Tears down the test harness and unload the binder.
+     * Tears down the test harness and reset all test application states
      *
      * @throws Exception if there's a problem tearing things down
      */
     public void tearDown() throws Exception {
         getHarness().tearDown();
+        applicationState.resetAllStates();
+    }
+
+    /**
+     * Constructs and sends a request to a specified URL.
+     * <p>
+     * If the request has query parameters, please use {@link #makeRequest(String, Map)} instead.
+     *
+     * @param target  The specified URL
+     *
+     * @return a request builder which user can use to send different types of requests, such as HTTP HEAD and HTTP GET
+     * methods.
+     *
+     * @throws NullPointerException if {@code target} is {@code null}
+     */
+    @NotNull
+    public Builder makeRequest(final @NotNull String target) {
+        return makeRequest(Objects.requireNonNull(target), Collections.emptyMap());
     }
 
     /**
@@ -197,23 +228,6 @@ public class JerseyTestBinder {
         }
 
         return httpCall.request();
-    }
-
-    /**
-     * Constructs and sends a request to a specified URL.
-     * <p>
-     * If the request has query parameters, please use {@link #makeRequest(String, Map)} instead.
-     *
-     * @param target  The specified URL
-     *
-     * @return a request builder which user can use to send different types of requests, such as HTTP HEAD and HTTP GET
-     * methods.
-     *
-     * @throws NullPointerException if {@code target} is {@code null}
-     */
-    @NotNull
-    public Builder makeRequest(final @NotNull String target) {
-        return makeRequest(Objects.requireNonNull(target), Collections.emptyMap());
     }
 
     @NotNull

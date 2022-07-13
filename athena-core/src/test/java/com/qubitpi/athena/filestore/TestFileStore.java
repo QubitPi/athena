@@ -16,21 +16,89 @@
 package com.qubitpi.athena.filestore;
 
 import com.qubitpi.athena.file.File;
+import com.qubitpi.athena.file.identifier.FileIdGenerator;
+import com.qubitpi.athena.metastore.MetaStore;
 
+import jakarta.validation.constraints.NotNull;
+import net.jcip.annotations.GuardedBy;
+import net.jcip.annotations.NotThreadSafe;
+
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.Map;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
+import javax.inject.Inject;
+import javax.inject.Named;
 
 /**
- * Test app file store.
+ * A {@link FileStore} test stub that facilitates {@link com.qubitpi.athena.web.endpoints.FileServletSpec} mocking
+ * through {@link com.qubitpi.athena.application.TestBinderFactory} and
+ * {@link com.qubitpi.athena.application.JerseyTestBinder}.
  */
+@NotThreadSafe
 public class TestFileStore implements FileStore {
+
+    /**
+     * There is a reason of not having {@code Map<String, File>}.
+     * <p>
+     * When using {@code Map<String, File>} FileServletSpec test fails, because there seems to be max size posted on
+     * the Map value. Hence, the File.fileContent is truncated, which makes the truncated InputStream unreadable during
+     * the file download operation later.
+     * <p>
+     * Even using Map<String, String>, the Map value still got truncated (e.g. a file of 14500+ lines of text got
+     * truncated to about 14300+ lines), but this is okay because the string, during the file download process, can
+     * still be converted to InputStream. The test just needs a little bit of awareness to use expected.contains(actual)
+     * instead of expected == actual. The is the best workaround that can be achieved.
+     * <p>
+     * But in production environment, there is no such problem. For example, when an large InputStream gets uploaded
+     * to OpenStack Swift, for example, the object storage gracefully handles such case.
+     */
+    @GuardedBy("this")
+    private final Map<String, String> fileByFileId;
+    private final FileIdGenerator fileIdGenerator;
+
+    /**
+     * Constructor.
+     *
+     * @param fileByFileId  A mapping that offers canned answer to calls made to {@link FileStore} during the test.
+     * @param fileIdGenerator  A per-test def defined logic, which overrides the file ID generation
+     */
+    @Inject
+    public TestFileStore(
+            final @NotNull @Named("fileByFileId") Map<String, String> fileByFileId,
+            final @NotNull @Named("fileIdGenerator") FileIdGenerator fileIdGenerator
+    ) {
+        this.fileByFileId = Objects.requireNonNull(fileByFileId);
+        this.fileIdGenerator = Objects.requireNonNull(fileIdGenerator);
+    }
 
     @Override
     public String upload(final File file) {
-        return null;
+        String fileId = getFileIdGenerator().apply(file);
+        getFileByFileId().put(
+                getFileIdGenerator().apply(file),
+                new BufferedReader(new InputStreamReader(file.getFileContent()))
+                        .lines().collect(Collectors.joining("\n"))
+        );
+        return fileId;
     }
 
     @Override
     public InputStream download(final String fileId) {
-        return null;
+        return new ByteArrayInputStream(getFileByFileId().get(fileId).getBytes());
+    }
+
+    @NotNull
+    private Map<String, String> getFileByFileId() {
+        return fileByFileId;
+    }
+
+    @NotNull
+    private FileIdGenerator getFileIdGenerator() {
+        return fileIdGenerator;
     }
 }

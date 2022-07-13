@@ -21,15 +21,26 @@ import com.qubitpi.athena.metadata.FileType
 import com.qubitpi.athena.metadata.MetaData
 import com.qubitpi.athena.metastore.MetaStore
 
+import org.glassfish.jersey.client.ClientConfig
+import org.glassfish.jersey.media.multipart.FormDataContentDisposition
+import org.glassfish.jersey.media.multipart.FormDataMultiPart
+import org.glassfish.jersey.media.multipart.MultiPart
+import org.glassfish.jersey.media.multipart.MultiPartFeature
+import org.glassfish.jersey.media.multipart.file.FileDataBodyPart
+
 import groovy.json.JsonSlurper
 import spock.lang.Specification
 
+import java.nio.charset.StandardCharsets
 import java.util.function.BiFunction
 
+import javax.ws.rs.client.Client
+import javax.ws.rs.client.ClientBuilder
 import javax.ws.rs.client.Entity
+import javax.ws.rs.client.WebTarget
 import javax.ws.rs.core.MediaType
 
-class MetaServletSpec extends Specification {
+class FileServletSpec extends Specification {
 
     static final String FILE_ID = "2"
     static final FileType FILE_TYPE = FileType.TXT
@@ -38,10 +49,12 @@ class MetaServletSpec extends Specification {
     @SuppressWarnings("GroovyAccessibility")
     static final MetaData META_DATA = new MetaData(FILE_NAME, FILE_TYPE)
 
+
     JerseyTestBinder jerseyTestBinder
 
     def setup() {
-        ApplicationState applicationState = new ApplicationState();
+        ApplicationState applicationState = new ApplicationState()
+        applicationState.fileIdGenerator = { FILE_ID }
         applicationState.metadataByFileId = [(FILE_ID): META_DATA]
         applicationState.queryFormatter = new BiFunction<String, List<String>, String>() {
             @Override
@@ -71,7 +84,7 @@ class MetaServletSpec extends Specification {
         }
 
         // Create the tet web container to test the resources
-        jerseyTestBinder = new JerseyTestBinder(true, applicationState, MetaServlet.class)
+        jerseyTestBinder = new JerseyTestBinder(true, applicationState, FileServlet.class, MultiPartFeature.class)
     }
 
     def cleanup() {
@@ -79,74 +92,28 @@ class MetaServletSpec extends Specification {
         jerseyTestBinder.tearDown()
     }
 
-    def "File meta data can be accessed through GraphQL GET endpoint"() {
-        when: "we get meta data via GraphQL GET"
-        String actual = jerseyTestBinder.makeRequest(
-                "/metadata/graphql",
-                [query: URLEncoder.encode("""{metaData(fileId:"$FILE_ID"){fileName\nfileType}}""", "UTF-8")]
-        ).get(String.class)
+    def "File can be uploaded and then download"() {
+        when: "we upload a file"
+        FileDataBodyPart filePart = new FileDataBodyPart("file", new File("src/test/resources/pride-and-prejudice-by-jane-austen.txt"))
+        filePart.setContentDisposition(FormDataContentDisposition.name("file").fileName("pride-and-prejudice-by-jane-austen.txt").build())
 
-        then: "the response contains all requested metadata info without error"
-        new JsonSlurper().parseText(actual) == new JsonSlurper().parseText(expectedMultiFieldMetadataResponse())
-    }
+        MultiPart multipartEntity = new FormDataMultiPart().bodyPart(filePart)
 
-    def "File metadata can be accessed through GraphQL POST endpoint"() {
-        when: "we get meta data via GraphQL POST"
-        String actual = jerseyTestBinder.makeRequest("/metadata/graphql")
-                .post(
-                        Entity.entity(
-                                """
-                                {
-                                    "query": "{ metaData(fileId: \\"2\\") { fileName fileType } }",
-                                    "variables": null
-                                }
-                                """,
-                                MediaType.APPLICATION_JSON
-                        )
-
-                )
+        String actual = jerseyTestBinder.makeRequest("/file/upload")
+                .post(Entity.entity(multipartEntity, multipartEntity.getMediaType()))
                 .readEntity(String.class)
 
-        then: "the response contains all requested metadata info without error"
-        new JsonSlurper().parseText(actual) == new JsonSlurper().parseText(expectedMultiFieldMetadataResponse())
-    }
-
-    def "Reading file meta data through POST cannot have field list empty"() {
-        given:
-        MetaServlet metaServlet = new MetaServlet(Mock(MetaStore))
-
-        and:
-        String graphQLDocument = """
-                {
-                    "query":"{\\n  metaData(fileId:\\"2\\") {\\n      }\\n}",
-                    "variables":null
-                }
-                """
+        then:
+        actual == """{"fileId":"$FILE_ID"}"""
 
         when:
-        metaServlet.post(graphQLDocument)
+        actual = jerseyTestBinder.makeRequest("/file/download", [fileId: "2"]).get().readEntity(String.class)
 
         then:
-        Exception exception = thrown(IllegalArgumentException)
-        exception.message == "Athena could not process the request because no metadata field was found: '$graphQLDocument'"
-    }
-
-    def expectedMultiFieldMetadataResponse() {
-        """
-        {
-           "errors":[
-              
-           ],
-           "data":{
-              "metaData":{
-                 "fileName":"pride-and-prejudice.txt",
-                 "fileType":"TXT"
-              }
-           },
-           "extensions":null,
-           "dataPresent":true
-        }
-        """
+        getClass()
+                .getClassLoader()
+                .getResourceAsStream("pride-and-prejudice-by-jane-austen.txt")
+                .getText(StandardCharsets.UTF_8.name()).contains(actual)
     }
 }
 

@@ -16,8 +16,6 @@
 package com.qubitpi.athena.example.books.application;
 
 import com.qubitpi.athena.application.AbstractBinderFactory;
-import com.qubitpi.athena.example.books.graphql.MutationBookDataFetcher;
-import com.qubitpi.athena.example.books.graphql.QueryBookDataFetcher;
 import com.qubitpi.athena.filestore.FileStore;
 import com.qubitpi.athena.filestore.swift.SwiftFileStore;
 import com.qubitpi.athena.metadata.FileType;
@@ -75,7 +73,7 @@ public class BooksBinderFactory extends AbstractBinderFactory {
 
     @Override
     protected DataFetcher<MetaData> buildQueryDataFetcher() {
-        return new QueryBookDataFetcher(INITIAL_METADATA);
+        return new (INITIAL_METADATA);
     }
 
     @Override
