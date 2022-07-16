@@ -21,6 +21,8 @@ Servlet Testing Documentation
 [Servlet-related testing](./src/test/groovy/com/qubitpi/athena/web/endpoints) is carried out using
 [Jersey Test Framework](https://qubitpi.github.io/jersey-guide/2022/07/11/jersey-test-framework.html).
 
+![](./class-diagram.png)
+
 Each `***ServletSpec.groovy` follows the following pattern to setup, run, and shutdown tests:
 
 ### 1. Initialize ApplicationState
