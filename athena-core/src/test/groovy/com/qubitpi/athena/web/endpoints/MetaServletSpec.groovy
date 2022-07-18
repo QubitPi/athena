@@ -23,6 +23,7 @@ import com.qubitpi.athena.metastore.MetaStore
 
 import groovy.json.JsonSlurper
 import spock.lang.Specification
+import spock.lang.Unroll
 
 import java.util.function.BiFunction
 
@@ -129,6 +130,17 @@ class MetaServletSpec extends Specification {
         then:
         Exception exception = thrown(IllegalArgumentException)
         exception.message == "Athena could not process the request because no metadata field was found: '$graphQLDocument'"
+    }
+
+    @Unroll
+    def "def"() {
+
+
+        where:
+        exceptionType    | exception                | exceptionMessage | description
+        RuntimeException | IllegalArgumentException | "" | "invalid JSON"
+        RuntimeException | IllegalArgumentException | "" | "JSON does not have 'query' field"
+
     }
 
     def expectedMultiFieldMetadataResponse() {

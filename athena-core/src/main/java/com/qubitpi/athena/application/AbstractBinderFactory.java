@@ -22,6 +22,8 @@ import com.qubitpi.athena.file.identifier.FileNameAndUploadedTimeBasedIdGenerato
 import com.qubitpi.athena.filestore.FileStore;
 import com.qubitpi.athena.metadata.MetaData;
 import com.qubitpi.athena.metastore.MetaStore;
+import com.qubitpi.athena.web.graphql.JacksonParser;
+import com.qubitpi.athena.web.graphql.JsonDocumentParser;
 
 import org.glassfish.hk2.api.TypeLiteral;
 import org.glassfish.hk2.utilities.Binder;
@@ -59,6 +61,7 @@ public abstract class AbstractBinderFactory implements BinderFactory {
                 bind(buildFileStore()).to(FileStore.class);
                 bind(buildMetaStore()).to(MetaStore.class);
                 bind(buildFileIdGenerator()).to(FileIdGenerator.class);
+                bind(buildJsonDocumentParser()).to(JsonDocumentParser.class);
                 bind(buildQueryDataFetcher())
                         .named("queryDataFetcher")
                         .to(new TypeLiteral<DataFetcher<MetaData>>() { });
@@ -131,6 +134,16 @@ public abstract class AbstractBinderFactory implements BinderFactory {
             LOG.error(message, exception);
             throw new IllegalStateException(message, exception);
         }
+    }
+
+    /**
+     * Initializes service for parsing client GraphQL request JSON.
+     *
+     * @return a new instance
+     */
+    @NotNull
+    protected JsonDocumentParser buildJsonDocumentParser() {
+        return JacksonParser.getInstance();
     }
 
     /**
