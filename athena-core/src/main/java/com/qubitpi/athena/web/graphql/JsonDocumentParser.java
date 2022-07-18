@@ -15,24 +15,28 @@
  */
 package com.qubitpi.athena.web.graphql;
 
-import static com.qubitpi.athena.config.ErrorMessageFormat.INVALID_GRAPHQL_REQUEST;
-import static com.qubitpi.athena.config.ErrorMessageFormat.JSON_DESERIALIZATION_ERROR;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.qubitpi.athena.metadata.MetaData;
-import com.qubitpi.athena.web.endpoints.MetaServlet;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import jakarta.validation.constraints.NotNull;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * {@link JsonDocumentParser} is used exclusively by {@link com.qubitpi.athena.web.endpoints.MetaServlet} and is
+ * responsible for extracting metadata request info from POST request body, such as file ID and metadata fields that
+ * client is asking for.
+ * <p>
+ * The request body must be JSON and have the following
+ * <a href="https://graphql.org/learn/serving-over-http/#post-request">format</a> in order to be parsable by
+ * {@link JsonDocumentParser}:
+ * <pre>
+ * {@code
+ * {
+ *     "query":"{\n  metaData(fileId:\"...\") {\n    fileName\nfileType  }\n}"
+ * }
+ * }
+ * </pre>
+ * Note that the selection {@code fileName\nfileType} can be any combination of file metadata object attributes
+ */
 public interface JsonDocumentParser {
 
     /**
@@ -43,16 +47,17 @@ public interface JsonDocumentParser {
      * <pre>
      * {@code
      * {
-     *     "query":"{\n  metaData(fileId:\"2\") {\n    fileName\nfileType  }\n}",
+     *     "query":"{\n  metaData(fileId:\"2\") {\n    fileName\nfileType  }\n}"
      * }
      * }
      * </pre>
      * then this method returns "2", which means the requested metadata is for a file whose file ID is 2.
      *
-     * @param graphQLDocument  The provided JSON document which cannot be {@code null}, otherwise the behavior of this
-     * method is undefined
+     * @param graphQLDocument  The provided JSON document
      *
      * @return an ordered list of requested metadata fields
+     *
+     * @throws NullPointerException if {@code graphQLDocument} is {@code null}
      */
     @NotNull
     String getFileId(@NotNull String graphQLDocument);
@@ -88,6 +93,8 @@ public interface JsonDocumentParser {
      * method is undefined
      *
      * @return an ordered list of requested metadata fields
+     *
+     * @throws NullPointerException if {@code graphQLDocument} is {@code null}
      */
     @NotNull
     List<String> getFields(@NotNull String graphQLDocument);

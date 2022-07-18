@@ -20,6 +20,7 @@ import com.qubitpi.athena.application.JerseyTestBinder
 import com.qubitpi.athena.metadata.FileType
 import com.qubitpi.athena.metadata.MetaData
 import com.qubitpi.athena.metastore.MetaStore
+import com.qubitpi.athena.web.graphql.JsonDocumentParser
 
 import groovy.json.JsonSlurper
 import spock.lang.Specification
@@ -114,7 +115,10 @@ class MetaServletSpec extends Specification {
 
     def "Reading file meta data through POST cannot have field list empty"() {
         given:
-        MetaServlet metaServlet = new MetaServlet(Mock(MetaStore))
+        MetaServlet metaServlet = new MetaServlet(
+                Mock(MetaStore),
+                Mock(JsonDocumentParser) { getFields(_ as String) >> [] }
+        )
 
         and:
         String graphQLDocument = """
@@ -130,17 +134,6 @@ class MetaServletSpec extends Specification {
         then:
         Exception exception = thrown(IllegalArgumentException)
         exception.message == "Athena could not process the request because no metadata field was found: '$graphQLDocument'"
-    }
-
-    @Unroll
-    def "def"() {
-
-
-        where:
-        exceptionType    | exception                | exceptionMessage | description
-        RuntimeException | IllegalArgumentException | "" | "invalid JSON"
-        RuntimeException | IllegalArgumentException | "" | "JSON does not have 'query' field"
-
     }
 
     def expectedMultiFieldMetadataResponse() {

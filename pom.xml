@@ -95,7 +95,17 @@
             </dependency>
             <dependency>
                 <groupId>com.qubitpi.athena</groupId>
+                <artifactId>athena-filestore-swift</artifactId>
+                <version>${version.athena}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.qubitpi.athena</groupId>
                 <artifactId>athena-metastore</artifactId>
+                <version>${version.athena}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.qubitpi.athena</groupId>
+                <artifactId>athena-metastore-graphql</artifactId>
                 <version>${version.athena}</version>
             </dependency>
             <dependency>
@@ -432,26 +442,26 @@
                     </configuration>
                 </plugin>
 
-                <!-- Code Coverage report generation -->
-                <plugin>
-                    <groupId>org.jacoco</groupId>
-                    <artifactId>jacoco-maven-plugin</artifactId>
-                    <version>0.8.4</version>
-                    <executions>
-                        <execution>
-                            <goals>
-                                <goal>prepare-agent</goal>
-                            </goals>
-                        </execution>
-                        <execution>
-                            <id>report</id>
-                            <phase>prepare-package</phase>
-                            <goals>
-                                <goal>report</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
+<!--                &lt;!&ndash; Code Coverage report generation &ndash;&gt;-->
+<!--                <plugin>-->
+<!--                    <groupId>org.jacoco</groupId>-->
+<!--                    <artifactId>jacoco-maven-plugin</artifactId>-->
+<!--                    <version>0.8.6</version>-->
+<!--                    <executions>-->
+<!--                        <execution>-->
+<!--                            <goals>-->
+<!--                                <goal>prepare-agent</goal>-->
+<!--                            </goals>-->
+<!--                        </execution>-->
+<!--                        <execution>-->
+<!--                            <id>report</id>-->
+<!--                            <phase>prepare-package</phase>-->
+<!--                            <goals>-->
+<!--                                <goal>report</goal>-->
+<!--                            </goals>-->
+<!--                        </execution>-->
+<!--                    </executions>-->
+<!--                </plugin>-->
 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>

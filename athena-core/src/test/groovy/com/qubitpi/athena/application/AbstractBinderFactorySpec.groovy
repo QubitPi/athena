@@ -21,6 +21,8 @@ import com.qubitpi.athena.filestore.FileStore
 import com.qubitpi.athena.filestore.TestFileStore
 import com.qubitpi.athena.metastore.MetaStore
 import com.qubitpi.athena.metastore.TestMetaStore
+import com.qubitpi.athena.web.graphql.JacksonParser
+import com.qubitpi.athena.web.graphql.JsonDocumentParser
 
 import org.glassfish.hk2.api.DynamicConfiguration
 import org.glassfish.hk2.utilities.Binder
@@ -72,6 +74,15 @@ class AbstractBinderFactorySpec extends Specification {
                 {
                     it.advertisedContracts.contains(FileIdGenerator.canonicalName)
                     it.implementation.contains(FileNameAndUploadedTimeBasedIdGenerator.canonicalName)
+                },
+                _
+        )
+
+        and: "JSON document parser resource is injected"
+        1 * dynamicConfiguration.bind(
+                {
+                    it.advertisedContracts.contains(JsonDocumentParser.canonicalName)
+                    it.implementation.contains(JacksonParser.canonicalName)
                 },
                 _
         )
