@@ -48,7 +48,7 @@ class SQLMutationDataFetcherSpec extends Specification {
 
     @SuppressWarnings('GroovyAccessibility')
     def "Happy path meta data persistence causes DataSource to execute save query"() {
-        setup:
+        setup: "instruct data source to fake a save setup"
         PreparedStatement preparedStatement = Mock(PreparedStatement)
         Connection connection = Mock(Connection) {
             prepareStatement(SQLMutationDataFetcher.META_DATA_PERSIST_QUERY_TEMPLATE) >> preparedStatement
@@ -59,10 +59,10 @@ class SQLMutationDataFetcherSpec extends Specification {
                 }
         )
 
-        when:
+        when: "meta data is being saved"
         dataFetcher.get(dataFetchingEnvironment)
 
-        then:
+        then: "a SQL save query is sent"
         1 * preparedStatement.executeUpdate()
     }
 }
