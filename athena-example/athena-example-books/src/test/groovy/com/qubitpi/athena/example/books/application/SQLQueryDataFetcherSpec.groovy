@@ -33,7 +33,7 @@ class SQLQueryDataFetcherSpec extends Specification {
 
     static final String FILE_NAME = "pride-and-prejudice.pdf"
     static final String FILE_TYPE = "PDF"
-    static final String UNUSED_FILE_ID = "df93if92eef";
+    static final String UNUSED_FILE_ID = "df93if92eef"
 
     @Subject
     SQLQueryDataFetcher dataFetcher

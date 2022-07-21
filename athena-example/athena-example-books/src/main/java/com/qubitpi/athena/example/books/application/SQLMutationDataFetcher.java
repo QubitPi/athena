@@ -21,6 +21,8 @@ import graphql.schema.DataFetcher;
 import graphql.schema.DataFetchingEnvironment;
 import jakarta.validation.constraints.NotNull;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.AbstractMap;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -46,26 +48,23 @@ public class SQLMutationDataFetcher implements DataFetcher<MetaData> {
     @Override
     public MetaData get(final DataFetchingEnvironment dataFetchingEnvironment) throws Exception {
         final String fileId = dataFetchingEnvironment.getArgument(FILE_ID);
+        final String fileName = dataFetchingEnvironment.getArgument(MetaData.FILE_NAME);
+        final String fileType = dataFetchingEnvironment.getArgument(MetaData.FILE_TYPE);
 
-        dataSource.getConnection().createStatement().execute(
-                String.format(
-                        META_DATA_PERSIST_QUERY_TEMPLATE,
-                        fileId,
-                        dataFetchingEnvironment.getArgument(MetaData.FILE_NAME),
-                        dataFetchingEnvironment.getArgument(MetaData.FILE_TYPE)
-                )
-        );
+        try (
+                Connection connection = getDataSource().getConnection();
+                PreparedStatement statement = connection.prepareStatement(META_DATA_PERSIST_QUERY_TEMPLATE)
+        ) {
+            statement.setString(1, fileId);
+            statement.setString(2, fileName);
+            statement.setString(3, fileType);
+            statement.executeUpdate();
+        }
 
         return MetaData.of(
                 Stream.of(
-                        new AbstractMap.SimpleImmutableEntry<>(
-                                MetaData.FILE_NAME,
-                                dataFetchingEnvironment.getArgument(MetaData.FILE_NAME)
-                        ),
-                        new AbstractMap.SimpleImmutableEntry<>(
-                                MetaData.FILE_TYPE,
-                                dataFetchingEnvironment.getArgument(MetaData.FILE_TYPE)
-                        )
+                        new AbstractMap.SimpleImmutableEntry<>(MetaData.FILE_NAME, fileName),
+                        new AbstractMap.SimpleImmutableEntry<>(MetaData.FILE_TYPE, fileType)
                 ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue))
         );
     }
