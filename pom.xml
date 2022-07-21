@@ -60,8 +60,10 @@
         <version.graphql.java>14.0</version.graphql.java>
         <version.joss>0.10.2</version.joss>
         <version.jackson>2.13.3</version.jackson>
+        <version.commons.dbcp2>2.0.1</version.commons.dbcp2>
         <version.servlet>3.1.0</version.servlet>
         <version.jersey>2.25.1</version.jersey>
+        <version.flyway.core>5.0.7</version.flyway.core>
 
         <version.maven.war.plugin>3.2.2</version.maven.war.plugin>
         <version.maven.site.plugin>3.7.1</version.maven.site.plugin>
@@ -111,16 +113,6 @@
             <dependency>
                 <groupId>com.qubitpi.athena</groupId>
                 <artifactId>athena-system-config</artifactId>
-                <version>${version.athena}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.qubitpi.athena</groupId>
-                <artifactId>athena-acceptance-test</artifactId>
-                <version>${version.athena}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.qubitpi.athena</groupId>
-                <artifactId>athena-example-books</artifactId>
                 <version>${version.athena}</version>
             </dependency>
 
@@ -176,6 +168,12 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-configuration2</artifactId>
                 <version>2.7</version>
+            </dependency>
+            <!-- Apache Commons -->
+            <dependency> <!-- Prefer DBCP over JDBI since lookup should provide low-level speed operations -->
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-dbcp2</artifactId>
+                <version>${version.commons.dbcp2}</version>
             </dependency>
 
             <!-- Servlet API -->
@@ -258,6 +256,12 @@
                 <groupId>org.hamcrest</groupId>
                 <artifactId>hamcrest-all</artifactId>
                 <version>1.3</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-core</artifactId>
+                <version>${version.flyway.core}</version>
                 <scope>test</scope>
             </dependency>
         </dependencies>

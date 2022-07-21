@@ -25,6 +25,13 @@
     <dependencies>
         <dependency>
             <groupId>com.qubitpi.athena</groupId>
+            <artifactId>athena-example</artifactId>
+            <version>${version.athena}</version>
+            <type>pom</type>
+        </dependency>
+
+        <dependency>
+            <groupId>com.qubitpi.athena</groupId>
             <artifactId>athena-core</artifactId>
         </dependency>
         <dependency>
@@ -34,6 +41,18 @@
         <dependency>
             <groupId>com.qubitpi.athena</groupId>
             <artifactId>athena-metastore-graphql</artifactId>
+        </dependency>
+
+        <!-- Apache Commons -->
+        <dependency> <!-- Prefer DBCP over JDBI since lookup should provide low-level speed operations -->
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-dbcp2</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

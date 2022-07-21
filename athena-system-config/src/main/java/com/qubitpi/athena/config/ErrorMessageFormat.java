@@ -58,11 +58,24 @@ public enum ErrorMessageFormat implements MessageFormatter {
     INVALID_GRAPHQL_REQUEST(
             "Athena could not process the request because %s: '%s'",
             "Invalid GraphQL query (cause: %s): '%s'"
-    )
+    ),
+
+    META_DATA_NOT_FOUND("No meta data found for file ID '%s'")
     ;
 
     private final String messageFormat;
     private final String loggingFormat;
+
+    /**
+     * An error message formatter with the same message for logging and messaging.
+     *
+     * @param messageFormat  The format string for logging and messaging
+     *
+     * @throws NullPointerException if any {@code messageFormat} is {@code null}
+     */
+    ErrorMessageFormat(final @NotNull String messageFormat) {
+        this(messageFormat, messageFormat);
+    }
 
     /**
      * Constructor.

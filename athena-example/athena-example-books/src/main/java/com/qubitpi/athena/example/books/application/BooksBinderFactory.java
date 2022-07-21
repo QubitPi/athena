@@ -23,6 +23,7 @@ import com.qubitpi.athena.metadata.MetaData;
 import com.qubitpi.athena.metastore.MetaStore;
 import com.qubitpi.athena.metastore.graphql.GraphQLMetaStore;
 
+import org.apache.commons.dbcp2.BasicDataSource;
 import org.glassfish.hk2.utilities.binding.AbstractBinder;
 import org.javaswift.joss.client.factory.AccountFactory;
 import org.javaswift.joss.client.factory.AuthenticationMethod;
@@ -30,12 +31,17 @@ import org.javaswift.joss.model.Account;
 import org.javaswift.joss.model.Container;
 
 import graphql.schema.DataFetcher;
+import graphql.schema.DataFetchingEnvironment;
 import jakarta.validation.constraints.NotNull;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.AbstractMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import javax.sql.DataSource;
 
 /**
  * Book specialization of the Abstract Binder Factory, applying Book app configuration objects.
@@ -61,6 +67,8 @@ public class BooksBinderFactory extends AbstractBinderFactory {
             new AbstractMap.SimpleImmutableEntry<>("3", MetaData.of(INTERVIEW_WITH_THE_VAMPIRE))
     ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
+    private static final DataSource DATA_SOURCE = buildDataSource();
+
     @Override
     protected Class<? extends FileStore> buildFileStore() {
         return SwiftFileStore.class;
@@ -73,12 +81,12 @@ public class BooksBinderFactory extends AbstractBinderFactory {
 
     @Override
     protected DataFetcher<MetaData> buildQueryDataFetcher() {
-        return new (INITIAL_METADATA);
+        return new SQLQueryDataFetcher(DATA_SOURCE);
     }
 
     @Override
     protected DataFetcher<MetaData> buildMutationDataFetcher() {
-        return new MutationBookDataFetcher(INITIAL_METADATA);
+        return new SQLMutationDataFetcher(DATA_SOURCE);
     }
 
     @Override
@@ -93,6 +101,14 @@ public class BooksBinderFactory extends AbstractBinderFactory {
         }
 
         abstractBinder.bind(account).to(Account.class);
+    }
+
+    @NotNull
+    private static DataSource buildDataSource() {
+        BasicDataSource basicDataSource = new BasicDataSource();
+        basicDataSource.setDriverClassName("org.apache.derby.jdbc.EmbeddedDriver");
+        basicDataSource.setUrl("jdbc:derby:memory:Athena;create=true");
+        return basicDataSource;
     }
 
     /**
