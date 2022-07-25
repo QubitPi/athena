@@ -1,5 +1,10 @@
+<div align="center">
+
 [ ![Project Management](https://img.shields.io/badge/Project%20Management-0052CC?style=for-the-badge&logo=trello&logoColor=white) ](https://trello.com/b/ARStTLRb)
-[![License Badge](https://img.shields.io/badge/Apache%202.0-F25910.svg?style=for-the-badge&logo=Apache&logoColor=white) ](https://www.apache.org/licenses/LICENSE-2.0)
+[ ![License Badge](https://img.shields.io/badge/Apache%202.0-F25910.svg?style=for-the-badge&logo=Apache&logoColor=white) ](https://www.apache.org/licenses/LICENSE-2.0)
+![GitHub last commit (branch)](https://img.shields.io/github/last-commit/QubitPi/athena/master?logo=github&style=for-the-badge)
+
+</div>
 
 Athena
 ======
