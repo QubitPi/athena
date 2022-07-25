@@ -32,13 +32,15 @@ import java.sql.ResultSet;
 import java.util.AbstractMap;
 import java.util.Map;
 import java.util.Objects;
-import java.util.PrimitiveIterator;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import javax.inject.Inject;
 import javax.sql.DataSource;
 
+/**
+ * {@link SQLQueryDataFetcher} fetches file meta data from a SQL data storage via a {@link DataSource}.
+ */
 public class SQLQueryDataFetcher implements DataFetcher<MetaData> {
 
     private static final Logger LOG = LoggerFactory.getLogger(SQLQueryDataFetcher.class);
@@ -51,6 +53,13 @@ public class SQLQueryDataFetcher implements DataFetcher<MetaData> {
 
     private final DataSource dataSource;
 
+    /**
+     * Constructor.
+     *
+     * @param dataSource  a client object against a SQL database to fetch meta data from
+     *
+     * @throws NullPointerException if {@code dataSource} is {@code null}
+     */
     @Inject
     public SQLQueryDataFetcher(final @NotNull DataSource dataSource) {
         this.dataSource = Objects.requireNonNull(dataSource);
@@ -59,7 +68,7 @@ public class SQLQueryDataFetcher implements DataFetcher<MetaData> {
     @Override
     public MetaData get(final DataFetchingEnvironment dataFetchingEnvironment) throws Exception {
         final String fileId = dataFetchingEnvironment.getArgument(FILE_ID);
-        ResultSet resultSet;
+        final ResultSet resultSet;
         try (
                 Connection connection = getDataSource().getConnection();
                 PreparedStatement statement = connection.prepareStatement(META_DATA_FETCH_QUERY_TEMPLATE)
@@ -73,7 +82,7 @@ public class SQLQueryDataFetcher implements DataFetcher<MetaData> {
                 throw new IllegalStateException(META_DATA_NOT_FOUND.format(fileId));
             }
 
-            MetaData metaData = MetaData.of(
+            final MetaData metaData = MetaData.of(
                     Stream.of(
                             new AbstractMap.SimpleImmutableEntry<>(
                                     MetaData.FILE_NAME,

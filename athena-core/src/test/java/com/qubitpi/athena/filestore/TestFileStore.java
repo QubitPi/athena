@@ -17,7 +17,6 @@ package com.qubitpi.athena.filestore;
 
 import com.qubitpi.athena.file.File;
 import com.qubitpi.athena.file.identifier.FileIdGenerator;
-import com.qubitpi.athena.metastore.MetaStore;
 
 import jakarta.validation.constraints.NotNull;
 import net.jcip.annotations.GuardedBy;
@@ -49,8 +48,8 @@ public class TestFileStore implements FileStore {
      * the Map value. Hence, the File.fileContent is truncated, which makes the truncated InputStream unreadable during
      * the file download operation later.
      * <p>
-     * Even using Map<String, String>, the Map value still got truncated (e.g. a file of 14500+ lines of text got
-     * truncated to about 14300+ lines), but this is okay because the string, during the file download process, can
+     * Even using {@code Map<String, String>}, the Map value still got truncated (e.g. a file of 14500+ lines of text
+     * got truncated to about 14300+ lines), but this is okay because the string, during the file download process, can
      * still be converted to InputStream. The test just needs a little bit of awareness to use expected.contains(actual)
      * instead of expected == actual. The is the best workaround that can be achieved.
      * <p>
@@ -78,7 +77,7 @@ public class TestFileStore implements FileStore {
 
     @Override
     public String upload(final File file) {
-        String fileId = getFileIdGenerator().apply(file);
+        final String fileId = getFileIdGenerator().apply(file);
         getFileByFileId().put(
                 getFileIdGenerator().apply(file),
                 new BufferedReader(new InputStreamReader(file.getFileContent()))

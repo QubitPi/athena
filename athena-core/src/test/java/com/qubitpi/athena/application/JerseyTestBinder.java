@@ -15,7 +15,6 @@
  */
 package com.qubitpi.athena.application;
 
-import org.glassfish.hk2.utilities.Binder;
 import org.glassfish.hk2.utilities.binding.AbstractBinder;
 import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.media.multipart.MultiPartFeature;
@@ -30,27 +29,39 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.Objects;
 
-import javax.swing.plaf.PanelUI;
 import javax.ws.rs.client.Invocation.Builder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Application;
 
 /**
- * Configures JerseyTest and also sets up di
+ * Configures JerseyTest and also sets up DI.
+ * <p>
+ * This is a singleton since JerseyTest binds a network port
  */
 public class JerseyTestBinder {
 
     /**
-     * Start harness and wait
+     * Start harness and wait.
      */
     private class StartHarness extends Thread {
 
         private Throwable cause;
 
+        /**
+         * Start harness and wait.
+         *
+         * @throws InterruptedException if thread was interrupted
+         */
         private StartHarness() throws InterruptedException {
             super("Start Harness");
         }
 
+        /**
+         * Start the test harness and track it for timeouts.
+         *
+         * @throws InterruptedException if the harness is interrupted
+         */
+        @SuppressWarnings("IllegalCatch")
         public void startHarness() throws InterruptedException {
             this.start();
             this.join(startTimeout);
@@ -58,8 +69,8 @@ public class JerseyTestBinder {
             // If harness not started, throw timeout exception
             if (isAlive()) {
                 // Include thread stack dump
-                StringBuilder stringBuilder = new StringBuilder("Timeout starting Jersey\n");
-                for (StackTraceElement stackTraceElement : this.getStackTrace()) {
+                final StringBuilder stringBuilder = new StringBuilder("Timeout starting Jersey\n");
+                for (final StackTraceElement stackTraceElement : this.getStackTrace()) {
                     stringBuilder.append("\tat ").append(stackTraceElement).append('\n');
                 }
                 // try to interrupt and tear down
@@ -68,7 +79,7 @@ public class JerseyTestBinder {
                 if (!isAlive()) {
                     try {
                         harness.tearDown();
-                    } catch (Exception exception) {
+                    } catch (final Exception exception) {
                         throw new IllegalStateException(stringBuilder.toString(), exception);
                     }
                 }
@@ -82,10 +93,11 @@ public class JerseyTestBinder {
         }
 
         @Override
+        @SuppressWarnings("IllegalCatch")
         public void run() {
             try {
                 harness.setUp();
-            } catch (Throwable throwable) {
+            } catch (final Throwable throwable) {
                 cause = throwable;
             }
         }
@@ -107,7 +119,7 @@ public class JerseyTestBinder {
      *
      * @param resourceClasses  Resource classes for Jersey to load
      */
-    public JerseyTestBinder(Class<?>... resourceClasses) {
+    public JerseyTestBinder(final Class<?>... resourceClasses) {
         this(true, new ApplicationState(), resourceClasses);
     }
 
@@ -117,7 +129,7 @@ public class JerseyTestBinder {
      * @param doStart  Flag to indicate if the constructor should start the tests harness.
      * @param resourceClasses  Resource classes for Jersey to load
      */
-    public JerseyTestBinder(boolean doStart, Class<?>... resourceClasses) {
+    public JerseyTestBinder(final boolean doStart, final Class<?>... resourceClasses) {
         this(doStart, new ApplicationState(), resourceClasses);
     }
 
@@ -128,7 +140,11 @@ public class JerseyTestBinder {
      * @param applicationState  Application state to load for testing
      * @param resourceClasses  Resource classes for Jersey to load
      */
-    public JerseyTestBinder(boolean doStart, ApplicationState applicationState, Class<?>... resourceClasses) {
+    public JerseyTestBinder(
+            final boolean doStart,
+            final ApplicationState applicationState,
+            final Class<?>... resourceClasses
+    ) {
         this.applicationState = applicationState;
 
         this.testBinderFactory = buildBinderFactory(applicationState);
@@ -150,9 +166,8 @@ public class JerseyTestBinder {
             }
 
             @Override
-            protected void configureClient(ClientConfig config) {
-                // https://stackoverflow.com/questions/19668426/how-to-resolve-messagebodywriter-not-found-for-media-type-multipart-form-data-er
-                for (Class<?> cls : resourceClasses) {
+            protected void configureClient(final ClientConfig config) {
+                for (final Class<?> cls : resourceClasses) {
                     if (cls.getSimpleName().equals(MultiPartFeature.class.getSimpleName())) {
                         config.register(MultiPartFeature.class);
                     }
@@ -166,21 +181,19 @@ public class JerseyTestBinder {
     }
 
     /**
-     * Start the test harness
+     * Start the test harness.
      */
     public void start() {
         try {
             new StartHarness().startHarness();
             wasStarted = true;
-        } catch (Exception exception) {
-            throw (exception instanceof IllegalStateException)
-                    ? (IllegalStateException) exception
-                    : new IllegalStateException(exception);
+        } catch (final InterruptedException exception) {
+            throw new IllegalStateException(exception);
         }
     }
 
     /**
-     * Tears down the test harness and reset all test application states
+     * Tears down the test harness and reset all test application states.
      *
      * @throws Exception if there's a problem tearing things down
      */
@@ -219,12 +232,12 @@ public class JerseyTestBinder {
      *
      * @throws NullPointerException if {@code target} or {@code queryParams} is {@code null}
      */
-    public Builder makeRequest(String target, Map<String, Object> queryParams) {
+    public Builder makeRequest(final String target, final Map<String, Object> queryParams) {
         // Set target of call
         WebTarget httpCall = getHarness().target(target);
 
         // Add query params to call
-        for (Map.Entry<String, Object> entry : queryParams.entrySet()) {
+        for (final Map.Entry<String, Object> entry : queryParams.entrySet()) {
             httpCall = httpCall.queryParam(entry.getKey(), entry.getValue());
         }
 
@@ -242,12 +255,14 @@ public class JerseyTestBinder {
     }
 
     /**
-     * Builds a test binder factory
+     * Builds a test binder factory.
+     *
+     * @param state  A set of mocked objects that are to be injected during testing phase
      *
      * @return a configured TestBinderFactory
      */
     @NotNull
-    protected BinderFactory buildBinderFactory(ApplicationState applicationState) {
-        return new TestBinderFactory(applicationState);
+    protected BinderFactory buildBinderFactory(final ApplicationState state) {
+        return new TestBinderFactory(state);
     }
 }

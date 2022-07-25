@@ -60,7 +60,8 @@ public class MetaServlet {
      * DI constructor.
      *
      * @param metaStore  A delegating layer that handles all REST operations.
-     * @param jsonDocumentParser
+     * @param jsonDocumentParser  An object for extracting metadata request info from POST request body, such as file
+     * ID and metadata fields that client is asking for.
      *
      * @throws NullPointerException if {@code metaStore} is {@code null}
      */

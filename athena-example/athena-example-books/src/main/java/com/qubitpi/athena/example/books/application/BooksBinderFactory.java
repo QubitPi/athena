@@ -18,7 +18,6 @@ package com.qubitpi.athena.example.books.application;
 import com.qubitpi.athena.application.AbstractBinderFactory;
 import com.qubitpi.athena.filestore.FileStore;
 import com.qubitpi.athena.filestore.swift.SwiftFileStore;
-import com.qubitpi.athena.metadata.FileType;
 import com.qubitpi.athena.metadata.MetaData;
 import com.qubitpi.athena.metastore.MetaStore;
 import com.qubitpi.athena.metastore.graphql.GraphQLMetaStore;
@@ -31,15 +30,7 @@ import org.javaswift.joss.model.Account;
 import org.javaswift.joss.model.Container;
 
 import graphql.schema.DataFetcher;
-import graphql.schema.DataFetchingEnvironment;
 import jakarta.validation.constraints.NotNull;
-
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.AbstractMap;
-import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import javax.sql.DataSource;
 
@@ -84,9 +75,14 @@ public class BooksBinderFactory extends AbstractBinderFactory {
         abstractBinder.bind(account).to(Account.class);
     }
 
+    /**
+     * Returns a connected local Derby instance.
+     *
+     * @return a new connected SQL database instance
+     */
     @NotNull
     private static DataSource buildDataSource() {
-        BasicDataSource basicDataSource = new BasicDataSource();
+        final BasicDataSource basicDataSource = new BasicDataSource();
         basicDataSource.setDriverClassName("org.apache.derby.jdbc.EmbeddedDriver");
         basicDataSource.setUrl("jdbc:derby:memory:Athena;create=true");
         return basicDataSource;

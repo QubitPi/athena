@@ -60,6 +60,9 @@ public enum ErrorMessageFormat implements MessageFormatter {
             "Invalid GraphQL query (cause: %s): '%s'"
     ),
 
+    /**
+     * When meta data not found.
+     */
     META_DATA_NOT_FOUND("No meta data found for file ID '%s'")
     ;
 

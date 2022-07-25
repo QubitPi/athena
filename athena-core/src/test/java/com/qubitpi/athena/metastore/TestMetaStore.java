@@ -21,11 +21,9 @@ import com.qubitpi.athena.metadata.MetaData;
 
 import graphql.ExecutionInput;
 import graphql.ExecutionResult;
-import graphql.ExecutionResultImpl;
 import graphql.GraphQL;
 import graphql.schema.DataFetcher;
 import graphql.schema.GraphQLSchema;
-import graphql.schema.StaticDataFetcher;
 import graphql.schema.idl.RuntimeWiring;
 import graphql.schema.idl.SchemaGenerator;
 import graphql.schema.idl.SchemaParser;
@@ -80,18 +78,18 @@ public class TestMetaStore implements MetaStore {
             final @NotNull @Named("mutationFormatter") BiFunction<String, MetaData, String> mutationFormatter
     ) throws IOException {
         // https://www.graphql-java.com/documentation/getting-started#hello-world
-        String schema = new String(Files.readAllBytes(Paths.get("src/main/resources/schema.graphqls")));
+        final String schema = new String(Files.readAllBytes(Paths.get("src/main/resources/schema.graphqls")));
 
-        SchemaParser schemaParser = new SchemaParser();
-        TypeDefinitionRegistry typeDefinitionRegistry = schemaParser.parse(schema);
+        final SchemaParser schemaParser = new SchemaParser();
+        final TypeDefinitionRegistry typeDefinitionRegistry = schemaParser.parse(schema);
 
-        RuntimeWiring runtimeWiring = RuntimeWiring.newRuntimeWiring()
+        final RuntimeWiring runtimeWiring = RuntimeWiring.newRuntimeWiring()
                 .type(newTypeWiring("Query").dataFetcher("metaData", queryDataFetcher))
                 .type(newTypeWiring("Mutation").dataFetcher("createMetaData", mutationDataFetcher))
                 .build();
 
-        SchemaGenerator schemaGenerator = new SchemaGenerator();
-        GraphQLSchema graphQLSchema = schemaGenerator.makeExecutableSchema(typeDefinitionRegistry, runtimeWiring);
+        final SchemaGenerator schemaGenerator = new SchemaGenerator();
+        final GraphQLSchema graphQLSchema = schemaGenerator.makeExecutableSchema(typeDefinitionRegistry, runtimeWiring);
 
         this.api = GraphQL.newGraphQL(graphQLSchema).build();
         this.queryFormatter = queryFormatter;

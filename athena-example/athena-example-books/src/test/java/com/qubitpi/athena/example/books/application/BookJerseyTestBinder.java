@@ -18,7 +18,6 @@ package com.qubitpi.athena.example.books.application;
 import com.qubitpi.athena.application.ApplicationState;
 import com.qubitpi.athena.application.BinderFactory;
 import com.qubitpi.athena.application.JerseyTestBinder;
-import com.qubitpi.athena.application.TestBinderFactory;
 
 /**
  * TestBinder with Book application configuration specializaation.
@@ -28,13 +27,10 @@ public class BookJerseyTestBinder extends JerseyTestBinder {
     /**
      * Constructor.
      *
+     * @param doStart  Whether or not to start the application immediately after this constructor is invoked
      * @param resourceClasses  Resource classes to load into the application
      */
-    public BookJerseyTestBinder(ApplicationState applicationState, java.lang.Class<?>... resourceClasses) {
-        this(true, applicationState, resourceClasses);
-    }
-
-    public BookJerseyTestBinder(boolean doStart, Class<?>... resourceClasses) {
+    public BookJerseyTestBinder(final boolean doStart, final Class<?>... resourceClasses) {
         super(doStart, resourceClasses);
     }
 
@@ -45,7 +41,11 @@ public class BookJerseyTestBinder extends JerseyTestBinder {
      * @param applicationState  A set of mocked objects that are to be injected during testing phase
      * @param resourceClasses  Resource classes to load into the application
      */
-    public BookJerseyTestBinder(boolean doStart, ApplicationState applicationState, Class<?>... resourceClasses) {
+    public BookJerseyTestBinder(
+            final boolean doStart,
+            final ApplicationState applicationState,
+            final Class<?>... resourceClasses
+    ) {
         super(doStart, applicationState, resourceClasses);
     }
 

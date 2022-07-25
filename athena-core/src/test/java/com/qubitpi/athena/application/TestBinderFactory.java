@@ -15,7 +15,6 @@
  */
 package com.qubitpi.athena.application;
 
-import com.qubitpi.athena.file.File;
 import com.qubitpi.athena.file.identifier.FileIdGenerator;
 import com.qubitpi.athena.filestore.FileStore;
 import com.qubitpi.athena.filestore.TestFileStore;
@@ -51,7 +50,7 @@ public class TestBinderFactory extends AbstractBinderFactory {
 
     /**
      * Constructor used for unit-testing {@link AbstractBinderFactory} extension capability to make sure all bindings
-     * occurs
+     * occurs.
      *
      * @see AbstractBinderFactorySpec
      */

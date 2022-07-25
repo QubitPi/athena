@@ -33,7 +33,7 @@ import java.util.function.BiFunction;
 public class ApplicationState {
 
     /**
-     * Initial {@link com.qubitpi.athena.metastore.MetaStore} test data during each test def (not per-spec)
+     * Initial {@link com.qubitpi.athena.metastore.MetaStore} test data during each test def (not per-spec).
      * <p>
      * This map is where {@link graphql.schema.DataFetcher} is going to read test data from and write test data to and
      * will be initialized in setup() method
@@ -83,8 +83,6 @@ public class ApplicationState {
      * .{@link com.qubitpi.athena.filestore.FileStore#download(String)}
      */
     public FileIdGenerator fileIdGenerator = (it) -> "";
-
-
 
     /**
      * Clears all.

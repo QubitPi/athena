@@ -31,15 +31,24 @@ import java.util.stream.Stream;
 import javax.inject.Inject;
 import javax.sql.DataSource;
 
+/**
+ * {@link SQLMutationDataFetcher} saves file meta data into a SQL data storage via a {@link DataSource}.
+ */
 public class SQLMutationDataFetcher implements DataFetcher<MetaData> {
 
     private static final String FILE_ID = "fileId";
     private static final String META_DATA_PERSIST_QUERY_TEMPLATE =
             "INSERT INTO BOOK_META_DATA (file_id, file_name, file_type) VALUES (?, ?, ?)";
 
-
     private final DataSource dataSource;
 
+    /**
+     * Constructor.
+     *
+     * @param dataSource  a client object against a SQL database to save meta data into
+     *
+     * @throws NullPointerException if {@code dataSource} is {@code null}
+     */
     @Inject
     public SQLMutationDataFetcher(final DataSource dataSource) {
         this.dataSource = dataSource;
