@@ -43,7 +43,7 @@ class MetaServletSpec extends Specification {
     JerseyTestBinder jerseyTestBinder
 
     def setup() {
-        ApplicationState applicationState = new ApplicationState();
+        ApplicationState applicationState = new ApplicationState()
         applicationState.metadataByFileId = [(FILE_ID): META_DATA]
         applicationState.queryFormatter = new BiFunction<String, List<String>, String>() {
             @Override

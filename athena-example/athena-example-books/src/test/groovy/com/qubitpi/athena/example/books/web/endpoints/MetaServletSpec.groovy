@@ -13,23 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.qubitpi.athena.example.books.application;
+package com.qubitpi.athena.example.books.web.endpoints
 
-import org.flywaydb.core.Flyway;
+import com.qubitpi.athena.application.ApplicationState
+import com.qubitpi.athena.example.books.application.SQLDBResourceManager
 
-/**
- * A SQL DB resource manager that maintains DB-related configs of integration tests. It also offers capability to load
- * testing data into a Derby testing DB.
- */
-public class SQLDBDataSourceManager {
+import spock.lang.Specification
 
+class MetaServletSpec extends Specification {
 
-
-    private static Flyway buildMigrator() {
-        Flyway flyway = new Flyway();
-
-        //flyway.setDataSource();
-
-        return flyway;
+    def setup() {
+        SQLDBResourceManager.migrateDatabase()
     }
+
+    
 }

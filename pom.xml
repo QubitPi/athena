@@ -115,6 +115,13 @@
                 <artifactId>athena-system-config</artifactId>
                 <version>${version.athena}</version>
             </dependency>
+            <dependency>
+                <groupId>com.qubitpi.athena</groupId>
+                <artifactId>athena-core</artifactId>
+                <version>${version.athena}</version>
+                <type>test-jar</type>
+                <scope>test</scope>
+            </dependency>
 
             <!-- Validation -->
             <dependency>
