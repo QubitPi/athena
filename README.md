@@ -37,7 +37,7 @@ specialized on managing **files**, such as books, videos, and photos. It support
 APIs:
 
 * A [JSON API](https://jsonapi.org/) for uploading and downloading files
-* A [GraphQL](https://graphql.org/) API for reading file metadata, including
+* A [GraphQL](https://graphql.com/) API for reading file metadata, including
   - File name
   - File type
   - etc.
