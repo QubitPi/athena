@@ -17,7 +17,6 @@
         <module>athena-filestore</module>
         <module>athena-metastore</module>
         <module>athena-system-config</module>
-        <module>athena-acceptance-test</module>
         <module>athena-example</module>
     </modules>
 
@@ -69,6 +68,7 @@
         <version.maven.site.plugin>3.7.1</version.maven.site.plugin>
         <version.maven.release.plugin>2.5.3</version.maven.release.plugin>
         <version.maven.javadoc.plugin>3.2.0</version.maven.javadoc.plugin>
+        <version.maven.jar.plugin>3.1.1</version.maven.jar.plugin>
         <version.maven.surefire.plugin>2.16</version.maven.surefire.plugin>
         <version.maven.compiler.plugin>3.7.0</version.maven.compiler.plugin>
         <version.maven.failsafe.plugin>3.0.0-M4</version.maven.failsafe.plugin>
@@ -426,7 +426,7 @@
                         </systemPropertyVariables>
                         <includes>
                             <include>%regex[.*Spec.*]</include>
-                            <include>RunCucumberTest</include> <!-- Acceptance Test -->
+<!--                            <include>RunCucumberTest</include> &lt;!&ndash; Acceptance Test &ndash;&gt;-->
                         </includes>
                         <excludes>
                             <exclude>%regex[.*ITSpec.*]</exclude>
@@ -490,6 +490,12 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
                     <version>${version.maven.war.plugin}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>${version.maven.jar.plugin}</version>
                 </plugin>
 
                 <plugin>

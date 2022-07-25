@@ -1,4 +1,0 @@
-{
-    "query":"{\n  metaData(fileId:\"2\") {\n    fileName\nfileType  }\n}",
-    "variables":null
-}
