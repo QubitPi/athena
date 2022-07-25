@@ -15,16 +15,73 @@
  */
 package com.qubitpi.athena.example.books.web.endpoints
 
-import com.qubitpi.athena.application.ApplicationState
+import com.qubitpi.athena.application.JerseyTestBinder
+import com.qubitpi.athena.example.books.application.BookJerseyTestBinder
 import com.qubitpi.athena.example.books.application.SQLDBResourceManager
+import com.qubitpi.athena.web.endpoints.MetaServlet
 
+import groovy.json.JsonSlurper
 import spock.lang.Specification
+
+import javax.ws.rs.client.Entity
+import javax.ws.rs.core.MediaType
 
 class MetaServletSpec extends Specification {
 
+    JerseyTestBinder jerseyTestBinder
+
     def setup() {
         SQLDBResourceManager.migrateDatabase()
+        jerseyTestBinder = new BookJerseyTestBinder(true, MetaServlet.class)
     }
 
-    
+    def "File meta data can be accessed through GraphQL GET endpoint"() {
+        when: "we get meta data via GraphQL GET"
+        String actual = jerseyTestBinder.makeRequest(
+                "/metadata/graphql",
+                [query: URLEncoder.encode("""{metaData(fileId:"1"){fileName\nfileType}}""", "UTF-8")]
+        ).get(String.class)
+
+        then: "the response contains all requested metadata info without error"
+        new JsonSlurper().parseText(actual) == new JsonSlurper().parseText(expectedMultiFieldMetadataResponse())
+    }
+
+    def "File metadata can be accessed through GraphQL POST endpoint"() {
+        when: "we get meta data via GraphQL POST"
+        String actual = jerseyTestBinder.makeRequest("/metadata/graphql")
+                .post(
+                        Entity.entity(
+                                """
+                                {
+                                    "query": "{ metaData(fileId: \\"1\\") { fileName fileType } }",
+                                    "variables": null
+                                }
+                                """,
+                                MediaType.APPLICATION_JSON
+                        )
+
+                )
+                .readEntity(String.class)
+
+        then: "the response contains all requested metadata info without error"
+        new JsonSlurper().parseText(actual) == new JsonSlurper().parseText(expectedMultiFieldMetadataResponse())
+    }
+
+    def expectedMultiFieldMetadataResponse() {
+        """
+        {
+           "errors":[
+              
+           ],
+           "data":{
+              "metaData":{
+                 "fileName":"Harry Potter",
+                 "fileType":"PDF"
+              }
+           },
+           "extensions":null,
+           "dataPresent":true
+        }
+        """
+    }
 }

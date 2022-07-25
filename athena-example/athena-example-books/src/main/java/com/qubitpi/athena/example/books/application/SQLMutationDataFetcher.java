@@ -35,7 +35,7 @@ public class SQLMutationDataFetcher implements DataFetcher<MetaData> {
 
     private static final String FILE_ID = "fileId";
     private static final String META_DATA_PERSIST_QUERY_TEMPLATE =
-            "INSERT INTO META_DATA (file_id, file_name, file_type) VALUES ('%s', '%s', '%s')";
+            "INSERT INTO BOOK_META_DATA (file_id, file_name, file_type) VALUES (?, ?, ?)";
 
 
     private final DataSource dataSource;

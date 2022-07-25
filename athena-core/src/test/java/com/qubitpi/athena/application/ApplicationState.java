@@ -84,6 +84,8 @@ public class ApplicationState {
      */
     public FileIdGenerator fileIdGenerator = (it) -> "";
 
+
+
     /**
      * Clears all.
      * <p>

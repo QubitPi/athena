@@ -47,7 +47,7 @@ public class SQLQueryDataFetcher implements DataFetcher<MetaData> {
     private static final String FILE_NAME_COLUMN = "file_name";
     private static final String FILE_TYPE_COLUMN = "file_type";
     private static final String META_DATA_FETCH_QUERY_TEMPLATE
-            = "SELECT file_name, file_type FROM META_DATA WHERE file_id = ?";
+            = "SELECT file_name, file_type FROM BOOK_META_DATA WHERE file_id = ?";
 
     private final DataSource dataSource;
 
@@ -66,30 +66,30 @@ public class SQLQueryDataFetcher implements DataFetcher<MetaData> {
         ) {
             statement.setString(1, fileId);
             resultSet = statement.executeQuery();
-        }
 
-        if (!resultSet.next()) {
+            if (!resultSet.next()) {
+                resultSet.close();
+                LOG.error(META_DATA_NOT_FOUND.logFormat(fileId));
+                throw new IllegalStateException(META_DATA_NOT_FOUND.format(fileId));
+            }
+
+            MetaData metaData = MetaData.of(
+                    Stream.of(
+                            new AbstractMap.SimpleImmutableEntry<>(
+                                    MetaData.FILE_NAME,
+                                    resultSet.getString(FILE_NAME_COLUMN)
+                            ),
+                            new AbstractMap.SimpleImmutableEntry<>(
+                                    MetaData.FILE_TYPE,
+                                    resultSet.getString(FILE_TYPE_COLUMN)
+                            )
+                    ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue))
+            );
+
             resultSet.close();
-            LOG.error(META_DATA_NOT_FOUND.logFormat(fileId));
-            throw new IllegalStateException(META_DATA_NOT_FOUND.format(fileId));
+
+            return metaData;
         }
-
-        MetaData metaData = MetaData.of(
-                Stream.of(
-                        new AbstractMap.SimpleImmutableEntry<>(
-                                MetaData.FILE_NAME,
-                                resultSet.getString(FILE_NAME_COLUMN)
-                        ),
-                        new AbstractMap.SimpleImmutableEntry<>(
-                                MetaData.FILE_TYPE,
-                                resultSet.getString(FILE_TYPE_COLUMN)
-                        )
-                ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue))
-        );
-
-        resultSet.close();
-
-        return metaData;
     }
 
     @NotNull

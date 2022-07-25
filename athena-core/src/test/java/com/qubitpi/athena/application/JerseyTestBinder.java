@@ -15,6 +15,7 @@
  */
 package com.qubitpi.athena.application;
 
+import org.glassfish.hk2.utilities.Binder;
 import org.glassfish.hk2.utilities.binding.AbstractBinder;
 import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.media.multipart.MultiPartFeature;
@@ -92,7 +93,7 @@ public class JerseyTestBinder {
 
     private static final String RANDOM_PORT = "0";
 
-    private final TestBinderFactory testBinderFactory;
+    private final BinderFactory testBinderFactory;
     private final ApplicationState applicationState;
     private final AbstractBinder binder;
     private final ResourceConfig resourceConfig;
@@ -246,8 +247,7 @@ public class JerseyTestBinder {
      * @return a configured TestBinderFactory
      */
     @NotNull
-    private TestBinderFactory buildBinderFactory(ApplicationState applicationState) {
+    protected BinderFactory buildBinderFactory(ApplicationState applicationState) {
         return new TestBinderFactory(applicationState);
     }
-
 }

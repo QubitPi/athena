@@ -49,7 +49,6 @@ class FileServletSpec extends Specification {
     @SuppressWarnings("GroovyAccessibility")
     static final MetaData META_DATA = new MetaData(FILE_NAME, FILE_TYPE)
 
-
     JerseyTestBinder jerseyTestBinder
 
     def setup() {

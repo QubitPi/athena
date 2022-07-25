@@ -48,25 +48,6 @@ import javax.sql.DataSource;
  */
 public class BooksBinderFactory extends AbstractBinderFactory {
 
-    private static final Map<String, Object> HARRY_POTTER = Stream.of(
-            new AbstractMap.SimpleImmutableEntry<>(MetaData.FILE_NAME, "Harry Potter"),
-            new AbstractMap.SimpleImmutableEntry<>(MetaData.FILE_TYPE, FileType.PDF.name())
-    ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-    private static final Map<String, Object> MOBY_DICK = Stream.of(
-            new AbstractMap.SimpleImmutableEntry<>(MetaData.FILE_NAME, "Moby Dick"),
-            new AbstractMap.SimpleImmutableEntry<>(MetaData.FILE_TYPE, "PDF")
-    ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-    private static final Map<String, Object> INTERVIEW_WITH_THE_VAMPIRE = Stream.of(
-            new AbstractMap.SimpleImmutableEntry<>(MetaData.FILE_NAME, "Interview with the vampire"),
-            new AbstractMap.SimpleImmutableEntry<>(MetaData.FILE_TYPE, FileType.PDF.name())
-    ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-
-    private static final Map<String, MetaData> INITIAL_METADATA = Stream.of(
-            new AbstractMap.SimpleImmutableEntry<>("1", MetaData.of(HARRY_POTTER)),
-            new AbstractMap.SimpleImmutableEntry<>("2", MetaData.of(MOBY_DICK)),
-            new AbstractMap.SimpleImmutableEntry<>("3", MetaData.of(INTERVIEW_WITH_THE_VAMPIRE))
-    ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-
     private static final DataSource DATA_SOURCE = buildDataSource();
 
     @Override

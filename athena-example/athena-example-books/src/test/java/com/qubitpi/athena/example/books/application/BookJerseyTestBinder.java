@@ -16,7 +16,9 @@
 package com.qubitpi.athena.example.books.application;
 
 import com.qubitpi.athena.application.ApplicationState;
+import com.qubitpi.athena.application.BinderFactory;
 import com.qubitpi.athena.application.JerseyTestBinder;
+import com.qubitpi.athena.application.TestBinderFactory;
 
 /**
  * TestBinder with Book application configuration specializaation.
@@ -32,6 +34,10 @@ public class BookJerseyTestBinder extends JerseyTestBinder {
         this(true, applicationState, resourceClasses);
     }
 
+    public BookJerseyTestBinder(boolean doStart, Class<?>... resourceClasses) {
+        super(doStart, resourceClasses);
+    }
+
     /**
      * Constructor.
      *
@@ -41,5 +47,10 @@ public class BookJerseyTestBinder extends JerseyTestBinder {
      */
     public BookJerseyTestBinder(boolean doStart, ApplicationState applicationState, Class<?>... resourceClasses) {
         super(doStart, applicationState, resourceClasses);
+    }
+
+    @Override
+    protected BinderFactory buildBinderFactory(final ApplicationState applicationState) {
+        return new BooksBinderFactory();
     }
 }
