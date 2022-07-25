@@ -1,0 +1,6 @@
+mutation createMetaData {
+    createMetaData(fileId: "fileId123", fileName: "pride-and-prejudice.pdf", fileType: "PDF") {
+        fileName,
+        fileType
+    }
+}

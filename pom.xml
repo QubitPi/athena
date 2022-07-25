@@ -1,0 +1,636 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.qubitpi.athena</groupId>
+    <artifactId>athena-parent-pom</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <name>Athena: Parent POM</name>
+    <url>https://github.com/QubitPi/athena</url>
+
+    <modules>
+        <module>athena-core</module>
+        <module>athena-filestore</module>
+        <module>athena-metastore</module>
+        <module>athena-system-config</module>
+        <module>athena-examples</module>
+    </modules>
+
+    <developers>
+        <developer>
+            <name>Jiaqi Liu</name>
+            <url>https://github.com/QubitPi</url>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub QubitPi Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/QubitPi/athena</url>
+        </repository>
+    </distributionManagement>
+
+    <properties>
+        <sonar.organization>qubitpi</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
+        <version.athena>1.0.0</version.athena>
+        <version.validation.api>3.0.1</version.validation.api>
+        <version.jcip.annotations>1.0</version.jcip.annotations>
+        <version.slf4j>1.7.25</version.slf4j>
+        <version.logback>1.2.3</version.logback>
+        <version.graphql.java>14.0</version.graphql.java>
+        <version.joss>0.10.2</version.joss>
+        <version.jackson>2.13.3</version.jackson>
+        <version.apache.commons>2.7</version.apache.commons>
+        <version.commons.dbcp2>2.0.1</version.commons.dbcp2>
+        <version.servlet>3.1.0</version.servlet>
+        <version.jersey>2.25.1</version.jersey>
+        <version.derby>10.11.1.1</version.derby>
+        <version.flyway.core>5.0.7</version.flyway.core>
+
+        <version.maven.war.plugin>3.2.2</version.maven.war.plugin>
+        <version.maven.site.plugin>3.7.1</version.maven.site.plugin>
+        <version.maven.release.plugin>2.5.3</version.maven.release.plugin>
+        <version.maven.javadoc.plugin>3.2.0</version.maven.javadoc.plugin>
+        <version.maven.jar.plugin>3.1.1</version.maven.jar.plugin>
+        <version.maven.surefire.plugin>2.16</version.maven.surefire.plugin>
+        <version.maven.compiler.plugin>3.7.0</version.maven.compiler.plugin>
+        <version.maven.failsafe.plugin>3.0.0-M4</version.maven.failsafe.plugin>
+        <version.maven.checkstyle.plugin>3.1.2</version.maven.checkstyle.plugin>
+        <version.maven.surefire.report.plugin>${version.maven.surefire.plugin}</version.maven.surefire.report.plugin>
+
+        <checkstyle.skip>false</checkstyle.skip>
+        <checkstyle.config.location>checkstyle.xml</checkstyle.config.location>
+        <checkstyle.suppressions.location>checkstyle-suppressions.xml</checkstyle.suppressions.location>
+        <checkstyle.version>8.12</checkstyle.version>
+        <checkstyle.resourceIncludes>**/*.properties*</checkstyle.resourceIncludes>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Local module dependencies -->
+            <dependency>
+                <groupId>com.qubitpi.athena</groupId>
+                <artifactId>athena-core</artifactId>
+                <version>${version.athena}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.qubitpi.athena</groupId>
+                <artifactId>athena-filestore</artifactId>
+                <version>${version.athena}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.qubitpi.athena</groupId>
+                <artifactId>athena-filestore-swift</artifactId>
+                <version>${version.athena}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.qubitpi.athena</groupId>
+                <artifactId>athena-metastore</artifactId>
+                <version>${version.athena}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.qubitpi.athena</groupId>
+                <artifactId>athena-metastore-graphql</artifactId>
+                <version>${version.athena}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.qubitpi.athena</groupId>
+                <artifactId>athena-system-config</artifactId>
+                <version>${version.athena}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.qubitpi.athena</groupId>
+                <artifactId>athena-core</artifactId>
+                <version>${version.athena}</version>
+                <type>test-jar</type>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- Validation -->
+            <dependency>
+                <groupId>jakarta.validation</groupId>
+                <artifactId>jakarta.validation-api</artifactId>
+                <version>${version.validation.api}</version>
+            </dependency>
+
+            <!-- Concurrency -->
+            <dependency>
+                <groupId>net.jcip</groupId>
+                <artifactId>jcip-annotations</artifactId>
+                <version>${version.jcip.annotations}</version>
+            </dependency>
+
+            <!-- Logging -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${version.slf4j}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${version.logback}</version>
+            </dependency>
+
+            <!-- GraphQL -->
+            <dependency>
+                <groupId>com.graphql-java</groupId>
+                <artifactId>graphql-java</artifactId>
+                <version>${version.graphql.java}</version>
+            </dependency>
+
+            <!-- OpenStack Swift -->
+            <dependency>
+                <groupId>org.javaswift</groupId>
+                <artifactId>joss</artifactId>
+                <version>${version.joss}</version>
+            </dependency>
+
+            <!-- JSON Parsing -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${version.jackson}</version>
+            </dependency>
+
+            <!-- Apache Commons Libraries -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-configuration2</artifactId>
+                <version>${version.apache.commons}</version>
+            </dependency>
+            <!-- Apache Commons -->
+            <dependency> <!-- Prefer DBCP over JDBI since lookup should provide low-level speed operations -->
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-dbcp2</artifactId>
+                <version>${version.commons.dbcp2}</version>
+            </dependency>
+
+            <!-- Servlet API -->
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>${version.servlet}</version>
+            </dependency>
+
+            <!-- Jersey -->
+            <dependency>
+                <groupId>org.glassfish.jersey.core</groupId>
+                <artifactId>jersey-server</artifactId>
+                <version>${version.jersey}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish.jersey.containers</groupId>
+                <artifactId>jersey-container-servlet</artifactId>
+                <version>${version.jersey}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish.jersey.media</groupId>
+                <artifactId>jersey-media-multipart</artifactId>
+                <version>${version.jersey}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish.jersey.media</groupId>
+                <artifactId>jersey-media-json-jackson</artifactId>
+                <version>${version.jersey}</version>
+            </dependency>
+            <dependency><!-- Client for running local "integration-style" tests -->
+                <groupId>org.glassfish.jersey.test-framework</groupId>
+                <artifactId>jersey-test-framework-core</artifactId>
+                <version>${version.jersey}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency><!-- Container for running local "integration-style" tests -->
+                <groupId>org.glassfish.jersey.test-framework.providers</groupId>
+                <artifactId>jersey-test-framework-provider-grizzly2</artifactId>
+                <version>${version.jersey}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- Injection -->
+            <dependency>
+                <groupId>org.glassfish.hk2</groupId>
+                <artifactId>hk2-api</artifactId>
+                <version>2.5.0-b32</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.inject</groupId>
+                <artifactId>javax.inject</artifactId>
+                <version>1</version>
+            </dependency>
+
+            <!-- Testing -->
+            <dependency> <!-- Mandatory dependency for using Spock -->
+                <groupId>org.spockframework</groupId>
+                <artifactId>spock-core</artifactId>
+                <version>1.3-groovy-2.5</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.codehaus.groovy</groupId>
+                <artifactId>groovy-all</artifactId>
+                <version>2.4.5</version>
+            </dependency>
+            <dependency> <!-- Enable mocking of non-interface types -->
+                <groupId>cglib</groupId>
+                <artifactId>cglib-nodep</artifactId>
+                <version>3.3.0</version>
+            </dependency>
+            <dependency> <!-- enables mocking of classes without default constructor (together with CGLIB) -->
+                <groupId>org.objenesis</groupId>
+                <artifactId>objenesis</artifactId>
+                <version>3.0.1</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency> <!-- only necessary if Hamcrest matchers are used -->
+                <groupId>org.hamcrest</groupId>
+                <artifactId>hamcrest-all</artifactId>
+                <version>1.3</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.derby</groupId>
+                <artifactId>derby</artifactId>
+                <version>${version.derby}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-core</artifactId>
+                <version>${version.flyway.core}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <!-- Common things that all modules need -->
+    <dependencies>
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+        </dependency>
+
+        <!-- Concurrency -->
+        <dependency>
+            <groupId>net.jcip</groupId>
+            <artifactId>jcip-annotations</artifactId>
+        </dependency>
+
+        <!-- Logging -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+        </dependency>
+
+        <!-- Testing -->
+        <dependency>
+            <groupId>org.spockframework</groupId>
+            <artifactId>spock-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-all</artifactId>
+        </dependency>
+        <dependency> <!-- Enable mocking of non-interface types -->
+            <groupId>cglib</groupId>
+            <artifactId>cglib-nodep</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.objenesis</groupId>
+            <artifactId>objenesis</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <!-- Publish to artifactory -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <version>${version.maven.release.plugin}</version>
+                </plugin>
+
+                <!-- Use Java 8 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${version.maven.compiler.plugin}</version>
+                    <configuration>
+                        <source>${maven.compiler.source}</source>
+                        <target>${maven.compiler.target}</target>
+                        <encoding>${project.build.sourceEncoding}</encoding>
+                    </configuration>
+                </plugin>
+
+                <!-- Java Checkstyle -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-checkstyle-plugin</artifactId>
+                    <version>${version.maven.checkstyle.plugin}</version>
+                    <dependencies>
+                        <!-- override default checkstyle version -->
+                        <dependency>
+                            <groupId>com.puppycrawl.tools</groupId>
+                            <artifactId>checkstyle</artifactId>
+                            <version>${checkstyle.version}</version>
+                        </dependency>
+                    </dependencies>
+                    <configuration>
+                        <suppressionsLocation>${checkstyle.suppressions.location}</suppressionsLocation>
+                        <suppressionsFileExpression>checkstyle.suppressions.file</suppressionsFileExpression>
+                        <configLocation>${checkstyle.config.location}</configLocation>
+                        <includes>**\/*.java,**\/*.groovy</includes>
+                        <resourceIncludes>**/*.properties,**/*.sample</resourceIncludes>
+                        <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                        <consoleOutput>true</consoleOutput>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>${version.maven.javadoc.plugin}</version>
+                </plugin>
+
+                <!-- Groovy Spock -->
+                <plugin>
+                    <groupId>org.codehaus.gmavenplus</groupId>
+                    <artifactId>gmavenplus-plugin</artifactId>
+                    <version>1.6</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>addSources</goal>
+                                <goal>addTestSources</goal>
+                                <goal>generateStubs</goal>
+                                <goal>compile</goal>
+                                <goal>generateTestStubs</goal>
+                                <goal>compileTests</goal>
+                                <goal>removeStubs</goal>
+                                <goal>removeTestStubs</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <!-- Groovy checkstyle -->
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>codenarc-maven-plugin</artifactId>
+                    <version>0.22-1</version>
+                    <configuration>
+                        <sourceDirectory>${project.basedir}</sourceDirectory>
+                        <maxPriority1Violations>0</maxPriority1Violations>
+                        <maxPriority2Violations>0</maxPriority2Violations>
+                        <maxPriority3Violations>0</maxPriority3Violations>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <phase>prepare-package</phase>
+                            <goals>
+                                <goal>codenarc</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <!-- Unite Test -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${version.maven.surefire.plugin}</version>
+                    <configuration>
+                        <systemPropertyVariables>
+                            <java.awt.headless>true</java.awt.headless>
+                        </systemPropertyVariables>
+                        <includes>
+                            <include>%regex[.*Spec.*]</include>
+                        </includes>
+                        <excludes>
+                            <exclude>%regex[.*ITSpec.*]</exclude>
+                        </excludes>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-report-plugin</artifactId>
+                    <version>${version.maven.surefire.report.plugin}</version>
+                </plugin>
+
+                <!-- Integration Test -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-failsafe-plugin</artifactId>
+                    <version>${version.maven.failsafe.plugin}</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>integration-test</goal>
+                                <goal>verify</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <includes>
+                            <include>**/*ITSpec.*</include>
+                        </includes>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>${version.maven.site.plugin}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>${version.maven.war.plugin}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>${version.maven.jar.plugin}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.sonarsource.scanner.maven</groupId>
+                    <artifactId>sonar-maven-plugin</artifactId>
+                    <version>3.7.0.1746</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>0.8.6</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>checkstyle</id>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+            </plugin>
+
+            <!-- Mandatory plugins for using Spock -->
+            <plugin>
+                <groupId>org.codehaus.gmavenplus</groupId>
+                <artifactId>gmavenplus-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>add-groovy-sources</id>
+                    </execution>
+                    <execution>
+                        <id>compile-groovy</id>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>test-compile-groovy</id>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <reportSets>
+                    <reportSet>
+                        <id>aggregate-checkstyle</id>
+                        <inherited>false</inherited>
+                        <reports>
+                            <report>checkstyle-aggregate</report>
+                        </reports>
+                    </reportSet>
+                    <reportSet>
+                        <id>checkstyle</id>
+                        <reports>
+                            <report>checkstyle</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <reportSets>
+                    <!-- disable Javadoc qtl -->
+                    <reportSet>
+                        <id>default</id>
+                        <reports>
+                            <report>javadoc</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                    <charset>UTF-8</charset>
+                    <docencoding>UTF-8</docencoding>
+                    <additionalparam>-Xdoclint:none</additionalparam>
+
+                    <!-- https://maven.apache.org/plugins/maven-javadoc-plugin/examples/javadoc-resources.html -->
+                    <!-- https://stackoverflow.com/a/28849620 -->
+                    <javadocDirectory>${basedir}/src/main/javadoc/resources</javadocDirectory>
+                    <docfilessubdirs>true</docfilessubdirs>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </reporting>
+
+    <profiles>
+        <profile>
+            <id>coverage</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.jacoco</groupId>
+                        <artifactId>jacoco-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>prepare-agent</id>
+                                <goals>
+                                    <goal>prepare-agent</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>report</id>
+                                <goals>
+                                    <goal>report</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>
