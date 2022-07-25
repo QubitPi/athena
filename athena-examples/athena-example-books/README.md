@@ -20,7 +20,7 @@ mvn clean package
 
 Successfully executing the command above shall generate a ".war" file under 
 `path-to-athena-root/athena-example/athena-example-books/target/athena-example-books-<athena-version>.war`, where
-is the version of the athena, for example `1.0.0`, please make sure to replace `<athena-version>` with one of our
+is the version of the athena, for example `1.0.1`, please make sure to replace `<athena-version>` with one of our
 release versions.
 
 ## Install Jetty
@@ -85,4 +85,23 @@ which is a common industry standard.
 brew install --cask graphiql
 ```
 
-Open up a browser and hit "http://localhost:8081/???"，then in the Jetty log we will see
+Testing Documentation
+---------------------
+
+The tests contain 2 parts
+
+1. Groovy Spock unit tests on
+   * [Injected Query DataFetcher](./src/test/groovy/com/qubitpi/athena/example/books/application/SQLQueryDataFetcherSpec.groovy)
+   * [Injected Mutation DataFetcher](./src/test/groovy/com/qubitpi/athena/example/books/application/SQLMutationDataFetcherSpec.groovy)
+2. Live DB tests on endpoints
+   * In [file servlet endpoint test](./src/test/groovy/com/qubitpi/athena/example/books/web/endpoints/FileServletSpec.groovy) and [meta data servlet endpoint test](./src/test/groovy/com/qubitpi/athena/example/books/web/endpoints/MetaServletSpec.groovy), [Flyway migration](./src/test/groovy/com/qubitpi/athena/example/books/application/SQLDBResourceManager.groovy) injects real data into a Derby in-meomroy SQL DB
+   * The Derby data is injected via a shared [DBCP DataSource](#reference---apache-commons-dbcp2) declared in [application BinderFactory](./src/main/java/com/qubitpi/athena/example/books/application/BooksBinderFactory.java)
+   * The application resource is set alive through [JerseyTestBinder](./src/test/java/com/qubitpi/athena/example/books/application/BookJerseyTestBinder.java)
+
+### Reference - Apache Commons DBCP2
+
+For testing Book example application, we use Derby's in-memory database facility, which resides completely in main
+memory, not in the file system.
+
+In addition, we use [Apache DBCP 2](https://commons.apache.org/proper/commons-dbcp/) to provide [DataSource](https://gitbox.apache.org/repos/asf?p=commons-dbcp.git;a=blob_plain;f=doc/BasicDataSourceExample.java;hb=HEAD)
+pointing at the in-memory Derby instance.
