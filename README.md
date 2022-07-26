@@ -1,7 +1,8 @@
 <div align="center">
 
-![athena](https://socialify.git.ci/QubitPi/athena/image?description=1&issues=1&language=1&logo=https%3A%2F%2Fuser-images.githubusercontent.com%2F16126939%2F180716705-3b08b4e9-bef9-48b4-9431-8a5c715f6e05.png&name=1&owner=1&pattern=Circuit%20Board&pulls=1&theme=Light)
+![athena](https://socialify.git.ci/QubitPi/Athena/image?description=1&issues=1&language=1&logo=https%3A%2F%2Fuser-images.githubusercontent.com%2F16126939%2F180716705-3b08b4e9-bef9-48b4-9431-8a5c715f6e05.png&name=1&owner=1&pattern=Circuit%20Board&pulls=1&theme=Light)
 
+[ ![Discord](https://img.shields.io/discord/1001320502960324658?logo=discord&logoColor=white&style=for-the-badge) ](https://discord.com/widget?id=1001320502960324658&theme=dark)
 [ ![Project Management](https://img.shields.io/badge/Project%20Management-0052CC?style=for-the-badge&logo=trello&logoColor=white) ](https://trello.com/b/ARStTLRb)
 [ ![License Badge](https://img.shields.io/badge/Apache%202.0-F25910.svg?style=for-the-badge&logo=Apache&logoColor=white) ](https://www.apache.org/licenses/LICENSE-2.0)
 ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/QubitPi/athena/master?logo=github&style=for-the-badge)
