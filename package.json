@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "gulp"
+    "dev": "gulp",
+    "setup": "gem install bundler; bundle install",
+    "start": "bundle exec jekyll serve"
   },
   "author": "Nathan Randecker",
   "license": "ISC",
@@ -16,6 +18,11 @@
     "gulp-imagemin": "^5.0.3",
     "gulp-plumber": "^1.2.1",
     "gulp-sass": "^4.0.2",
-    "gulp-uglify": "^3.0.1"
+    "gulp-uglify": "^3.0.1",
+
+    "bootstrap": "4.0.0-beta.2",
+    "raphael": "^2.2.7",
+    "sass-web-fonts": "^2.0.2",
+    "treant-js": "^1.0.1"
   }
 }

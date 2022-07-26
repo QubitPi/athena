@@ -17,4 +17,36 @@ user_description: A GraphQL Object Storage Webservice Backed by OpenStack Swift 
 google-analytics:
   id: ""
 
-exclude: ['package.json', 'src' , 'node_modules']
+# exclude: ['package.json', 'src' , 'node_modules']
+
+
+
+
+
+
+
+
+
+
+# build settings
+markdown: kramdown
+sass:
+  load_paths:
+    - _sass
+    - node_modules
+exclude: []
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+defaults:
+  -
+    scope:
+      path: "node_modules/**"
+    values:
+      sitemap: false
+
+# site-specific configuration
+BASE_PATH: https://qubitpi.github.io/athena
+ASSET_PATH: /assets
