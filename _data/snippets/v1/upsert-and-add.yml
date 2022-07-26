@@ -4,21 +4,11 @@ files:
 
 Request: |+2
   ```
-  mutation {
-    author(ids: ["1"]) {
-      edges {
-        node {
-          id
-          books(op: UPSERT, data: {title: "Book Numero Dos"}) {
-          edges {
-              node {
-                title
-              }
-            }
-          }
-        }
+  mutation createMetaData {
+      createMetaData(fileId: "1", fileName: "pride-and-prejudice.pdf", fileType: "PDF") {
+          fileName
+          fileType
       }
-    }
   }
   ```
 

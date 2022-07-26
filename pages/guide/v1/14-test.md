@@ -62,6 +62,13 @@ def setup() {
 Executing the statement above will start a [Grizzly container](https://javaee.github.io/grizzly/). After that all Athena
 endpoints are ready to receive test requests.
 
+> 📋 When writing tests for [FileServlet](FileServlet), make sure `MultiPartFeature.class` is also passed in as a
+> resource class since the file uploading involves a separate Jersey component enabled by it. For example:
+> 
+> ```java
+> jerseyTestBinder = new BookJerseyTestBinder(true, FileServlet.class, MultiPartFeature.class)
+> ```
+
 The first boolean argument (`true`) is a flag to indicate whether or not, on executing the statement, servlet container
 starts immediately. If we would like to defer the startup, change that to `false` and manually start the container later
 by
@@ -141,3 +148,4 @@ got registered by Jersey ResourceConfig.
 [TestBinderFactory]: https://github.com/QubitPi/athena/blob/master/athena-core/src/test/java/com/qubitpi/athena/application/TestBinderFactory.java
 [ResourceConfig]: https://github.com/QubitPi/athena/blob/master/athena-core/src/main/java/com/qubitpi/athena/application/ResourceConfig.java
 [JerseyResourceConfig]: https://github.com/eclipse-ee4j/jersey/blob/master/core-server/src/main/java/org/glassfish/jersey/server/ResourceConfig.java
+[FileServlet](https://github.com/QubitPi/athena/blob/master/athena-core/src/main/java/com/qubitpi/athena/web/endpoints/FileServlet.java)

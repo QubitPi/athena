@@ -6,8 +6,8 @@ description: Getting Started
 version: 1
 ---
 
-So You Want An API for Managing Generial Files?
------------------------------------------------
+So You Want An API for Managing General Files?
+----------------------------------------------
 {:.no-toc}
 
 The easiest way to get started with Athena is to use the
@@ -22,6 +22,99 @@ Contents
 --------
 1. Contents
 {:toc}
+
+### Docker Compose
+
+Athena Compose is a tool for setting up and running a full-fledged Athena instance Docker application. With Compose,
+an Athena application is backed by a real MySQL meta store and an in-memory OpenStack Swift service. With a single
+command, we will be able to create and start all the services from Athena. **It's the quickest approach to get a taste
+of Athena**.
+
+Athena Compose works in all environments: production, staging, development, testing, as well as CI workflows. You can 
+learn more about it from [source code][athena-example-books].
+
+Using Athena Compose is basically a three-step process:
+
+1. Package Athena at project root with `mvn clean package`
+2. cd into [compose top directory][athena-example-books] and fire-up `docker compose up`
+3. [hit Athena](http://localhost/v1/metadata/graphql?query={metaData(fileId:%221%22){fileName}}) with your favorite
+   browser
+
+For more information about the Athena Compose the [Compose file definition][athena-example-books].
+
+Athena Compose has ability for managing the whole lifecycle of an Athena application:
+
+* Start, stop, and rebuild services
+* View the status of running services
+* Stream the log output of running services
+* Run a one-off command on a service
+
+#### Extending Athena Compose
+
+Happy with Athena? You can go further with productionizing Athena from here <img src="https://user-images.githubusercontent.com/16126939/174438007-b9adae25-baf8-42a7-bf39-83786435d397.gif" width="40"/>
+
+If you would like to go from basic Athena Compose setup and changed anything, rebuild it with
+
+    docker compose up --build --force-recreate
+
+Athena Compose has been tested with [MySQL 5.7](https://hub.docker.com/_/mysql) connected using
+[mysql-connector-java 5.1.38](https://mvnrepository.com/artifact/mysql/mysql-connector-java/5.1.38) within Athena
+running on [Jetty 9.3](https://hub.docker.com/_/jetty).
+
+> Please take extra caution with MySQL 8, as some of the features might not work properly on Athena Compose. In
+> addition, make sure `?autoReconnect=true&useSSL=false` is in connection string. For example,
+> `jdbc:mysql://db:3306/Athena?autoReconnect=true&useSSL=false`
+
+#### MySQL Container (Meta Store)
+
+Athena Compose uses MySQL 5 as the backing meta store, i.e. the database that DataFetcher is talking to for file
+metadata.
+
+The MySQL instance is network-reachable at 3306 inside compose and 3305 for host (wo choose 3305 just in case 3306 has
+already been occupied)
+
+#### Networking in Athena Compose
+
+By default Athena Compose sets up a single
+[network](https://docs.docker.com/engine/reference/commandline/network_create/) for your app. Both Athena and MySQL 
+container services join this default network and is both reachable by other containers on that network, and discoverable 
+by them at a hostname identical to the container name.
+
+For example, inside [docker-compose.yml][docker-compose.yml]
+
+```yaml
+services:
+  web:
+    build: .
+    ports:
+      - "80:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+  db:
+    image: "mysql:5.7"
+    ports:
+      - "3305:3306"
+    volumes:
+      - "./mysql-init.sql:/docker-entrypoint-initdb.d/mysql-init.sql"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    healthcheck:
+      test: mysqladmin ping -h localhost -u root -proot
+      timeout: 3s
+      retries: 3
+```
+
+When you run docker compose up, the following happens:
+
+* A network called "athena-example-books" is created.
+* An Athena container is created using athena-example-books configuration. It joins the network "athena-example-books" 
+  under the name "web".
+* An MySQL container is created using `db`'s configuration. It joins the network "athena-example-books" under the name
+  "db".
+
+Each container can now look up the hostname `web` or `db` and get back the appropriate container's IP address. For 
+example, web's application code could connect to the URL "mysql://db:3306" and start using the MySQL database.
 
 ### Build From Source
 
@@ -40,7 +133,7 @@ mvn clean package
 ```
 
 Successfully executing the command above shall generate a ".war" file under
-`path-to-athena-root/athena-example/athena-example-books/target/athena-example-books-<athena-version>.war`, where
+`path-to-athena-root/athena-examples/athena-example-books/target/athena-example-books-<athena-version>.war`, where
 is the version of the athena, for example `1.0.2`, please make sure to replace `<athena-version>` with one of our
 release versions.
 
@@ -128,3 +221,10 @@ pointing at the in-memory Derby instance.
 
 [athena-demo]: https://github.com/QubitPi/athena/tree/master/athena-examples/athena-example-books
 [swagger-ui]: https://swagger.io/tools/swagger-ui/
+
+### Derby
+
+Derby was meant to be used only in tests and, hence, must be imported in test scope only
+
+[athena-example-books](https://github.com/QubitPi/athena/tree/master/athena-examples/athena-example-books)
+[docker-compose.yml](https://github.com/QubitPi/athena/tree/master/athena-examples/athena-example-books/docker-compose.yml)

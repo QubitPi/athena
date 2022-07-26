@@ -1,0 +1,28 @@
+files:
+  - Request
+  - Response
+
+Request: |+2
+  ```
+  {
+      metaData(fileId: "2") {
+          fileName
+          fileType
+      }
+  }
+  ```
+
+Response: |+2
+  ```
+  {
+      "errors":[],
+      "data": {
+          "metaData": {
+              "fileName": "Moby Dick",
+              "fileType": "PDF"
+          }
+      },
+      "extensions":null,
+      "dataPresent":true
+  }
+  ```

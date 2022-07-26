@@ -6,7 +6,7 @@ layout: doc-default
   <div class="jumbotron">
     <div class="container text-center">
       <h2>File <span class="text-primary">{json:api}</span> & Meta Data <span class="text-primary">GraphQL</span> web services for file management</h2>
-      <a href="pages/guide/v1/01-start.html">
+      <a href="pages/guide/v1/01-welcome.html">
         <button type="button" class="btn btn-primary text-light my-3">Get Started</button>
       </a>
       <div class="mb-3">
@@ -30,8 +30,8 @@ layout: doc-default
       <div class="feature row align-items-center my-4">
         <div class="col-sm">
           <div class="mr-3">
-            <h4>1. Define a File Store</h4>
-            <p>Define a client querying file storage of either Swift or HDFS.</p>
+            <h4>1. Pickup a File Store</h4>
+            <p>Choose either Swift or HDFS file store that Athena already offered for you or implement a custom file store against any arbitrary database as file storage</p>
           </div>
         </div>
         <div class="col-sm">
@@ -42,7 +42,7 @@ layout: doc-default
         <div class="col-sm">
           <div class="mr-3">
             <h4>2. Define GraphQL Data Fetchers</h4>
-            <p>Define an access layer to file meta data through GraphQL native types.</p>
+            <p>Plug-in access layer to file meta data through GraphQL Java</p>
           </div>
         </div>
         <div class="col-sm">
@@ -53,7 +53,7 @@ layout: doc-default
         <div class="col-sm">
           <div class="mr-3">
             <h4>3. Bind Them</h4>
-            <p>Make instances of your file store and meta store accessible through Jersey binding.</p>
+            <p>Make instances of your file store and data fetchers accessible through Jersey binding.</p>
           </div>
         </div>
         <div class="col-sm">
@@ -75,7 +75,7 @@ layout: doc-default
   </div>
   <div class="text-center mt-5">
     <h2>Want to learn more?</h2>
-    <a href="pages/guide/v1/01-start.html">
+    <a href="pages/guide/v1/01-welcome.html">
       <button type="button" class="btn btn-primary text-light mb-2">Documentation</button>
     </a>
     <p>Or see our features below</p>
@@ -233,7 +233,7 @@ layout: doc-default
 <div class="container text-center my-5">
   <h2>Opinionated APIs for web & mobile</h2>
   <p>Improve the velocity and quality of your team's work.</p>
-  <a href="pages/guide/v1/01-start.html">
+  <a href="pages/guide/v1/01-welcome.html">
     <button type="button" class="btn btn-primary text-light">Get Started</button>
   </a>
 </div>
@@ -245,7 +245,7 @@ layout: doc-default
         <img src="assets/img/athena-white-logo.png" class="img-fluid" alt="Athena Logo" width="30%">
       </div>
       <div class="col-sm links">
-        <a href="pages/guide/v1/01-start.html">Documentation</a>
+        <a href="pages/guide/v1/01-welcome.html">Documentation</a>
         <a href="pages/license.html">Licensing</a>
       </div>
       <div class="col-sm links">
