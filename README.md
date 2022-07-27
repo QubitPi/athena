@@ -67,9 +67,10 @@ needed to maintain a single, accurately updated version of a file_.
 Quick Start
 -----------
 
-Athena comes with a pre-configured [example application](./athena-example/athena-example-books) to help you get started
-and serve as a jumping-off-point for building your own web service using Athena. The example application lets you upload and download books you love to read, and picks up where
-[Swift's quick-start tutorial](https://github.com/QubitPi/athena/wiki/Standup-A-Local-Swift-Instance) leaves off.
+Athena comes with a pre-configured [example application](https://qubitpi.github.io/athena/pages/guide/v1/01-start.html)
+to help you get started and serve as a jumping-off-point for building your own web service using Athena. The example 
+application lets you upload and download books you love to read, and picks up where
+[Swift's quick-start tutorial](https://qubitpi.github.io/athena/pages/guide/v1/03-local-swift.html) leaves off.
 
 Features
 --------
