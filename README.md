@@ -8,10 +8,6 @@
 ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/QubitPi/athena/master?logo=github&style=for-the-badge)
 [ ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/QubitPi/athena/Release?logo=github&style=for-the-badge) ](https://github.com/QubitPi/athena/actions/workflows/release.yml)
 
-<a href="https://sonarcloud.io/summary/new_code?id=QubitPi_athena"><img alt="Quality gate" src="https://sonarcloud.io/api/project_badges/quality_gate?project=QubitPi_athena"></a>
-
-<a href="https://sonarcloud.io/summary/new_code?id=QubitPi_athena"><img alt="SonarCloud" src="https://sonarcloud.io/images/project_badges/sonarcloud-orange.svg"></a>
-
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=QubitPi_athena&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=QubitPi_athena)
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=QubitPi_athena&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=QubitPi_athena)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=QubitPi_athena&metric=coverage)](https://sonarcloud.io/summary/new_code?id=QubitPi_athena)
@@ -23,6 +19,12 @@
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=QubitPi_athena&metric=bugs)](https://sonarcloud.io/summary/new_code?id=QubitPi_athena)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=QubitPi_athena&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=QubitPi_athena)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=QubitPi_athena&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=QubitPi_athena)
+
+</div>
+
+<div align="right">
+
+<a href="https://sonarcloud.io/summary/new_code?id=QubitPi_athena"><img alt="SonarCloud" src="https://sonarcloud.io/images/project_badges/sonarcloud-orange.svg"></a>
 
 </div>
 
@@ -46,7 +48,7 @@ APIs:
 Athena has **first-class support for [OpenStack Swift](https://docs.openstack.org/swift/latest/) and
 [Hadoop HDFS](https://hadoop.apache.org/)** file storage back-end, but Athena's flexible pipeline-style architecture can 
 handle nearly any back-end for data storage, such as
-[S3](https://github.com/QubitPi/athena/wiki/Implementing-S3-FileStore).
+[S3](https://qubitpi.github.io/athena/pages/guide/v1/02-filestores.html#custom-stores).
 
 Object storage (also known as object-based storage) is a computer data storage architecture that manages data as
 objects, as opposed to other storage architectures like file systems which manages data as a file hierarchy, and block
