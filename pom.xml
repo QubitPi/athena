@@ -6,7 +6,7 @@
 
     <groupId>com.qubitpi.athena</groupId>
     <artifactId>athena-parent-pom</artifactId>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
     <packaging>pom</packaging>
 
     <name>Athena: Parent POM</name>
@@ -51,7 +51,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
 
-        <version.athena>1.0.5</version.athena>
+        <version.athena>1.0.6</version.athena>
         <version.validation.api>3.0.1</version.validation.api>
         <version.jcip.annotations>1.0</version.jcip.annotations>
         <version.slf4j>1.7.25</version.slf4j>
@@ -61,6 +61,7 @@
         <version.jackson>2.13.3</version.jackson>
         <version.apache.commons>2.7</version.apache.commons>
         <version.commons.dbcp2>2.0.1</version.commons.dbcp2>
+        <version.mysql.connector.java>5.1.38</version.mysql.connector.java>
         <version.servlet>3.1.0</version.servlet>
         <version.jersey>2.25.1</version.jersey>
         <version.derby>10.11.1.1</version.derby>
@@ -183,6 +184,12 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-dbcp2</artifactId>
                 <version>${version.commons.dbcp2}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${version.mysql.connector.java}</version>
             </dependency>
 
             <!-- Servlet API -->

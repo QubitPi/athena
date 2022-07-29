@@ -33,6 +33,18 @@ import java.util.Properties;
  */
 public class ConfigResourceLoader {
 
+    private static final ConfigResourceLoader INSTANCE = new ConfigResourceLoader();
+
+    /**
+     * Singleton factory method.
+     *
+     * @return a new instance
+     */
+    @NotNull
+    public static ConfigResourceLoader getInstance() {
+        return INSTANCE;
+    }
+
     /**
      * Load configurations matching a resource name from the class path and parse into Configuration objects.
      *
