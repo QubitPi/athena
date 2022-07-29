@@ -29,6 +29,11 @@ class ConfigResourceLoaderSpec extends Specification {
         configResourceLoader = new ConfigResourceLoader();
     }
 
+    def "Static factory method always returns the same instance"() {
+        expect:
+        ConfigResourceLoader.getInstance() is ConfigResourceLoader.getInstance()
+    }
+
     def "Load configurations by name works"() {
         when:
         List<Configuration> configurations = configResourceLoader.loadConfigurations("sysConfigTestApplication.properties")

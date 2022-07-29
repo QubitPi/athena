@@ -15,23 +15,18 @@
  */
 package com.qubitpi.athena.example.books.web.endpoints
 
-import com.qubitpi.athena.application.JerseyTestBinder
 import com.qubitpi.athena.example.books.application.BookJerseyTestBinder
-import com.qubitpi.athena.example.books.application.SQLDBResourceManager
 import com.qubitpi.athena.web.endpoints.MetaServlet
 
 import groovy.json.JsonSlurper
-import spock.lang.Specification
 
 import javax.ws.rs.client.Entity
 import javax.ws.rs.core.MediaType
 
-class MetaServletSpec extends Specification {
+class MetaServletSpec extends AbstractServletSpec {
 
-    JerseyTestBinder jerseyTestBinder
-
-    def setup() {
-        SQLDBResourceManager.migrateDatabase()
+    @Override
+    def childSetup() {
         jerseyTestBinder = new BookJerseyTestBinder(true, MetaServlet.class)
     }
 

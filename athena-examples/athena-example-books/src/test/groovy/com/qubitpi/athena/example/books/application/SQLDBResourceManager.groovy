@@ -50,7 +50,7 @@ class SQLDBResourceManager {
     private static Flyway buildMigrator() {
         Flyway flyway = new Flyway()
 
-        flyway.setDataSource(BooksBinderFactory.DATA_SOURCE)
+        flyway.setDataSource(new BooksBinderFactory().dataSourceProvider.get())
         flyway.setValidateOnMigrate(true)
         flyway.setBaselineOnMigrate(true)
         flyway.setLocations("filesystem:./src/test/resources/db/migration/V1__book_data")

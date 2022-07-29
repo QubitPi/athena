@@ -15,6 +15,8 @@
  */
 package com.qubitpi.athena.config
 
+import org.apache.commons.configuration2.Configuration
+
 class LayeredFileSystemConfigSpec extends SystemConfigSpec {
 
     @Override

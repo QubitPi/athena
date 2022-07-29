@@ -66,6 +66,11 @@ abstract class SystemConfigSpec extends Specification {
         systemConfig.setProperty(BOOLEAN_PROPERTY_KEY, BOOLEAN_PROPERTY_VALUE)
     }
 
+    def "Package scoped variable name starts with Athena identifier"() {
+        expect:
+        systemConfig.getPackageVariableName("foo").startsWith("athena__")
+    }
+
     @Unroll
     def "Reading a #propertyType property gives the property value"() {
         expect: "We read a property that exists, we get get value"
@@ -85,6 +90,20 @@ abstract class SystemConfigSpec extends Specification {
 
         where:
         [propertyType] << getTestIterationData()
+    }
+
+    def "When a property is cleared, it no longer binds a value"() {
+        setup: "a property is preset"
+        systemConfig.setProperty("foo", "bar")
+
+        expect: "an value is bound to that property"
+        systemConfig.getStringProperty("foo").get() == "bar"
+
+        when: "the property is deleted"
+        systemConfig.clearProperty("foo")
+
+        then: "we can no longer retrieve the bound value"
+        !systemConfig.getStringProperty("foo").isPresent()
     }
 
     abstract SystemConfig getTestSystemConfig();

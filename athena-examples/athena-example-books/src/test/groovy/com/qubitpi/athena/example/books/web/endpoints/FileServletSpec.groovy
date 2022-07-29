@@ -15,11 +15,8 @@
  */
 package com.qubitpi.athena.example.books.web.endpoints
 
-import com.qubitpi.athena.application.JerseyTestBinder
 import com.qubitpi.athena.example.books.application.BookJerseyTestBinder
-import com.qubitpi.athena.example.books.application.SQLDBResourceManager
 import com.qubitpi.athena.web.endpoints.FileServlet
-import com.qubitpi.athena.web.endpoints.MetaServlet
 
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition
 import org.glassfish.jersey.media.multipart.FormDataMultiPart
@@ -28,18 +25,15 @@ import org.glassfish.jersey.media.multipart.MultiPartFeature
 import org.glassfish.jersey.media.multipart.file.FileDataBodyPart
 
 import groovy.json.JsonSlurper
-import spock.lang.Specification
 
 import java.nio.charset.StandardCharsets
 
 import javax.ws.rs.client.Entity
 
-class FileServletSpec extends Specification {
+class FileServletSpec extends AbstractServletSpec {
 
-    JerseyTestBinder jerseyTestBinder
-
-    def setup() {
-        SQLDBResourceManager.migrateDatabase()
+    @Override
+    def childSetup() {
         jerseyTestBinder = new BookJerseyTestBinder(true, FileServlet.class, MultiPartFeature.class)
     }
 

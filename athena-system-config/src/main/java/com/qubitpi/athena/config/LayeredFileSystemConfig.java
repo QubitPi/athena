@@ -52,12 +52,12 @@ public class LayeredFileSystemConfig implements SystemConfig {
     /**
      * The resource path for local user override of application and default properties.
      */
-    private static final String USER_CONFIG_FILE_NAME = "/userConfig.properties";
+    private static final String USER_CONFIG_FILE_NAME = "userConfig.properties";
 
     /**
      * The resource path for configuring properties within an application.
      */
-    private static final String APPLICATION_CONFIG_FILE_NAME = "/applicationConfig.properties";
+    private static final String APPLICATION_CONFIG_FILE_NAME = "applicationConfig.properties";
 
     /**
      * A composite configuration serving layered configs.
@@ -157,6 +157,12 @@ public class LayeredFileSystemConfig implements SystemConfig {
     @Override
     public Properties getRuntimeProperties() {
         return runtimeProperties;
+    }
+
+    @Override
+    public void clearProperty(final String key) {
+        SystemConfig.super.clearProperty(key);
+        getConfig().clearProperty(key);
     }
 
     /**
