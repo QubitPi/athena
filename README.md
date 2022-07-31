@@ -1,6 +1,6 @@
 <div align="center">
 
-![athena](https://socialify.git.ci/QubitPi/Athena/image?description=1&issues=1&language=1&logo=https%3A%2F%2Fuser-images.githubusercontent.com%2F16126939%2F180716705-3b08b4e9-bef9-48b4-9431-8a5c715f6e05.png&name=1&owner=1&pattern=Circuit%20Board&pulls=1&theme=Light)
+![athena](https://socialify.git.ci/QubitPi/athena/image?description=1&issues=1&language=1&logo=https%3A%2F%2Fraw.githubusercontent.com%2FQubitPi%2Fathena%2Fgh-pages%2Fassets%2Fimg%2Fathena-logo.png&name=1&owner=1&pulls=1&theme=Light)
 
 [ ![Discord](https://img.shields.io/discord/1001320502960324658?logo=discord&logoColor=white&style=for-the-badge) ](https://discord.com/widget?id=1001320502960324658&theme=dark)
 [ ![Project Management](https://img.shields.io/badge/Project%20Management-0052CC?style=for-the-badge&logo=trello&logoColor=white) ](https://trello.com/b/ARStTLRb)
