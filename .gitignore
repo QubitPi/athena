@@ -3,3 +3,6 @@
 .DS_Store
 target/
 derby.log
+
+# Local config file should be ignored
+userConfig.properties

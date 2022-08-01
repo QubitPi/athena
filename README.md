@@ -48,7 +48,7 @@ APIs:
 Athena has **first-class support for [OpenStack Swift](https://docs.openstack.org/swift/latest/) and
 [Hadoop HDFS](https://hadoop.apache.org/)** file storage back-end, but Athena's flexible pipeline-style architecture can 
 handle nearly any back-end for data storage, such as
-[S3](https://qubitpi.github.io/athena/pages/guide/v1/02-filestores.html#custom-stores).
+[S3](https://qubitpi.github.io/athena/pages/guide/v1/09-filestores.html#custom-stores).
 
 Object storage (also known as object-based storage) is a computer data storage architecture that manages data as
 objects, as opposed to other storage architectures like file systems which manages data as a file hierarchy, and block
@@ -69,10 +69,10 @@ needed to maintain a single, accurately updated version of a file_.
 Quick Start
 -----------
 
-Athena comes with a pre-configured [example application](https://qubitpi.github.io/athena/pages/guide/v1/01-start.html)
+Athena comes with a pre-configured [example application](https://qubitpi.github.io/athena/pages/guide/v1/08-start.html)
 to help you get started and serve as a jumping-off-point for building your own web service using Athena. The example 
 application lets you upload and download books you love to read, and picks up where
-[Swift's quick-start tutorial](https://qubitpi.github.io/athena/pages/guide/v1/03-local-swift.html) leaves off.
+[Swift's quick-start tutorial](https://qubitpi.github.io/athena/pages/guide/v1/10-local-swift.html) leaves off.
 
 Features
 --------
