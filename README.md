@@ -28,8 +28,8 @@
 
 </div>
 
-Athena
-======
+[Athena](https://qubitpi.github.io/athena/)
+===========================================
 
 > My sincere thanks to [yahoo/fili](https://github.com/yahoo/fili) & [yahoo/elide](https://github.com/yahoo/elide),
 > which gave tremendous amount of guidance on design and development of [Athena](https://github.com/QubitPi/athena), and 
@@ -39,7 +39,9 @@ Athena is a Java library that lets you setup object storage webservice with mini
 specialized on managing **files**, such as books, videos, and photos. It supports object storage through two variants of
 APIs:
 
+<a href="https://www.bilibili.com/video/BV16T4y1v78U?share_source=copy_web&vd_source=7f40ee8f7150cba61ecdf3d901bbad42">
 <img align="right" width="20%" alt="崩崩崩洗脑循环" src="https://user-images.githubusercontent.com/16126939/182336015-4f1721c1-a975-4348-9919-3a45c0f891ef.gif">
+</a>
 
 * A [JSON API](https://jsonapi.org/) for uploading and downloading files
 * A [GraphQL](https://graphql.com/) API for reading file metadata, including
@@ -68,6 +70,7 @@ times)_. It is used for purposes such as storing objects like videos and photos.
 Athena, however, is not intended for transactional data and _it does not support the locking and sharing mechanisms
 needed to maintain a single, accurately updated version of a file_.
 
+
 Quick Start
 -----------
 
@@ -75,6 +78,7 @@ Athena comes with a pre-configured [example application](https://qubitpi.github.
 to help you get started and serve as a jumping-off-point for building your own web service using Athena. The example 
 application lets you upload and download books you love to read, and picks up where
 [Swift's quick-start tutorial](https://qubitpi.github.io/athena/pages/guide/v1/10-local-swift.html) leaves off.
+
 
 Features
 --------
@@ -108,6 +112,13 @@ object-level metadata in order to:
 Athena provides programmatic interfaces to allow applications to manipulate data. At the base level, this includes
 create, read, and delete (CRUD) functions for basic read, write and delete operations. The API implementations are
 REST-based, allowing the use of many standard HTTP calls.
+
+
+Documentation
+-------------
+
+More information about Athena can be found [here](https://qubitpi.github.io/athena/)
+
 
 License
 -------
