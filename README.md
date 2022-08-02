@@ -1,6 +1,6 @@
 <div align="center">
 
-![athena](https://socialify.git.ci/QubitPi/athena/image?description=1&issues=1&language=1&logo=https%3A%2F%2Fraw.githubusercontent.com%2FQubitPi%2Fathena%2Fgh-pages%2Fassets%2Fimg%2Fathena-logo.png&name=1&owner=1&pulls=1&theme=Light)
+![athena](https://socialify.git.ci/QubitPi/athena/image?description=1&font=Inter&issues=1&language=1&logo=https%3A%2F%2Fraw.githubusercontent.com%2FQubitPi%2Fathena%2Fgh-pages%2Fassets%2Fimg%2Fathena-logo.png&name=1&owner=1&pattern=Circuit%20Board&pulls=1&theme=Light)
 
 [ ![Discord](https://img.shields.io/discord/1001320502960324658?logo=discord&logoColor=white&style=for-the-badge) ](https://discord.com/widget?id=1001320502960324658&theme=dark)
 [ ![Project Management](https://img.shields.io/badge/Project%20Management-0052CC?style=for-the-badge&logo=trello&logoColor=white) ](https://trello.com/b/ARStTLRb)
@@ -38,6 +38,8 @@ Athena
 Athena is a Java library that lets you setup object storage webservice with minimal effort. Athena is meant to be
 specialized on managing **files**, such as books, videos, and photos. It supports object storage through two variants of
 APIs:
+
+<img align="right" width="20%" alt="崩崩崩洗脑循环" src="https://user-images.githubusercontent.com/16126939/182336015-4f1721c1-a975-4348-9919-3a45c0f891ef.gif">
 
 * A [JSON API](https://jsonapi.org/) for uploading and downloading files
 * A [GraphQL](https://graphql.com/) API for reading file metadata, including
