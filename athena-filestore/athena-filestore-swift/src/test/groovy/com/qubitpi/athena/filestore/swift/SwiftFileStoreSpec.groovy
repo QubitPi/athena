@@ -32,7 +32,7 @@ class SwiftFileStoreSpec extends Specification {
         when:
         new SwiftFileStore(
                 Mock(Account) {
-                    1* getContainer(SwiftFileStore.DEFAULT_CONTAINER) >> Mock(Container) {
+                    1 * getContainer(SwiftFileStore.DEFAULT_CONTAINER) >> Mock(Container) {
                         1 * getObject(FILE_ID) >> Mock(StoredObject) {
                             1 * uploadObject(_ as InputStream)
                         }
