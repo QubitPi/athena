@@ -17,40 +17,31 @@ package com.qubitpi.athena.filestore.swift
 
 import com.qubitpi.athena.file.File
 import com.qubitpi.athena.file.identifier.FileIdGenerator
-import com.qubitpi.athena.filestore.FileStore
 
 import org.javaswift.joss.model.Account
 import org.javaswift.joss.model.Container
 import org.javaswift.joss.model.StoredObject
 
-import spock.lang.Ignore
 import spock.lang.Specification
 
 class SwiftFileStoreSpec extends Specification {
 
     static final FILE_ID = "fileId123"
 
-    FileIdGenerator fileIdGenerator
-    Account account
-
-    def setup() {
-        fileIdGenerator = Mock(FileIdGenerator) { apply(_ as File) >> FILE_ID }
-        account = Mock(Account) {
-            getContainer(_ as String) >> Mock(Container) {
-                getObject(FILE_ID) >> Mock(StoredObject)
-            }
-        }
-    }
-
-    @Ignore("The mocking is not working in an usual way. Need more investigations")
     def "File upload operation delegates to Swift API"() {
-        given:
-        FileStore fileStore = new SwiftFileStore(account, fileIdGenerator)
-
         when:
-        fileStore.upload(Mock(File))
+        new SwiftFileStore(
+                Mock(Account) {
+                    1* getContainer(SwiftFileStore.DEFAULT_CONTAINER) >> Mock(Container) {
+                        1 * getObject(FILE_ID) >> Mock(StoredObject) {
+                            1 * uploadObject(_ as InputStream)
+                        }
+                    }
+                },
+                Mock(FileIdGenerator) { apply(_ as File) >> FILE_ID }
+        ).upload(Mock(File) {getFileContent() >> Mock(InputStream)})
 
         then:
-        1 * account.getContainer(_ as String)
+        noExceptionThrown()
     }
 }
