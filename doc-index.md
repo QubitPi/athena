@@ -23,6 +23,10 @@ layout: doc-default
 
 <hr class="mx-5">
 
+
+
+
+
 <div class="usage container my-3">
   <div class="text-center display-4 mb-2">How to use it</div>
   <div class="tab-content">
@@ -30,7 +34,14 @@ layout: doc-default
       <div class="feature row align-items-center my-4">
         <div class="col-sm">
           <div class="mr-3">
-            <h4>1. Pickup a File Store</h4>
+            <h4>1. Star Athena 😉</h4>
+          </div>
+        </div>
+      </div>
+      <div class="feature row align-items-center my-4">
+        <div class="col-sm">
+          <div class="mr-3">
+            <h4>2. Pickup a File Store</h4>
             <p>Choose either Swift or HDFS file store that Athena already offered for you or implement a custom file store against any arbitrary database as file storage</p>
           </div>
         </div>
@@ -41,7 +52,7 @@ layout: doc-default
       <div class="feature row align-items-center my-4">
         <div class="col-sm">
           <div class="mr-3">
-            <h4>2. Define GraphQL Data Fetchers</h4>
+            <h4>3. Define GraphQL Data Fetchers</h4>
             <p>Plug-in access layer to file meta data through GraphQL Java</p>
           </div>
         </div>
@@ -52,7 +63,7 @@ layout: doc-default
       <div class="feature row align-items-center my-4">
         <div class="col-sm">
           <div class="mr-3">
-            <h4>3. Bind Them</h4>
+            <h4>4. Bind Them</h4>
             <p>Make instances of your file store and data fetchers accessible through Jersey binding.</p>
           </div>
         </div>
@@ -63,7 +74,7 @@ layout: doc-default
       <div class="feature row align-items-center my-4">
         <div class="col-sm">
           <div class="mr-3">
-            <h4>4. Deploy & Enjoy</h4>
+            <h4>5. Deploy & Enjoy</h4>
             <p>That's it - you are ready to deploy and query your file data with JSON or GraphQL requests.</p>
           </div>
         </div>

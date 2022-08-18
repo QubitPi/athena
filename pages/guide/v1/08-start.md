@@ -219,12 +219,13 @@ memory, not in the file system.
 In addition, we use [Apache DBCP 2](https://commons.apache.org/proper/commons-dbcp/) to provide [DataSource](https://gitbox.apache.org/repos/asf?p=commons-dbcp.git;a=blob_plain;f=doc/BasicDataSourceExample.java;hb=HEAD)
 pointing at the in-memory Derby instance.
 
-[athena-demo]: https://github.com/QubitPi/athena/tree/master/athena-examples/athena-example-books
-[swagger-ui]: https://swagger.io/tools/swagger-ui/
-
 ### Derby
 
 Derby was meant to be used only in tests and, hence, must be imported in test scope only
 
 [athena-example-books](https://github.com/QubitPi/athena/tree/master/athena-examples/athena-example-books)
 [docker-compose.yml](https://github.com/QubitPi/athena/tree/master/athena-examples/athena-example-books/docker-compose.yml)
+
+[athena-demo]: https://github.com/QubitPi/athena/tree/master/athena-examples/athena-example-books
+[swagger-ui]: https://swagger.io/tools/swagger-ui/
+
