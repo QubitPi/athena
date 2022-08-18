@@ -15,6 +15,7 @@
     <description>Parent POM for File Stores</description>
 
     <modules>
+        <module>athena-filestore-hdfs</module>
         <module>athena-filestore-swift</module>
     </modules>
 
