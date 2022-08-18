@@ -27,6 +27,9 @@ Athena comes bundled with a number of file stores:
    explicit support for Swift
 2. HDFS Store - File is persisted on Hadoop HDFS.
 
+> 📋 It is assumed that the "HDFS Store" means a **single-cluster** HDFS. However, the Athena architecture does not 
+> preclude implementing a multi-cluster HDFS store
+
 Stores can be included through the following artifact dependencies:
 
 ### Swift Store
