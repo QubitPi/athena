@@ -120,8 +120,94 @@ Documentation
 More information about Athena can be found [here](https://qubitpi.github.io/athena/)
 
 
+Binaries (How to Get It) [ ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/QubitPi/athena/Release?logo=github&style=for-the-badge) ](https://github.com/QubitPi/athena/actions/workflows/release.yml)
+------------------------
+
+Binaries for Athena are stored in [GitHub Packages](https://github.com/QubitPi?tab=packages&repo_name=athena). To
+install the packages from GitHub Packages, edit the
+[pom.xml](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html) file to include the package as a 
+dependency. Dependency information for each Athena sub-module can be found at their corresponding package page.
+[For example](https://github.com/QubitPi?tab=packages&repo_name=athena):
+
+```xml
+<dependency>
+    <groupId>com.qubitpi.athena</groupId>
+    <artifactId>athena-core</artifactId>
+    <version>x.y.z</version>
+</dependency>
+```
+
+Next, include the following snippet the project's POM
+
+```xml
+<project>
+    ...
+  
+    <repositories>
+        <repository>
+            <id>download-from-github-qubitpi</id>
+            <name>Download QubitPi's GitHub Packages</name>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <url>https://maven.pkg.github.com/QubitPi/athena</url>
+        </repository>
+    </repositories>
+</project>
+```
+
+Lastly, you would need an access token to install Athena packages. Athena uses a personal access token (PAT), with 
+`packages:read` scope, to authenticate to GitHub Packages. Your project can authenticate to GitHub Packages with Apache 
+Maven by editing your `~/.m2/settings.xml` file to include the personal access token:
+
+```xml
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
+                      http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+    <activeProfiles>
+        <activeProfile>download-from-github-qubitpi</activeProfile>
+    </activeProfiles>
+
+    <profiles>
+        <profile>
+            <id>download-from-github-qubitpi</id>
+            <repositories>
+                <repository>
+                <id>download-from-github-qubitpi</id>
+                <url>https://maven.pkg.github.com/qubitpi/athena</url>
+                <snapshots>
+                    <enabled>false</enabled>
+                </snapshots>
+                </repository>
+            </repositories>
+        </profile>
+    </profiles>
+
+    <servers>
+        <server>
+            <id>download-from-github-qubitpi</id>
+            <username>anybody</username>
+            <!-- https://stackoverflow.com/a/64443958/14312712 -->
+            <password>a personal access token with at least packages:read scope</password>
+        </server>
+    </servers>
+</settings>
+```
+
+
 License
 -------
 
-The use and distribution terms for this software are covered by the Apache License, Version 2.0
-( http://www.apache.org/licenses/LICENSE-2.0.html ).
+The use and distribution terms for [Athena](https://qubitpi.github.io/athena/) are covered by the
+[Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.html).
+
+<div align="center">
+    <a href="https://opensource.org/licenses">
+        <img align="center" width="50%" alt="License Illustration" src="https://github.com/QubitPi/QubitPi/blob/master/img/apache-2.png?raw=true">
+    </a>
+</div>
