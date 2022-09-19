@@ -124,10 +124,10 @@ Binaries (How to Get It) [ ![GitHub Workflow Status](https://img.shields.io/gith
 ------------------------
 
 Binaries for Athena are stored in [GitHub Packages](https://github.com/QubitPi?tab=packages&repo_name=athena). To
-install the packages from GitHub Packages, edit the
+install the packages from there, edit the
 [pom.xml](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html) file to include the package as a 
 dependency. Dependency information for each Athena sub-module can be found at their corresponding package page.
-[For example](https://github.com/QubitPi?tab=packages&repo_name=athena):
+[For example](https://github.com/QubitPi/athena/packages/1557510):
 
 ```xml
 <dependency>
@@ -137,7 +137,7 @@ dependency. Dependency information for each Athena sub-module can be found at th
 </dependency>
 ```
 
-Next, include the following snippet the project's POM
+Next, include the following snippet in the project's POM
 
 ```xml
 <project>
