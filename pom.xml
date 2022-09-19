@@ -6,7 +6,7 @@
 
     <groupId>com.qubitpi.athena</groupId>
     <artifactId>athena-parent-pom</artifactId>
-    <version>1.0.11</version>
+    <version>1.0.12</version>
     <packaging>pom</packaging>
 
     <name>Athena: Parent POM</name>
@@ -51,7 +51,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
 
-        <version.athena>1.0.11</version.athena>
+        <version.athena>1.0.12</version.athena>
         <version.validation.api>3.0.1</version.validation.api>
         <version.jcip.annotations>1.0</version.jcip.annotations>
         <version.slf4j>1.7.25</version.slf4j>
