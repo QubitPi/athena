@@ -11,6 +11,7 @@ jobs:
     secrets: inherit
 
   publish:
+    name: Publish
     needs: build
     runs-on: ubuntu-latest
     permissions:
@@ -22,7 +23,71 @@ jobs:
         with:
           java-version: '8'
           distribution: 'adopt'
-      - name: Publish Package to GitHub Packages
+      - name: maven-settings-xml-action
+        uses: whelk-io/maven-settings-xml-action@v20
+        with:
+          repositories: >
+            [
+              {
+                "id": "central",
+                "name": "paion-data-libs-release",
+                "url": "https://paiondata.jfrog.io/artifactory/paion-data-libs-release",
+                "releases": {
+                  "enabled": "true"
+                },
+                "snapshots": {
+                  "enabled": "false"
+                }
+              },
+              {
+                "id": "snapshots",
+                "name": "paion-data-libs-snapshot",
+                "url": "https://paiondata.jfrog.io/artifactory/paion-data-libs-snapshot",
+                "releases": {
+                  "enabled": "false"
+                },
+                "snapshots": {
+                  "enabled": "true"
+                }
+              }
+            ]
+          plugin_repositories: >
+            [
+              {
+                "id": "central",
+                "name": "paion-data-libs-release",
+                "url": "https://paiondata.jfrog.io/artifactory/paion-data-libs-release",
+                "releases": {
+                  "enabled": "true"
+                },
+                "snapshots": {
+                  "enabled": "false"
+                }
+              },
+              {
+                "id": "snapshots",
+                "name": "paion-data-libs-snapshot",
+                "url": "https://paiondata.jfrog.io/artifactory/paion-data-libs-snapshot",
+                "releases": {
+                  "enabled": "false"
+                },
+                "snapshots": {
+                  "enabled": "true"
+                }
+              }
+            ]
+          servers: >
+            [
+              {
+                "id": "central",
+                "username": "jack20220723@gmail.com",
+                "password": "${{ secrets.ARTIFACTORY_CENTRAL_SERVER }}"
+              },
+              {
+                "id": "snapshots",
+                "username": "jack20220723@gmail.com",
+                "password": "${{ secrets.ARTIFACTORY_SNAPSHOTS_SERVER }}"
+              }
+            ]
+      - name: Publish Package to JFrog Artifactory
         run: mvn --batch-mode deploy
-        env:
-          GITHUB_TOKEN: ${{ secrets.PUBLISH_TO_ARTIFACTORY }}

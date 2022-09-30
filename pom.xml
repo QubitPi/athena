@@ -37,9 +37,9 @@
 
     <distributionManagement>
         <repository>
-            <id>github</id>
-            <name>GitHub QubitPi Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/QubitPi/athena</url>
+            <id>central</id>
+            <name>a0fehpazd0xdv-artifactory-primary-0-releases</name>
+            <url>https://paiondata.jfrog.io/artifactory/paion-data-libs-release</url>
         </repository>
     </distributionManagement>
 
