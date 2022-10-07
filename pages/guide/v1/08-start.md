@@ -223,9 +223,7 @@ pointing at the in-memory Derby instance.
 
 Derby was meant to be used only in tests and, hence, must be imported in test scope only
 
-[athena-example-books](https://github.com/QubitPi/athena/tree/master/athena-examples/athena-example-books)
-[docker-compose.yml](https://github.com/QubitPi/athena/tree/master/athena-examples/athena-example-books/docker-compose.yml)
-
+[athena-example-books]: https://github.com/QubitPi/athena/tree/master/athena-examples/athena-example-books
+[docker-compose.yml]: https://github.com/QubitPi/athena/tree/master/athena-examples/athena-example-books/docker-compose.yml
 [athena-demo]: https://github.com/QubitPi/athena/tree/master/athena-examples/athena-example-books
 [swagger-ui]: https://swagger.io/tools/swagger-ui/
-
