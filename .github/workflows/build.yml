@@ -2,9 +2,6 @@ name: Build
 
 on:
   workflow_call:
-    secrets:
-      SONAR_TOKEN:
-        required: true
   pull_request:
     types: [opened, synchronize, reopened]
 
