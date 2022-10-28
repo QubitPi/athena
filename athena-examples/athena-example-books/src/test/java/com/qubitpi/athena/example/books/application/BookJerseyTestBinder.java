@@ -15,9 +15,7 @@
  */
 package com.qubitpi.athena.example.books.application;
 
-import com.qubitpi.athena.application.ApplicationState;
 import com.qubitpi.athena.application.BinderFactory;
-import com.qubitpi.athena.application.JerseyTestBinder;
 
 /**
  * TestBinder with Book application configuration specializaation.

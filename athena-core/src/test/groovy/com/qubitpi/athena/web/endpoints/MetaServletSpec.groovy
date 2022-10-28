@@ -139,7 +139,7 @@ class MetaServletSpec extends Specification {
         """
         {
            "errors":[
-              
+
            ],
            "data":{
               "metaData":{

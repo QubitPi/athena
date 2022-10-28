@@ -25,13 +25,4 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
-
-    <dependencies>
-        <dependency>
-            <groupId>com.qubitpi.athena</groupId>
-            <artifactId>athena-core</artifactId>
-            <type>test-jar</type>
-            <scope>compile</scope>
-        </dependency>
-    </dependencies>
 </project>

@@ -22,6 +22,10 @@ jobs:
         with:
           java-version: '8'
           distribution: 'adopt'
+      - name: Generate settings.xml for pushing Athena to Nexus 3
+        uses: whelk-io/maven-settings-xml-action@v20
+        with:
+          servers: '[{"id": "nexus", "username": "pd-headless-user", "password": "${{ secrets.NEXUS_HEADLESS_USER_TOKEN }}"}]'
       - name: Publish Package to GitHub Packages
         run: mvn --batch-mode deploy
         env:

@@ -15,9 +15,9 @@
  */
 package com.qubitpi.athena.example.books.web.endpoints
 
-import com.qubitpi.athena.application.JerseyTestBinder
 import com.qubitpi.athena.config.SystemConfig
 import com.qubitpi.athena.config.SystemConfigFactory
+import com.qubitpi.athena.example.books.application.JerseyTestBinder
 import com.qubitpi.athena.example.books.application.SQLDBResourceManager
 
 import spock.lang.Specification

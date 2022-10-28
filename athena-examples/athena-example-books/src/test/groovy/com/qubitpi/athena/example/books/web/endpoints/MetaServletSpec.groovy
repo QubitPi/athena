@@ -66,7 +66,7 @@ class MetaServletSpec extends AbstractServletSpec {
         """
         {
            "errors":[
-              
+
            ],
            "data":{
               "metaData":{

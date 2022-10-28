@@ -37,9 +37,9 @@
 
     <distributionManagement>
         <repository>
-            <id>github</id>
-            <name>GitHub QubitPi Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/QubitPi/athena</url>
+            <id>nexus</id>
+            <name>Releases</name>
+            <url>https://nexus.paion-data.dev/repository/maven-oss</url>
         </repository>
     </distributionManagement>
 
@@ -117,13 +117,6 @@
                 <groupId>com.qubitpi.athena</groupId>
                 <artifactId>athena-system-config</artifactId>
                 <version>${version.athena}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.qubitpi.athena</groupId>
-                <artifactId>athena-core</artifactId>
-                <version>${version.athena}</version>
-                <type>test-jar</type>
-                <scope>test</scope>
             </dependency>
 
             <!-- Validation -->
