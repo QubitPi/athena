@@ -20,8 +20,6 @@ import static com.qubitpi.athena.application.ResourceConfigSpec.getClicker
 
 import org.glassfish.hk2.utilities.Binder
 
-import jakarta.validation.constraints.NotNull
-
 /**
  * A class to Mock ResourceBinding
  */

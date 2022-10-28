@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.qubitpi.athena</groupId>
         <artifactId>athena-metastore</artifactId>
-        <version>1.0.14</version>
+        <version>1.0.15</version>
     </parent>
 
     <artifactId>athena-metastore-graphql</artifactId>

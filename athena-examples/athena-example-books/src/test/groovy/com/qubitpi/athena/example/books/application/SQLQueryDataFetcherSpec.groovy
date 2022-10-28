@@ -19,7 +19,6 @@ import com.qubitpi.athena.metadata.FileType
 import com.qubitpi.athena.metadata.MetaData
 
 import graphql.schema.DataFetchingEnvironment
-import spock.lang.Shared
 import spock.lang.Specification
 import spock.lang.Subject
 
