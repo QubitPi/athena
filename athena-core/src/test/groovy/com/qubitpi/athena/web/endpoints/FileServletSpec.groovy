@@ -19,26 +19,19 @@ import com.qubitpi.athena.application.ApplicationState
 import com.qubitpi.athena.application.JerseyTestBinder
 import com.qubitpi.athena.metadata.FileType
 import com.qubitpi.athena.metadata.MetaData
-import com.qubitpi.athena.metastore.MetaStore
 
-import org.glassfish.jersey.client.ClientConfig
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition
 import org.glassfish.jersey.media.multipart.FormDataMultiPart
 import org.glassfish.jersey.media.multipart.MultiPart
 import org.glassfish.jersey.media.multipart.MultiPartFeature
 import org.glassfish.jersey.media.multipart.file.FileDataBodyPart
 
-import groovy.json.JsonSlurper
 import spock.lang.Specification
 
 import java.nio.charset.StandardCharsets
 import java.util.function.BiFunction
 
-import javax.ws.rs.client.Client
-import javax.ws.rs.client.ClientBuilder
 import javax.ws.rs.client.Entity
-import javax.ws.rs.client.WebTarget
-import javax.ws.rs.core.MediaType
 
 class FileServletSpec extends Specification {
 
