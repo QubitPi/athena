@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.qubitpi.athena</groupId>
         <artifactId>athena-examples</artifactId>
-        <version>1.0.13</version>
+        <version>1.0.14</version>
     </parent>
 
     <artifactId>athena-example-books</artifactId>
@@ -26,13 +26,6 @@
     </licenses>
 
     <dependencies>
-        <dependency>
-            <groupId>com.qubitpi.athena</groupId>
-            <artifactId>athena-examples</artifactId>
-            <version>${version.athena}</version>
-            <type>pom</type>
-        </dependency>
-
         <dependency>
             <groupId>com.qubitpi.athena</groupId>
             <artifactId>athena-core</artifactId>
@@ -77,7 +70,6 @@
                 <version>${version.maven.war.plugin}</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
-                    <attachClasses>true</attachClasses> <!-- https://stackoverflow.com/a/10090564 -->
                 </configuration>
             </plugin>
         </plugins>
