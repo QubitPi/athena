@@ -17,3 +17,27 @@ file in the root of the repo. The setting for the project will appear as a new S
 
 Alternatively, you might check the xml file that is included in the jar and map its settings to your development
 environment.
+
+### Troubleshooting
+
+#### Checkstyle Error - "Extra lines between braces [RegexpMultiline]"
+
+This is an Athena-custom checkstyle rule which simple disallow the following code snippet:
+
+```java
+    }
+
+}
+```
+
+Basically, multiple lines between right curly braces is defined as a checkstyle violation. The error, however, might
+still pops up with something _visually_ like this:
+
+```java
+    }
+}
+```
+
+Note that no extra line can be seen in this reported case. The most probably cause might be a shared development
+environment where one team member wrote code on Windows, which uses CRLF line endings, and the other uses UNIX/Mac.
+We should [replace all CRLF endings with UNIX '\n' endings](https://stackoverflow.com/a/50765523/14312712).
