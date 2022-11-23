@@ -120,6 +120,9 @@ public class MetaData {
      * @param fieldMap  The provided key-value pairs
      *
      * @return a new instance
+     *
+     * @throws IllegalArgumentException if the key-value pairs are missing one of {@link #FILE_NAME} or
+     * {@link #FILE_TYPE} keys
      */
     @NotNull
     public static MetaData of(final @NotNull Map<String, Object> fieldMap) {

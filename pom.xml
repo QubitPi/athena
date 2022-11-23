@@ -48,8 +48,8 @@
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
 
         <version.athena>1.0-SNAPSHOT</version.athena>
         <version.validation.api>3.0.1</version.validation.api>
@@ -81,7 +81,7 @@
         <checkstyle.skip>false</checkstyle.skip>
         <checkstyle.config.location>checkstyle.xml</checkstyle.config.location>
         <checkstyle.suppressions.location>checkstyle-suppressions.xml</checkstyle.suppressions.location>
-        <checkstyle.version>8.12</checkstyle.version>
+        <checkstyle.version>8.30</checkstyle.version>
         <checkstyle.resourceIncludes>**/*.properties*</checkstyle.resourceIncludes>
     </properties>
 
@@ -341,7 +341,7 @@
                     <version>${version.maven.release.plugin}</version>
                 </plugin>
 
-                <!-- Use Java 8 -->
+                <!-- Use Java 11 -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
@@ -387,7 +387,7 @@
                 <plugin>
                     <groupId>org.codehaus.gmavenplus</groupId>
                     <artifactId>gmavenplus-plugin</artifactId>
-                    <version>1.6</version>
+                    <version>1.6.2</version> <!-- https://stackoverflow.com/a/66701302/14312712 -->
                     <executions>
                         <execution>
                             <goals>

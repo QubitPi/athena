@@ -182,6 +182,8 @@ public class JerseyTestBinder {
 
     /**
      * Start the test harness.
+     *
+     * @throws IllegalStateException if thread was interrupted
      */
     public void start() {
         try {

@@ -121,6 +121,8 @@ public abstract class AbstractBinderFactory implements BinderFactory {
      * Initializes service for generating file ID's.
      *
      * @return a new instance of {@link FileIdGenerator}
+     *
+     * @throws IllegalStateException if an internal error occurs
      */
     @NotNull
     protected FileIdGenerator buildFileIdGenerator() {

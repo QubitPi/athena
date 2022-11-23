@@ -49,6 +49,8 @@ public final class SystemConfigFactory {
      * Constructor.
      * <p>
      * Suppress default constructor for noninstantiability.
+     *
+     * @throws AssertionError when called
      */
     private SystemConfigFactory() {
         throw new AssertionError();
@@ -58,6 +60,8 @@ public final class SystemConfigFactory {
      * Returns an instance of {@link SystemConfig}.
      *
      * @return a new instance
+     *
+     * @throws IllegalStateException if the {@link SystemConfig} implementation class cannot be instantiated
      */
     @NotNull
     public static synchronized SystemConfig getInstance() {

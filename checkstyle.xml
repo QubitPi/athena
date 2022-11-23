@@ -6,6 +6,14 @@
     <!-- Configuration - Filters -->
     <module name="SuppressWarningsFilter" />
 
+    <!-- Size Violations -->
+    <module name="LineLength">
+        <property name="ignorePattern" value="^import.*$"/>
+        <property name="max" value="120"/>
+        <property name="tabWidth" value="4"/>
+        <property name="severity" value="error"/>
+    </module>
+
 	<module name="TreeWalker">
 
         <!-- Filters -->
@@ -17,7 +25,6 @@
 
         <!-- Annotations -->
         <module name="MissingDeprecated">
-            <property name="skipNoJavadoc" value="false" />
             <property name="severity" value="error"/>
         </module>
 
@@ -131,19 +138,11 @@
             <property name="severity" value="error"/>
         </module>
         <module name="JavadocMethod">
-            <property name="minLineCount" value="-1"/>
             <property name="allowedAnnotations" value="Override"/>
             <property name="validateThrows" value="true"/>
             <property name="scope" value="anoninner"/>
-            <property name="allowUndeclaredRTE" value="true"/>
-            <property name="allowThrowsTagsForSubclasses" value="true"/>
             <property name="allowMissingParamTags" value="false"/>
-            <property name="allowMissingThrowsTags" value="false"/>
             <property name="allowMissingReturnTag" value="false"/>
-            <property name="allowMissingJavadoc" value="false"/>
-            <property name="allowMissingPropertyJavadoc" value="true"/>
-            <property name="logLoadErrors" value="true"/>
-            <property name="suppressLoadErrors" value="false"/>
             <property name="tokens" value="METHOD_DEF, CTOR_DEF, ANNOTATION_FIELD_DEF"/>
             <property name="severity" value="error"/>
         </module>
@@ -325,14 +324,6 @@
             <property name="format" value="\.toUpperCase\(\)"/>
             <property name="message" value="use toUpperCase(Locale.ENGLISH)"/>
             <property name="ignoreComments" value="true"/>
-            <property name="severity" value="error"/>
-        </module>
-
-        <!-- Size Violations -->
-        <module name="LineLength">
-            <property name="ignorePattern" value="^import.*$"/>
-            <property name="max" value="120"/>
-            <property name="tabWidth" value="4"/>
             <property name="severity" value="error"/>
         </module>
 

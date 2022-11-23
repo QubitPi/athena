@@ -116,6 +116,7 @@ public class LayeredFileSystemConfig implements SystemConfig {
         )
                 .flatMap(Function.identity())
                 .filter(Objects::nonNull)
+                .map(it -> (Configuration) it)
                 .forEachOrdered(compositeConfiguration::addConfiguration);
     }
 
