@@ -1,6 +1,9 @@
-<div align="center">
+[Athena](https://qubitpi.github.io/athena/)
+===========================================
 
-![athena](https://socialify.git.ci/QubitPi/athena/image?description=1&font=Inter&issues=1&language=1&logo=https%3A%2F%2Fraw.githubusercontent.com%2FQubitPi%2Fathena%2Fgh-pages%2Fassets%2Fimg%2Fathena-logo.png&name=1&owner=1&pattern=Circuit%20Board&pulls=1&theme=Light)
+> My sincere thanks to [yahoo/fili](https://github.com/yahoo/fili) & [yahoo/elide](https://github.com/yahoo/elide),
+> which gave tremendous amount of guidance on design and development of [Athena](https://github.com/QubitPi/athena), and 
+> to my former employer, Yahoo, who taught me to love software engineering and fundamentally influenced my tech career
 
 [ ![Discord](https://img.shields.io/discord/1001320502960324658?logo=discord&logoColor=white&style=for-the-badge) ](https://discord.com/widget?id=1001320502960324658&theme=dark)
 [ ![License Badge](https://img.shields.io/badge/Apache%202.0-F25910.svg?style=for-the-badge&logo=Apache&logoColor=white) ](https://www.apache.org/licenses/LICENSE-2.0)
@@ -19,20 +22,11 @@
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=QubitPi_athena&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=QubitPi_athena)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=QubitPi_athena&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=QubitPi_athena)
 
-</div>
-
 <div align="right">
 
 <a href="https://sonarcloud.io/summary/new_code?id=QubitPi_athena"><img alt="SonarCloud" src="https://sonarcloud.io/images/project_badges/sonarcloud-orange.svg"></a>
 
 </div>
-
-[Athena](https://qubitpi.github.io/athena/)
-===========================================
-
-> My sincere thanks to [yahoo/fili](https://github.com/yahoo/fili) & [yahoo/elide](https://github.com/yahoo/elide),
-> which gave tremendous amount of guidance on design and development of [Athena](https://github.com/QubitPi/athena), and 
-> to my former employer, Yahoo, who taught me to love software engineering and fundamentally influenced my tech career
 
 Athena is a Java library that lets you setup object storage webservice with minimal effort. Athena is meant to be
 specialized on managing **files**, such as books, videos, and photos. It supports object storage through two variants of
