@@ -14,15 +14,27 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write # allow pushing tag
       packages: write
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # https://github.com/actions/checkout/issues/338#issuecomment-732300720
       - uses: actions/setup-java@v3
         with:
           java-version: '8'
           distribution: 'adopt'
-      - name: Publish Package to GitHub Packages
+      - name: Tag for release
+        run: |
+          git config --global user.name 'QubitPi'
+          git config --global user.email 'jack20191124@proton.me'
+          .github/tag-for-release.bash
+      - name: Set release version
+        run: |
+          VERSION=$(git describe)
+          mvn versions:set -DnewVersion=$VERSION -DgenerateBackupPoms=false
+          mvn versions:update-property -Dproperty=version.athena -DnewVersion=$VERSION -DgenerateBackupPoms=false
+      - name: Publish to GitHub Packages
         run: mvn --batch-mode deploy
         env:
           GITHUB_TOKEN: ${{ secrets.PUBLISH_TO_ARTIFACTORY }}
