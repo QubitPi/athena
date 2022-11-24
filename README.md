@@ -1,4 +1,4 @@
-[Athena](https://qubitpi.github.io/athena/)
+[Athena](https://qubitpi.github.io/athena/) <sup>![Java Version Badge is Missing](https://img.shields.io/badge/Java-11-brightgreen?style=flat-square&logo=OpenJDK&logoColor=white)</sup>
 ===========================================
 
 > My sincere thanks to [yahoo/fili](https://github.com/yahoo/fili) & [yahoo/elide](https://github.com/yahoo/elide),
