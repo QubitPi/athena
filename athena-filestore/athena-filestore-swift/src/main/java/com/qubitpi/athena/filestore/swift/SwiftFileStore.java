@@ -28,8 +28,8 @@ import net.jcip.annotations.NotThreadSafe;
 import java.io.InputStream;
 import java.util.Objects;
 
-import javax.inject.Inject;
-import javax.inject.Singleton;
+import jakarta.inject.Inject;
+import jakarta.inject.Singleton;
 
 /**
  * An OpenStack Swift implementation of {@link FileStore}.

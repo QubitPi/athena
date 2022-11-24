@@ -26,12 +26,11 @@ import org.glassfish.jersey.media.multipart.MultiPart
 import org.glassfish.jersey.media.multipart.MultiPartFeature
 import org.glassfish.jersey.media.multipart.file.FileDataBodyPart
 
+import jakarta.ws.rs.client.Entity
 import spock.lang.Specification
 
 import java.nio.charset.StandardCharsets
 import java.util.function.BiFunction
-
-import javax.ws.rs.client.Entity
 
 class FileServletSpec extends Specification {
 

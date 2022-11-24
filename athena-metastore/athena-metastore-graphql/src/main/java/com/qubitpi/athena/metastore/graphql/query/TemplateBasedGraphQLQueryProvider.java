@@ -30,7 +30,7 @@ import net.jcip.annotations.ThreadSafe;
 import java.util.List;
 import java.util.Objects;
 
-import javax.inject.Singleton;
+import jakarta.inject.Singleton;
 
 /**
  * The default implementation of {@link GraphQLQueryProvider}.

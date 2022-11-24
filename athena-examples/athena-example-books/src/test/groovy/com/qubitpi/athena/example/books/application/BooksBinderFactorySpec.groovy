@@ -21,7 +21,7 @@ import com.qubitpi.athena.config.SystemConfigFactory
 import spock.lang.Specification
 import spock.lang.Unroll
 
-import javax.inject.Provider
+import jakarta.inject.Provider
 import javax.sql.DataSource
 
 class BooksBinderFactorySpec extends Specification {

@@ -23,15 +23,14 @@ import org.glassfish.jersey.test.JerseyTest;
 import org.glassfish.jersey.test.TestProperties;
 
 import jakarta.validation.constraints.NotNull;
+import jakarta.ws.rs.client.Invocation.Builder;
+import jakarta.ws.rs.client.WebTarget;
+import jakarta.ws.rs.core.Application;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Objects;
-
-import javax.ws.rs.client.Invocation.Builder;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.Application;
 
 /**
  * Configures JerseyTest and also sets up DI.

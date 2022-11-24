@@ -25,9 +25,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import jakarta.validation.constraints.NotNull;
+import jakarta.ws.rs.ApplicationPath;
 
-import javax.inject.Inject;
-import javax.ws.rs.ApplicationPath;
+import jakarta.inject.Inject;
 
 /**
  * The resource configuration for the Athena web applications.

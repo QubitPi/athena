@@ -39,8 +39,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.function.BiFunction;
 
-import javax.inject.Inject;
-import javax.inject.Named;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 /**
  * A {@link MetaStore} test stub that facilitates {@link com.qubitpi.athena.web.endpoints.MetaServletSpec} mocking
