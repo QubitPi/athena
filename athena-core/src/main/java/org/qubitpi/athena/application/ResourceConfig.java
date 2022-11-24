@@ -52,7 +52,7 @@ public class ResourceConfig extends org.glassfish.jersey.server.ResourceConfig {
     });
 
     /**
-     * DI Constructor.
+     * DI Constructor which instantiates a downstream app {@link BinderFactory} using reflection.
      *
      * @throws ClassNotFoundException if a class was not found when attempting to load it
      * @throws InstantiationException if a class was not able to be instantiated
@@ -67,15 +67,15 @@ public class ResourceConfig extends org.glassfish.jersey.server.ResourceConfig {
         final BinderFactory binderFactory;
         try {
             binderFactory = binderClass.getDeclaredConstructor().newInstance();
+        } catch (final NoSuchMethodException exception) {
+            LOG.error(ErrorMessageFormat.DEFAULT_OR_NO_ARGS_CONSTRUCTOR_REQUIRED.logFormat(getBindingFactory()));
+            throw new IllegalStateException(
+                    ErrorMessageFormat.DEFAULT_OR_NO_ARGS_CONSTRUCTOR_REQUIRED.format(),
+                    exception
+            );
         } catch (final InvocationTargetException exception) {
             LOG.error(CONFIG_NOT_FOUND.logFormat(RESOURCE_BINDER_KEY));
             throw new IllegalStateException(CONFIG_NOT_FOUND.format(), exception);
-        } catch (final NoSuchMethodException exception) {
-            LOG.error(ErrorMessageFormat.CLASS_LOADING_ERROR.logFormat(getBindingFactory()));
-            throw new IllegalStateException(
-                    ErrorMessageFormat.CLASS_LOADING_ERROR.format(),
-                    exception
-            );
         }
         final Binder binder = binderFactory.buildBinder();
 

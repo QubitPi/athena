@@ -35,6 +35,14 @@ public enum ErrorMessageFormat implements MessageFormatter {
     CLASS_LOADING_ERROR("Service config error.", "Exception while instantiating '%s'"),
 
     /**
+     * When a class does not have a default or no-args constructor and fails reflection.
+     */
+    DEFAULT_OR_NO_ARGS_CONSTRUCTOR_REQUIRED(
+            "App config error.",
+            "Class '%s' must have a default or no-args constructor"
+    ),
+
+    /**
      * When a {@link java.util.List} instance is empty and is not allowed.
      */
     EMPTY_LIST("Athena could not process the request due to an internal error.", "List cannot be empty"),

@@ -15,17 +15,33 @@
  */
 package org.qubitpi.athena.application
 
-
 import org.glassfish.hk2.utilities.Binder
 import org.qubitpi.athena.config.SystemConfig
 import org.qubitpi.athena.config.SystemConfigFactory
 
+import jakarta.validation.constraints.NotNull
 import spock.lang.Specification
 
 import java.lang.reflect.InvocationTargetException
 import java.util.function.Consumer
 
 class ResourceConfigSpec extends Specification {
+
+    public static class OneArgConstructorBinder implements BinderFactory {
+        public OneArgConstructorBinder(String arg) {
+            // No-Ops
+        }
+
+        @Override
+        Binder buildBinder() {
+            return null
+        }
+
+        @Override
+        void afterRegistration(@NotNull final ResourceConfig resourceConfig) {
+
+        }
+    }
 
     static final SystemConfig SYSTEM_CONFIG = SystemConfigFactory.getInstance()
     static final String BINDER_KEY = SYSTEM_CONFIG.getPackageVariableName("resource_binder")
@@ -72,14 +88,27 @@ class ResourceConfigSpec extends Specification {
         1 * clicker.accept(_ as ResourceConfig)
     }
 
+    @SuppressWarnings('GroovyResultOfObjectAllocationIgnored')
     def "When binding factory is not found, error is thrown"() {
         setup: "binder factory description config is removed"
         SYSTEM_CONFIG.clearProperty(BINDER_KEY)
 
         when: "resource config is constructed"
-        resourceConfigClass.getDeclaredConstructor().newInstance()
+        new ResourceConfig()
 
         then: "new instance cannot be constructed"
         thrown(InvocationTargetException)
+    }
+
+    def "When binding factory does not have a default or no-args constructor, error is thrown"() {
+        setup:
+        SYSTEM_CONFIG.setProperty(BINDER_KEY, OneArgConstructorBinder.canonicalName)
+
+        when:
+        new ResourceConfig()
+
+        then:
+        Exception exception = thrown(IllegalStateException)
+        exception.message == "App config error."
     }
 }

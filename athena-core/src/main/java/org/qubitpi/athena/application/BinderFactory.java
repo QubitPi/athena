@@ -21,6 +21,9 @@ import jakarta.validation.constraints.NotNull;
 
 /**
  * A binder factory builds a custom binder for the Jersey application.
+ * <p>
+ * Implementations must have a default or no-args constructor so that it can be instantiated using Reflection. See
+ * {@link ResourceConfig#ResourceConfig()} for more details; otherwise a runtime error will occur during Athena startup.
  */
 public interface BinderFactory {
 
