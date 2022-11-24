@@ -203,6 +203,11 @@
                 <artifactId>jakarta.servlet-api</artifactId>
                 <version>${version.servlet}</version>
             </dependency>
+            <dependency>
+                <groupId>jakarta.ws.rs</groupId>
+                <artifactId>jakarta.ws.rs-api</artifactId>
+                <version>3.0.0</version>
+            </dependency>
 
             <!-- Jersey -->
             <dependency>
@@ -214,11 +219,6 @@
                 <groupId>org.glassfish.jersey.containers</groupId>
                 <artifactId>jersey-container-servlet</artifactId>
                 <version>${version.jersey}</version>
-            </dependency>
-            <dependency>
-                <groupId>jakarta.ws.rs</groupId>
-                <artifactId>jakarta.ws.rs-api</artifactId>
-                <version>3.0.0</version>
             </dependency>
             <dependency>
                 <groupId>org.glassfish.jersey.media</groupId>
