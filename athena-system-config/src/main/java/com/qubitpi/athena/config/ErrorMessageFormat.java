@@ -63,8 +63,7 @@ public enum ErrorMessageFormat implements MessageFormatter {
     /**
      * When meta data not found.
      */
-    META_DATA_NOT_FOUND("No meta data found for file ID '%s'")
-    ;
+    META_DATA_NOT_FOUND("No meta data found for file ID '%s'");
 
     private final String messageFormat;
     private final String loggingFormat;
@@ -72,8 +71,7 @@ public enum ErrorMessageFormat implements MessageFormatter {
     /**
      * An error message formatter with the same message for logging and messaging.
      *
-     * @param messageFormat  The format string for logging and messaging
-     *
+     * @param messageFormat The format string for logging and messaging
      * @throws NullPointerException if any {@code messageFormat} is {@code null}
      */
     ErrorMessageFormat(final @NotNull String messageFormat) {
@@ -83,9 +81,8 @@ public enum ErrorMessageFormat implements MessageFormatter {
     /**
      * Constructor.
      *
-     * @param messageFormat  User facing message format
-     * @param loggingFormat  Server log message format
-     *
+     * @param messageFormat User facing message format
+     * @param loggingFormat Server log message format
      * @throws NullPointerException if any argument is {@code null}
      */
     ErrorMessageFormat(final @NotNull String messageFormat, final @NotNull String loggingFormat) {

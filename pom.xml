@@ -48,8 +48,8 @@
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
 
         <version.athena>1.0-SNAPSHOT</version.athena>
         <version.validation.api>3.0.1</version.validation.api>
@@ -81,7 +81,7 @@
         <checkstyle.skip>false</checkstyle.skip>
         <checkstyle.config.location>checkstyle.xml</checkstyle.config.location>
         <checkstyle.suppressions.location>checkstyle-suppressions.xml</checkstyle.suppressions.location>
-        <checkstyle.version>8.12</checkstyle.version>
+        <checkstyle.version>8.30</checkstyle.version>
         <checkstyle.resourceIncludes>**/*.properties*</checkstyle.resourceIncludes>
     </properties>
 
@@ -165,6 +165,11 @@
                 <artifactId>joss</artifactId>
                 <version>${version.joss}</version>
             </dependency>
+            <dependency> <!-- https://github.com/jakartaee/jaf-api/issues/60#issuecomment-758529977 -->
+                <groupId>com.sun.activation</groupId>
+                <artifactId>jakarta.activation</artifactId>
+                <version>2.0.0</version>
+            </dependency>
 
             <!-- JSON Parsing -->
             <dependency>
@@ -245,17 +250,43 @@
                 <version>1</version>
             </dependency>
 
+            <!-- JAXB Binding (JDK 11+) -->
+            <dependency>
+                <groupId>jakarta.xml.bind</groupId>
+                <artifactId>jakarta.xml.bind-api</artifactId>
+                <version>2.3.2</version>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish.jaxb</groupId>
+                <artifactId>jaxb-runtime</artifactId>
+                <version>2.3.2</version>
+            </dependency>
+
             <!-- Testing -->
-            <dependency> <!-- Mandatory dependency for using Spock -->
+            <dependency>
                 <groupId>org.spockframework</groupId>
-                <artifactId>spock-core</artifactId>
-                <version>1.3-groovy-2.5</version>
-                <scope>test</scope>
+                <artifactId>spock-bom</artifactId>
+                <version>2.0-M5-groovy-3.0</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>org.codehaus.groovy</groupId>
                 <artifactId>groovy-all</artifactId>
-                <version>2.4.5</version>
+                <version>3.0.7</version>
+                <type>pom</type>
+                <scope>test</scope>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>groovy-testng</artifactId>
+                        <groupId>org.codehaus.groovy</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency> <!-- Import JsonSlurper - https://stackoverflow.com/a/71218832/14312712 -->
+                <groupId>org.apache.groovy</groupId>
+                <artifactId>groovy-json</artifactId>
+                <version>4.0.6</version>
             </dependency>
             <dependency> <!-- Enable mocking of non-interface types -->
                 <groupId>cglib</groupId>
@@ -318,8 +349,8 @@
             <artifactId>spock-core</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.codehaus.groovy</groupId>
-            <artifactId>groovy-all</artifactId>
+            <groupId>org.apache.groovy</groupId>
+            <artifactId>groovy-json</artifactId>
         </dependency>
         <dependency> <!-- Enable mocking of non-interface types -->
             <groupId>cglib</groupId>
@@ -341,7 +372,7 @@
                     <version>${version.maven.release.plugin}</version>
                 </plugin>
 
-                <!-- Use Java 8 -->
+                <!-- Use Java 11 -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
@@ -387,7 +418,7 @@
                 <plugin>
                     <groupId>org.codehaus.gmavenplus</groupId>
                     <artifactId>gmavenplus-plugin</artifactId>
-                    <version>1.6</version>
+                    <version>1.12.1</version> <!-- https://stackoverflow.com/a/66701302/14312712 -->
                     <executions>
                         <execution>
                             <goals>

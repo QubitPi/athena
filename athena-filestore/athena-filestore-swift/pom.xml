@@ -28,6 +28,10 @@
             <groupId>org.javaswift</groupId>
             <artifactId>joss</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.sun.activation</groupId>
+            <artifactId>jakarta.activation</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
