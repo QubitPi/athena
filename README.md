@@ -114,7 +114,7 @@ Documentation
 More information about Athena can be found [here](https://qubitpi.github.io/athena/)
 
 
-Binaries (How to Get It) [ ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/QubitPi/athena/Release?logo=github&style=for-the-badge) ](https://github.com/QubitPi/athena/actions/workflows/release.yml)
+Binaries (How to Get It) <sup>[ ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/QubitPi/athena/Release?logo=github&style=flat-square) ](https://github.com/QubitPi/athena/actions/workflows/release.yml)</sup>
 ------------------------
 
 Binaries for Athena are stored in [GitHub Packages](https://github.com/QubitPi?tab=packages&repo_name=athena). To
