@@ -30,11 +30,6 @@
             <artifactId>jakarta.inject-api</artifactId>
         </dependency>
 
-        <!--        <dependency>-->
-<!--            <groupId>javax.inject</groupId>-->
-<!--            <artifactId>javax.inject</artifactId>-->
-<!--        </dependency>-->
-
         <!-- Apache Commons Libraries -->
         <dependency>
             <groupId>org.apache.commons</groupId>

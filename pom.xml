@@ -62,7 +62,7 @@
         <version.apache.commons>2.7</version.apache.commons>
         <version.commons.dbcp2>2.0.1</version.commons.dbcp2>
         <version.mysql.connector.java>5.1.38</version.mysql.connector.java>
-        <version.servlet>3.1.0</version.servlet>
+        <version.servlet>6.0.0</version.servlet>
         <version.jersey>3.0.8</version.jersey>
         <version.derby>10.11.1.1</version.derby>
         <version.flyway.core>5.0.7</version.flyway.core>
@@ -199,8 +199,8 @@
 
             <!-- Servlet API -->
             <dependency>
-                <groupId>javax.servlet</groupId>
-                <artifactId>javax.servlet-api</artifactId>
+                <groupId>jakarta.servlet</groupId>
+                <artifactId>jakarta.servlet-api</artifactId>
                 <version>${version.servlet}</version>
             </dependency>
 
@@ -239,14 +239,19 @@
             </dependency>
 
             <!-- Injection -->
-<!--            <dependency>-->
-<!--                <groupId>org.glassfish.hk2</groupId>-->
-<!--                <artifactId>hk2-api</artifactId>-->
-<!--                <version>2.5.0-b32</version>-->
-<!--            </dependency>-->
             <dependency>
                 <groupId>org.glassfish.jersey.inject</groupId>
                 <artifactId>jersey-hk2</artifactId>
+                <version>3.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish.hk2</groupId>
+                <artifactId>hk2-locator</artifactId>
+                <version>3.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>jakarta.ws.rs</groupId>
+                <artifactId>jakarta.ws.rs-api</artifactId>
                 <version>3.0.0</version>
             </dependency>
             <dependency>
@@ -254,11 +259,6 @@
                 <artifactId>jakarta.inject-api</artifactId>
                 <version>2.0.1</version>
             </dependency>
-<!--            <dependency>-->
-<!--                <groupId>javax.inject</groupId>-->
-<!--                <artifactId>javax.inject</artifactId>-->
-<!--                <version>1</version>-->
-<!--            </dependency>-->
 
             <!-- JAXB Binding (JDK 11+) -->
             <dependency>
