@@ -14,7 +14,7 @@
 
 </div>
 
-<a href="https://sonarcloud.io/summary/new_code?id=QubitPi_athena"><img align="left" width="16%" alt="SonarCloud" src="https://sonarcloud.io/api/project_badges/quality_gate?project=QubitPi_athena"></a>
+<a href="https://sonarcloud.io/summary/new_code?id=QubitPi_athena"><img align="left" width="17%" alt="SonarCloud" src="https://sonarcloud.io/api/project_badges/quality_gate?project=QubitPi_athena"></a>
 
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=QubitPi_athena&metric=bugs)](https://sonarcloud.io/summary/new_code?id=QubitPi_athena)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=QubitPi_athena&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=QubitPi_athena)
