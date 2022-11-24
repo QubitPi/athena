@@ -63,7 +63,7 @@ class ResourceConfigSpec extends Specification {
         ResourceConfig config = resourceConfigClass.getDeclaredConstructor().newInstance() as ResourceConfig
 
         then:
-        // config.classes.containsAll(filters) TODO - this issue is big enough that deserves a separate PR
+        config.classes.containsAll(filters)
         config.getInstances().contains(binder)
 
         1 * clicker.accept(MockingBinderFactory.INIT)

@@ -35,7 +35,7 @@ import java.util.Properties;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
-import javax.inject.Singleton;
+import jakarta.inject.Singleton;
 
 /**
  * A class to hold and fetch configuration values from the environment and runtime.

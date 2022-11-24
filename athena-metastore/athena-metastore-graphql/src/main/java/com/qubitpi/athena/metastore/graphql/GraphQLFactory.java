@@ -36,7 +36,7 @@ import net.jcip.annotations.ThreadSafe;
 import java.util.Objects;
 import java.util.Scanner;
 
-import javax.inject.Singleton;
+import jakarta.inject.Singleton;
 
 /**
  * {@link GraphQLFactory} initializes {@link GraphQL native GraphQL API}.

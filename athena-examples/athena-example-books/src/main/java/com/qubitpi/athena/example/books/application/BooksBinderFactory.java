@@ -37,7 +37,7 @@ import org.slf4j.LoggerFactory;
 import graphql.schema.DataFetcher;
 import jakarta.validation.constraints.NotNull;
 
-import javax.inject.Provider;
+import jakarta.inject.Provider;
 import javax.sql.DataSource;
 
 /**

@@ -25,10 +25,9 @@ import org.glassfish.jersey.media.multipart.MultiPartFeature
 import org.glassfish.jersey.media.multipart.file.FileDataBodyPart
 
 import groovy.json.JsonSlurper
+import jakarta.ws.rs.client.Entity
 
 import java.nio.charset.StandardCharsets
-
-import javax.ws.rs.client.Entity
 
 class FileServletSpec extends AbstractServletSpec {
 

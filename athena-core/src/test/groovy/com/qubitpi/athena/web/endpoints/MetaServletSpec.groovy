@@ -23,12 +23,11 @@ import com.qubitpi.athena.metastore.MetaStore
 import com.qubitpi.athena.web.graphql.JsonDocumentParser
 
 import groovy.json.JsonSlurper
+import jakarta.ws.rs.client.Entity
+import jakarta.ws.rs.core.MediaType
 import spock.lang.Specification
 
 import java.util.function.BiFunction
-
-import javax.ws.rs.client.Entity
-import javax.ws.rs.core.MediaType
 
 class MetaServletSpec extends Specification {
 

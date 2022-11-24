@@ -57,13 +57,13 @@
         <version.slf4j>1.7.25</version.slf4j>
         <version.logback>1.2.3</version.logback>
         <version.graphql.java>14.0</version.graphql.java>
-        <version.joss>0.10.2</version.joss>
+        <version.joss>0.10.4</version.joss>
         <version.jackson>2.13.3</version.jackson>
         <version.apache.commons>2.7</version.apache.commons>
         <version.commons.dbcp2>2.0.1</version.commons.dbcp2>
         <version.mysql.connector.java>5.1.38</version.mysql.connector.java>
-        <version.servlet>3.1.0</version.servlet>
-        <version.jersey>2.25.1</version.jersey>
+        <version.servlet>6.0.0</version.servlet>
+        <version.jersey>3.0.8</version.jersey>
         <version.derby>10.11.1.1</version.derby>
         <version.flyway.core>5.0.7</version.flyway.core>
 
@@ -199,9 +199,14 @@
 
             <!-- Servlet API -->
             <dependency>
-                <groupId>javax.servlet</groupId>
-                <artifactId>javax.servlet-api</artifactId>
+                <groupId>jakarta.servlet</groupId>
+                <artifactId>jakarta.servlet-api</artifactId>
                 <version>${version.servlet}</version>
+            </dependency>
+            <dependency>
+                <groupId>jakarta.ws.rs</groupId>
+                <artifactId>jakarta.ws.rs-api</artifactId>
+                <version>3.0.0</version>
             </dependency>
 
             <!-- Jersey -->
@@ -225,13 +230,13 @@
                 <artifactId>jersey-media-json-jackson</artifactId>
                 <version>${version.jersey}</version>
             </dependency>
-            <dependency><!-- Client for running local "integration-style" tests -->
+            <dependency> <!-- Client for running local "integration-style" tests -->
                 <groupId>org.glassfish.jersey.test-framework</groupId>
                 <artifactId>jersey-test-framework-core</artifactId>
                 <version>${version.jersey}</version>
                 <scope>test</scope>
             </dependency>
-            <dependency><!-- Container for running local "integration-style" tests -->
+            <dependency> <!-- Container for running local "integration-style" tests -->
                 <groupId>org.glassfish.jersey.test-framework.providers</groupId>
                 <artifactId>jersey-test-framework-provider-grizzly2</artifactId>
                 <version>${version.jersey}</version>
@@ -240,26 +245,31 @@
 
             <!-- Injection -->
             <dependency>
-                <groupId>org.glassfish.hk2</groupId>
-                <artifactId>hk2-api</artifactId>
-                <version>2.5.0-b32</version>
+                <groupId>org.glassfish.jersey.inject</groupId>
+                <artifactId>jersey-hk2</artifactId>
+                <version>3.0.0</version>
             </dependency>
             <dependency>
-                <groupId>javax.inject</groupId>
-                <artifactId>javax.inject</artifactId>
-                <version>1</version>
+                <groupId>org.glassfish.hk2</groupId>
+                <artifactId>hk2-locator</artifactId>
+                <version>3.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>jakarta.inject</groupId>
+                <artifactId>jakarta.inject-api</artifactId>
+                <version>2.0.1</version>
             </dependency>
 
             <!-- JAXB Binding (JDK 11+) -->
             <dependency>
                 <groupId>jakarta.xml.bind</groupId>
                 <artifactId>jakarta.xml.bind-api</artifactId>
-                <version>2.3.2</version>
+                <version>3.0.0</version>
             </dependency>
             <dependency>
                 <groupId>org.glassfish.jaxb</groupId>
                 <artifactId>jaxb-runtime</artifactId>
-                <version>2.3.2</version>
+                <version>3.0.0</version>
             </dependency>
 
             <!-- Testing -->

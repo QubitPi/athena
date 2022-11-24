@@ -24,6 +24,7 @@
     </licenses>
 
     <dependencies>
+        <!-- Local module dependencies -->
         <dependency>
             <groupId>com.qubitpi.athena</groupId>
             <artifactId>athena-system-config</artifactId>
@@ -43,8 +44,12 @@
 
         <!-- Servlet API -->
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.ws.rs</groupId>
+            <artifactId>jakarta.ws.rs-api</artifactId>
         </dependency>
 
         <!-- Jersey -->
@@ -76,12 +81,12 @@
 
         <!-- Injection -->
         <dependency>
-            <groupId>org.glassfish.hk2</groupId>
-            <artifactId>hk2-api</artifactId>
+            <groupId>org.glassfish.jersey.inject</groupId>
+            <artifactId>jersey-hk2</artifactId>
         </dependency>
         <dependency>
-            <groupId>javax.inject</groupId>
-            <artifactId>javax.inject</artifactId>
+            <groupId>org.glassfish.hk2</groupId>
+            <artifactId>hk2-locator</artifactId>
         </dependency>
 
         <!-- JAXB Binding (JDK 11+) -->
