@@ -21,7 +21,6 @@
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=QubitPi_athena&metric=coverage)](https://sonarcloud.io/summary/new_code?id=QubitPi_athena)
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=QubitPi_athena&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=QubitPi_athena)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=QubitPi_athena&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=QubitPi_athena)
-
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=QubitPi_athena&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=QubitPi_athena)
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=QubitPi_athena&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=QubitPi_athena)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=QubitPi_athena&metric=bugs)](https://sonarcloud.io/summary/new_code?id=QubitPi_athena)
