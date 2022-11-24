@@ -17,18 +17,19 @@ package org.qubitpi.athena.application;
 
 import static org.qubitpi.athena.config.ErrorMessageFormat.CONFIG_NOT_FOUND;
 
-import org.qubitpi.athena.config.SystemConfig;
-import org.qubitpi.athena.config.SystemConfigFactory;
-
 import org.glassfish.hk2.utilities.Binder;
 import org.glassfish.jersey.media.multipart.MultiPartFeature;
+import org.qubitpi.athena.config.ErrorMessageFormat;
+import org.qubitpi.athena.config.SystemConfig;
+import org.qubitpi.athena.config.SystemConfigFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import jakarta.inject.Inject;
 import jakarta.validation.constraints.NotNull;
 import jakarta.ws.rs.ApplicationPath;
 
-import jakarta.inject.Inject;
+import java.lang.reflect.InvocationTargetException;
 
 /**
  * The resource configuration for the Athena web applications.
@@ -56,12 +57,26 @@ public class ResourceConfig extends org.glassfish.jersey.server.ResourceConfig {
      * @throws ClassNotFoundException if a class was not found when attempting to load it
      * @throws InstantiationException if a class was not able to be instantiated
      * @throws IllegalAccessException if there was a problem accessing something due to security restrictions
+     * @throws IllegalStateException if resource_binder is not configured or an error occurs in {@link BinderFactory}
+     * constructor
      */
     @Inject
     public ResourceConfig() throws ClassNotFoundException, InstantiationException, IllegalAccessException {
         final Class<? extends BinderFactory> binderClass = Class.forName(getBindingFactory())
                 .asSubclass(BinderFactory.class);
-        final BinderFactory binderFactory = binderClass.newInstance();
+        final BinderFactory binderFactory;
+        try {
+            binderFactory = binderClass.getDeclaredConstructor().newInstance();
+        } catch (final InvocationTargetException exception) {
+            LOG.error(CONFIG_NOT_FOUND.logFormat(RESOURCE_BINDER_KEY));
+            throw new IllegalStateException(CONFIG_NOT_FOUND.format(), exception);
+        } catch (final NoSuchMethodException exception) {
+            LOG.error(ErrorMessageFormat.CLASS_LOADING_ERROR.logFormat(getBindingFactory()));
+            throw new IllegalStateException(
+                    ErrorMessageFormat.CLASS_LOADING_ERROR.format(),
+                    exception
+            );
+        }
         final Binder binder = binderFactory.buildBinder();
 
         packages(ATHENA_ENDPOINT_PACKAGE);

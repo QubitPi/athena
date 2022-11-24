@@ -30,9 +30,9 @@ public enum ErrorMessageFormat implements MessageFormatter {
     CONFIG_NOT_FOUND("Config error. Please check service log for details", "Config '%s' not found."),
 
     /**
-     * When {@link SystemConfig} initialization fails.
+     * When instantiating class through reflection fails.
      */
-    SYSTEM_CONFIG_LOADING_ERROR_MESSAGE("Service config error.", "Exception while loading system configuration"),
+    CLASS_LOADING_ERROR("Service config error.", "Exception while instantiating '%s'"),
 
     /**
      * When a {@link java.util.List} instance is empty and is not allowed.
