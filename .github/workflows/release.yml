@@ -14,7 +14,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     permissions:
-      contents: write # allow pushing tag
+      contents: write # allow for pushing tag
       packages: write
     steps:
       - uses: actions/checkout@v3
