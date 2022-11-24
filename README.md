@@ -2,31 +2,33 @@
 ===========================================
 
 > My sincere thanks to [yahoo/fili](https://github.com/yahoo/fili) & [yahoo/elide](https://github.com/yahoo/elide),
-> which gave tremendous amount of guidance on design and development of [Athena](https://github.com/QubitPi/athena), and 
+> which gave tremendous amount of guidance on design and development of [Athena](https://github.com/QubitPi/athena), and
 > to my former employer, Yahoo, who taught me to love software engineering and fundamentally influenced my tech career
 
+<div align="left">
+
+[ ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/QubitPi/athena/Release?logo=github&style=for-the-badge) ](https://github.com/QubitPi/athena/actions/workflows/release.yml)
+![GitHub last commit (branch)](https://img.shields.io/github/last-commit/QubitPi/athena/master?logo=github&style=for-the-badge)
 [ ![Discord](https://img.shields.io/discord/1001320502960324658?logo=discord&logoColor=white&style=for-the-badge) ](https://discord.com/widget?id=1001320502960324658&theme=dark)
 [ ![License Badge](https://img.shields.io/badge/Apache%202.0-F25910.svg?style=for-the-badge&logo=Apache&logoColor=white) ](https://www.apache.org/licenses/LICENSE-2.0)
-![GitHub last commit (branch)](https://img.shields.io/github/last-commit/QubitPi/athena/master?logo=github&style=for-the-badge)
-[ ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/QubitPi/athena/Release?logo=github&style=for-the-badge) ](https://github.com/QubitPi/athena/actions/workflows/release.yml)
+
+</div>
+
+<a href="https://sonarcloud.io/summary/new_code?id=QubitPi_athena"><img align="right" alt="SonarCloud" src="https://sonarcloud.io/images/project_badges/sonarcloud-orange.svg"></a>
 
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=QubitPi_athena&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=QubitPi_athena)
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=QubitPi_athena&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=QubitPi_athena)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=QubitPi_athena&metric=coverage)](https://sonarcloud.io/summary/new_code?id=QubitPi_athena)
+
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=QubitPi_athena&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=QubitPi_athena)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=QubitPi_athena&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=QubitPi_athena)
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=QubitPi_athena&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=QubitPi_athena)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=QubitPi_athena&metric=bugs)](https://sonarcloud.io/summary/new_code?id=QubitPi_athena)
+
 [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=QubitPi_athena&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=QubitPi_athena)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=QubitPi_athena&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=QubitPi_athena)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=QubitPi_athena&metric=bugs)](https://sonarcloud.io/summary/new_code?id=QubitPi_athena)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=QubitPi_athena&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=QubitPi_athena)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=QubitPi_athena&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=QubitPi_athena)
-
-<div align="right">
-
-<a href="https://sonarcloud.io/summary/new_code?id=QubitPi_athena"><img alt="SonarCloud" src="https://sonarcloud.io/images/project_badges/sonarcloud-orange.svg"></a>
-
-</div>
 
 Athena is a Java library that lets you setup object storage webservice with minimal effort. Athena is meant to be
 specialized on managing **files**, such as books, videos, and photos. It supports object storage through two variants of
@@ -38,12 +40,12 @@ APIs:
 
 * A [JSON API](https://jsonapi.org/) for uploading and downloading files
 * A [GraphQL](https://graphql.com/) API for reading file metadata, including
-  - File name
-  - File type
-  - etc.
+    - File name
+    - File type
+    - etc.
 
 Athena has **first-class support for [OpenStack Swift](https://docs.openstack.org/swift/latest/) and
-[Hadoop HDFS](https://hadoop.apache.org/)** file storage back-end, but Athena's flexible pipeline-style architecture can 
+[Hadoop HDFS](https://hadoop.apache.org/)** file storage back-end, but Athena's flexible pipeline-style architecture can
 handle nearly any back-end for data storage, such as
 [S3](https://qubitpi.github.io/athena/pages/guide/v1/09-filestores.html#custom-stores).
 
@@ -68,7 +70,7 @@ Quick Start
 -----------
 
 Athena comes with a pre-configured [example application](https://qubitpi.github.io/athena/pages/guide/v1/08-start.html)
-to help you get started and serve as a jumping-off-point for building your own web service using Athena. The example 
+to help you get started and serve as a jumping-off-point for building your own web service using Athena. The example
 application lets you upload and download books you love to read, and picks up where
 [Swift's quick-start tutorial](https://qubitpi.github.io/athena/pages/guide/v1/10-local-swift.html) leaves off.
 
@@ -118,7 +120,7 @@ Binaries (How to Get It) [ ![GitHub Workflow Status](https://img.shields.io/gith
 
 Binaries for Athena are stored in [GitHub Packages](https://github.com/QubitPi?tab=packages&repo_name=athena). To
 install the packages from there, edit the
-[pom.xml](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html) file to include the package as a 
+[pom.xml](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html) file to include the package as a
 dependency. Dependency information for each Athena sub-module can be found at their corresponding package page.
 [For example](https://github.com/QubitPi/athena/packages/1557510):
 
@@ -135,7 +137,7 @@ Next, include the following snippet in the project's POM
 ```xml
 <project>
     ...
-  
+
     <repositories>
         <repository>
             <id>download-from-github-qubitpi</id>
@@ -152,8 +154,8 @@ Next, include the following snippet in the project's POM
 </project>
 ```
 
-Lastly, you would need an access token to install Athena packages. Athena uses a personal access token (PAT), with 
-`packages:read` scope, to authenticate to GitHub Packages. Your project can authenticate to GitHub Packages with Apache 
+Lastly, you would need an access token to install Athena packages. Athena uses a personal access token (PAT), with
+`packages:read` scope, to authenticate to GitHub Packages. Your project can authenticate to GitHub Packages with Apache
 Maven by editing your `~/.m2/settings.xml` file to include the personal access token:
 
 ```xml
@@ -171,11 +173,11 @@ Maven by editing your `~/.m2/settings.xml` file to include the personal access t
             <id>download-from-github-qubitpi</id>
             <repositories>
                 <repository>
-                <id>download-from-github-qubitpi</id>
-                <url>https://maven.pkg.github.com/qubitpi/athena</url>
-                <snapshots>
-                    <enabled>false</enabled>
-                </snapshots>
+                    <id>download-from-github-qubitpi</id>
+                    <url>https://maven.pkg.github.com/qubitpi/athena</url>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
                 </repository>
             </repositories>
         </profile>
