@@ -165,6 +165,11 @@
                 <artifactId>joss</artifactId>
                 <version>${version.joss}</version>
             </dependency>
+            <dependency> <!-- https://github.com/jakartaee/jaf-api/issues/60#issuecomment-758529977 -->
+                <groupId>com.sun.activation</groupId>
+                <artifactId>jakarta.activation</artifactId>
+                <version>2.0.0</version>
+            </dependency>
 
             <!-- JSON Parsing -->
             <dependency>
@@ -246,16 +251,31 @@
             </dependency>
 
             <!-- Testing -->
-            <dependency> <!-- Mandatory dependency for using Spock -->
+            <!--  spock stuff -->
+            <dependency>
                 <groupId>org.spockframework</groupId>
-                <artifactId>spock-core</artifactId>
-                <version>1.3-groovy-2.5</version>
-                <scope>test</scope>
+                <artifactId>spock-bom</artifactId>
+                <version>2.0-M5-groovy-3.0</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>org.codehaus.groovy</groupId>
                 <artifactId>groovy-all</artifactId>
-                <version>2.4.5</version>
+                <version>3.0.7</version>
+                <type>pom</type>
+                <scope>test</scope>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>groovy-testng</artifactId>
+                        <groupId>org.codehaus.groovy</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency> <!-- Import JsonSlurper - https://stackoverflow.com/a/71218832/14312712 -->
+                <groupId>org.apache.groovy</groupId>
+                <artifactId>groovy-json</artifactId>
+                <version>4.0.6</version>
             </dependency>
             <dependency> <!-- Enable mocking of non-interface types -->
                 <groupId>cglib</groupId>
@@ -318,8 +338,8 @@
             <artifactId>spock-core</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.codehaus.groovy</groupId>
-            <artifactId>groovy-all</artifactId>
+            <groupId>org.apache.groovy</groupId>
+            <artifactId>groovy-json</artifactId>
         </dependency>
         <dependency> <!-- Enable mocking of non-interface types -->
             <groupId>cglib</groupId>
@@ -387,7 +407,7 @@
                 <plugin>
                     <groupId>org.codehaus.gmavenplus</groupId>
                     <artifactId>gmavenplus-plugin</artifactId>
-                    <version>1.6.2</version> <!-- https://stackoverflow.com/a/66701302/14312712 -->
+                    <version>1.12.1</version> <!-- https://stackoverflow.com/a/66701302/14312712 -->
                     <executions>
                         <execution>
                             <goals>

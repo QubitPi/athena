@@ -31,6 +31,8 @@ public final class GraphQLQueryProviderFactory {
      * Constructor.
      * <p>
      * Suppress default constructor for noninstantiability.
+     *
+     * @throws AssertionError when called
      */
     private GraphQLQueryProviderFactory() {
         throw new AssertionError();
