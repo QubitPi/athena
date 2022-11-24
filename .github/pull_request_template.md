@@ -7,6 +7,6 @@ Changelog
 Checklist
 ---------
 
-* [ ] Self-review
 * [ ] Test
+* [ ] Self-review
 * [ ] Documentation

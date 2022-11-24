@@ -19,15 +19,14 @@
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=QubitPi_athena&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=QubitPi_athena)
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=QubitPi_athena&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=QubitPi_athena)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=QubitPi_athena&metric=coverage)](https://sonarcloud.io/summary/new_code?id=QubitPi_athena)
-
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=QubitPi_athena&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=QubitPi_athena)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=QubitPi_athena&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=QubitPi_athena)
+
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=QubitPi_athena&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=QubitPi_athena)
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=QubitPi_athena&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=QubitPi_athena)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=QubitPi_athena&metric=bugs)](https://sonarcloud.io/summary/new_code?id=QubitPi_athena)
-
 [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=QubitPi_athena&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=QubitPi_athena)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=QubitPi_athena&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=QubitPi_athena)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=QubitPi_athena&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=QubitPi_athena)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=QubitPi_athena&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=QubitPi_athena)
 
 Athena is a Java library that lets you setup object storage webservice with minimal effort. Athena is meant to be
