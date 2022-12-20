@@ -26,6 +26,6 @@ class FileTypeSpec extends Specification {
         FileType.values().toList() == allTypes
 
         where:
-        allTypes = [FileType.PDF, FileType.TXT]
+        allTypes = [FileType.PDF, FileType.MP4, FileType.TXT]
     }
 }
