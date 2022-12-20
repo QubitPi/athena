@@ -121,4 +121,4 @@ but some others may require a different object storage backend or have other nee
 store. The multiplex store in Athena manages multiple stores - delegating calls to the appropriate store which is 
 responsible for a particular file.
 
-This is a [feature](https://trello.com/c/dkhnRSYh) yet to be offered soon.
+This is a [feature](https://trello.com/c/bHwNl4sk) yet to be offered soon.
