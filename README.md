@@ -7,7 +7,7 @@
 
 <div align="left">
 
-[ ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/QubitPi/athena/release.yml?logo=github&style=for-the-badge&branch=master) ](https://github.com/QubitPi/athena/actions/workflows/release.yml)
+[ ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/QubitPi/athena/release.yml?branch=master&logo=github&style=for-the-badge) ](https://github.com/QubitPi/athena/actions/workflows/release.yml)
 ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/QubitPi/athena/master?logo=github&style=for-the-badge)
 [ ![Discord](https://img.shields.io/discord/1001320502960324658?logo=discord&logoColor=white&style=for-the-badge) ](https://discord.com/widget?id=1001320502960324658&theme=dark)
 [ ![License Badge](https://img.shields.io/badge/Apache%202.0-F25910.svg?style=for-the-badge&logo=Apache&logoColor=white) ](https://www.apache.org/licenses/LICENSE-2.0)
@@ -114,7 +114,7 @@ Documentation
 More information about Athena can be found [here](https://qubitpi.github.io/athena/)
 
 
-Binaries (How to Get It) <sup>[ ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/QubitPi/athena/release.yml?logo=github&style=flat-square) ](https://github.com/QubitPi/athena/actions/workflows/release.yml)</sup>
+Binaries (How to Get It) <sup>[ ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/QubitPi/athena/release.yml?branch=master&logo=github&style=flat-square) ](https://github.com/QubitPi/athena/actions/workflows/release.yml)</sup>
 ------------------------
 
 Binaries for Athena are stored in [GitHub Packages](https://github.com/QubitPi?tab=packages&repo_name=athena). To
