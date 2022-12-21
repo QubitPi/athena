@@ -26,6 +26,11 @@ public enum FileType {
     PDF,
 
     /**
+     * .mp4 or .MP4 files.
+     */
+    MP4,
+
+    /**
      * Text file.
      */
     TXT
