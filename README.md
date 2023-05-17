@@ -6,7 +6,7 @@
 > and to my former employer, Yahoo, who taught me to love software engineering and fundamentally influenced my tech
 > career
 
-[![GitHub Workflow Status][GitHub Workflow Status]](https://github.com/QubitPi/athena/actions/workflows/release.yml)
+[![GitHub Workflow Status][GitHub Workflow Status]](https://github.com/QubitPi/athena/actions/workflows/ci-cd.yml)
 ![Last Commit](https://img.shields.io/github/last-commit/QubitPi/athena/master?logo=github&style=for-the-badge)
 [![Discord][Discord]](https://discord.com/widget?id=1001320502960324658&theme=dark)
 [![License Badge]](https://www.apache.org/licenses/LICENSE-2.0)
@@ -106,7 +106,7 @@ Documentation
 
 More information about Athena can be found [here](https://qubitpi.github.io/athena/)
 
-Binaries (How to Get It) <sup>[![GitHub Workflow Status][GitHub Workflow Status]](https://github.com/QubitPi/athena/actions/workflows/release.yml)</sup>
+Binaries (How to Get It) <sup>[![GitHub Workflow Status][GitHub Workflow Status]](https://github.com/QubitPi/athena/actions/workflows/ci-cd.yml)</sup>
 ------------------------
 
 Binaries for Athena are stored in [GitHub Packages][GitHub Packages]. To install the packages from there, edit the
