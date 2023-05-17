@@ -55,10 +55,10 @@ jobs:
     needs: [yaml-lint, markdown-lint, markdown-link-check]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - name: Set up JDK ${{ env.JDK_VERSION }} for Build
+      - name: Set up JDK ${{ env.JDK_VERSION }}
         uses: actions/setup-java@v3
         with:
           java-version: ${{ env.JDK_VERSION }}
@@ -169,7 +169,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0  # https://github.com/actions/checkout/issues/338#issuecomment-732300720
-      - name: Set up JDK ${{ env.JDK_VERSION }} for Build
+      - name: Set up JDK ${{ env.JDK_VERSION }}
         uses: actions/setup-java@v3
         with:
           java-version: ${{ env.JDK_VERSION }}
@@ -177,7 +177,7 @@ jobs:
       - name: Tag for release
         run: |
           git config --global user.name '$USER'
-          git config --global user.email '$JDK_DISTRIBUTION'
+          git config --global user.email '$EMAIL'
           .github/tag-for-release.bash
       - name: Set release version
         run: |
