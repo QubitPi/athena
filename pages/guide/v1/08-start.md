@@ -6,21 +6,11 @@ description: Getting Started
 version: 1
 ---
 
-So You Want An API for Managing General Files?
-----------------------------------------------
-{:.no-toc}
-
-The easiest way to get started with Athena is to use the
-[Athena Book App Starter](https://github.com/QubitPi/athena/tree/master/athena-examples/athena-example-books). The
-starter bundles all of the dependencies you will need to stand up a web service. This tutorial uses the starter, and
-all of the code is [available here][athena-demo].
-
-You can deploy and play with this example on Heroku or locally.  The landing page will let you toggle between the
-[swagger UI][swagger-ui] and [Graphiql](https://github.com/graphql/graphiql) for the example service.
-
+The easiest way to get started with Athena is to use the [Athena Book App Starter][Athena Book App Starter]. The
+starter bundles all of the dependencies we will need to stand up a web service. This tutorial uses the starter, and
+all of the code is [available here][Athena Book App Starter]. We will deploy and play with this example locally
 Contents
---------
-1. Contents
+
 {:toc}
 
 ### Docker Compose
@@ -30,17 +20,17 @@ an Athena application is backed by a real MySQL meta store and an in-memory Open
 command, we will be able to create and start all the services from Athena. **It's the quickest approach to get a taste
 of Athena**.
 
-Athena Compose works in all environments: production, staging, development, testing, as well as CI workflows. You can 
-learn more about it from [source code][athena-example-books].
+Athena Compose works in all environments: production, staging, development, testing, as well as CI workflows. You can
+learn more about it from [source code][Athena Book App Starter].
 
 Using Athena Compose is basically a three-step process:
 
 1. Package Athena at project root with `mvn clean package`
-2. cd into [compose top directory][athena-example-books] and fire-up `docker compose up`
-3. [hit Athena](http://localhost/v1/metadata/graphql?query={metaData(fileId:%221%22){fileName}}) with your favorite
+2. cd into [compose top directory][Athena Book App Starter] and fire-up `docker compose up`
+3. hit Athena at `http://localhost/v1/metadata/graphql?query={metaData(fileId:%221%22){fileName}}` with your favorite
    browser
 
-For more information about the Athena Compose the [Compose file definition][athena-example-books].
+For more information about the Athena Compose the [Compose file definition][Athena Book App Starter].
 
 Athena Compose has ability for managing the whole lifecycle of an Athena application:
 
@@ -51,15 +41,17 @@ Athena Compose has ability for managing the whole lifecycle of an Athena applica
 
 #### Extending Athena Compose
 
-Happy with Athena? You can go further with productionizing Athena from here <img src="https://user-images.githubusercontent.com/16126939/174438007-b9adae25-baf8-42a7-bf39-83786435d397.gif" width="40"/>
+Happy with Athena? You can go further with productionizing Athena from here
+<img src="https://user-images.githubusercontent.com/16126939/174438007-b9adae25-baf8-42a7-bf39-83786435d397.gif" width="40"/>
 
 If you would like to go from basic Athena Compose setup and changed anything, rebuild it with
 
-    docker compose up --build --force-recreate
+```bash
+docker compose up --build --force-recreate
+```
 
 Athena Compose has been tested with [MySQL 5.7](https://hub.docker.com/_/mysql) connected using
-[mysql-connector-java 5.1.38](https://mvnrepository.com/artifact/mysql/mysql-connector-java/5.1.38) within Athena
-running on [Jetty 9.3](https://hub.docker.com/_/jetty).
+_mysql-connector-java 5.1.38_ within Athena running on [Jetty 9.3](https://hub.docker.com/_/jetty).
 
 > Please take extra caution with MySQL 8, as some of the features might not work properly on Athena Compose. In
 > addition, make sure `?autoReconnect=true&useSSL=false` is in connection string. For example,
@@ -76,8 +68,8 @@ already been occupied)
 #### Networking in Athena Compose
 
 By default Athena Compose sets up a single
-[network](https://docs.docker.com/engine/reference/commandline/network_create/) for your app. Both Athena and MySQL 
-container services join this default network and is both reachable by other containers on that network, and discoverable 
+[network](https://docs.docker.com/engine/reference/commandline/network_create/) for your app. Both Athena and MySQL
+container services join this default network and is both reachable by other containers on that network, and discoverable
 by them at a hostname identical to the container name.
 
 For example, inside [docker-compose.yml][docker-compose.yml]
@@ -108,12 +100,12 @@ services:
 When you run docker compose up, the following happens:
 
 * A network called "athena-example-books" is created.
-* An Athena container is created using athena-example-books configuration. It joins the network "athena-example-books" 
+* An Athena container is created using athena-example-books configuration. It joins the network "athena-example-books"
   under the name "web".
 * An MySQL container is created using `db`'s configuration. It joins the network "athena-example-books" under the name
   "db".
 
-Each container can now look up the hostname `web` or `db` and get back the appropriate container's IP address. For 
+Each container can now look up the hostname `web` or `db` and get back the appropriate container's IP address. For
 example, web's application code could connect to the URL "mysql://db:3306" and start using the MySQL database.
 
 ### Build From Source
@@ -146,16 +138,20 @@ At [download page](https://www.eclipse.org/jetty/download.php), pick up a `.tgz`
 
 <img src="../../../assets/img/download-jetty.png" class="img-fluid" alt="Error loading download-jetty.png">
 
-##### Install Jetty
+##### Install
 
 Put the `tar.gz` file into a location of your choice as the install path and extract the Jetty binary using
 
-    tar -czvf jetty-distribution-9.4.44.v20210927.tar.gz
+```bash
+tar -czvf jetty-distribution-9.4.44.v20210927.tar.gz
+```
 
 ##### Drop the ".war" File into the Jetty "webapp"
 
-    cd jetty-distribution-9.4.44.v20210927/webapps/
-    mv /path/to/.war .
+```bash
+cd jetty-distribution-9.4.44.v20210927/webapps/
+mv /path/to/.war .
+```
 
 Then rename the war file to "ROOT.war", the reason of which is so that the context path would be root context - `/`,
 which is a common industry standard.
@@ -164,7 +160,7 @@ which is a common industry standard.
 >
 > The context path is the prefix of a URL path that is used to select the context(s) to which an incoming request is
 > passed. Typically a URL in a Java servlet server is of the format
-> "http://hostname.com/contextPath/servletPath/pathInfo", where each of the path elements can be zero or more "/"
+> `http://hostname.com/contextPath/servletPath/pathInfo`, where each of the path elements can be zero or more "/"
 > separated elements. If there is no context path, the context is referred to as the **root context**. The root context
 > must be configured as "/" but is reported as the empty string by the servlet
 > [API `getContextPath()` method](https://www.eclipse.org/jetty/).
@@ -184,8 +180,10 @@ which is a common industry standard.
 
 #### Start the Webservice
 
-    cd ../
-    java -jar start.jar
+```bash
+cd ../
+java -jar start.jar
+```
 
 > 📋 To specify the port that container exposes for our app, we could use
 >
@@ -204,12 +202,21 @@ brew install --cask graphiql
 The tests contain 2 parts
 
 1. Groovy Spock unit tests on
-    * [Injected Query DataFetcher](./src/test/groovy/com/qubitpi/athena/example/books/application/SQLQueryDataFetcherSpec.groovy)
-    * [Injected Mutation DataFetcher](./src/test/groovy/com/qubitpi/athena/example/books/application/SQLMutationDataFetcherSpec.groovy)
+
+   - [Injected Query DataFetcher](../../../../athena-examples/athena-example-books/src/test/groovy/com/qubitpi/athena/example/books/application/SQLQueryDataFetcherSpec.groovy)
+   - [Injected Mutation DataFetcher](../../../../athena-examples/athena-example-books/src/test/groovy/com/qubitpi/athena/example/books/application/SQLMutationDataFetcherSpec.groovy)
+
 2. Live DB tests on endpoints
-    * In [file servlet endpoint test](./src/test/groovy/com/qubitpi/athena/example/books/web/endpoints/FileServletSpec.groovy) and [meta data servlet endpoint test](./src/test/groovy/com/qubitpi/athena/example/books/web/endpoints/MetaServletSpec.groovy), [Flyway migration](./src/test/groovy/com/qubitpi/athena/example/books/application/SQLDBResourceManager.groovy) injects real data into a Derby in-meomroy SQL DB
-    * The Derby data is injected via a shared [DBCP DataSource](#reference---apache-commons-dbcp2) declared in [application BinderFactory](./src/main/java/com/qubitpi/athena/example/books/application/BooksBinderFactory.java)
-    * The application resource is set alive through [JerseyTestBinder](./src/test/java/com/qubitpi/athena/example/books/application/BookJerseyTestBinder.java)
+
+   - In [file servlet endpoint test](../../../../athena-examples/athena-example-books/src/test/groovy/com/qubitpi/athena/example/books/web/endpoints/FileServletSpec.groovy)
+     and
+     [meta data servlet endpoint test](../../../../athena-examples/athena-example-books/src/test/groovy/com/qubitpi/athena/example/books/web/endpoints/MetaServletSpec.groovy),
+     [Flyway migration](../../../../athena-examples/athena-example-books/src/test/groovy/com/qubitpi/athena/example/books/application/SQLDBResourceManager.groovy)
+     injects real data into a Derby in-meomroy SQL DB
+   - The Derby data is injected via a shared [DBCP DataSource](#reference---apache-commons-dbcp2) declared in
+     [application BinderFactory](../../../../athena-examples/athena-example-books/src/main/java/com/qubitpi/athena/example/books/application/BooksBinderFactory.java)
+   - The application resource is set alive through
+     [JerseyTestBinder](../../../../athena-examples/athena-example-books/src/test/java/com/qubitpi/athena/example/books/application/BookJerseyTestBinder.java)
 
 ### Reference - Apache Commons DBCP2
 
@@ -223,7 +230,8 @@ pointing at the in-memory Derby instance.
 
 Derby was meant to be used only in tests and, hence, must be imported in test scope only
 
-[athena-example-books]: https://github.com/QubitPi/athena/tree/master/athena-examples/athena-example-books
+[Athena Book App Starter]: https://github.com/QubitPi/athena/tree/master/athena-examples/athena-example-books
+
 [docker-compose.yml]: https://github.com/QubitPi/athena/tree/master/athena-examples/athena-example-books/docker-compose.yml
 [athena-demo]: https://github.com/QubitPi/athena/tree/master/athena-examples/athena-example-books
 [swagger-ui]: https://swagger.io/tools/swagger-ui/

@@ -7,7 +7,7 @@ description: A guide that gets people ramp up speed on playing with Swift
 version: 1
 ---
 
-In this quickstart, we will download a [OpenStack Swift Image](https://hub.docker.com/r/fnndsc/docker-swift-onlyone), 
+In this quickstart, we will download a [OpenStack Swift Image](https://hub.docker.com/r/fnndsc/docker-swift-onlyone),
 spinup a container on a single machine, upload a test file, and download that file.
 
 Prerequisites
@@ -54,11 +54,14 @@ need to install it:
 pip3 pip install python-swiftclient
 ```
 
-> If you are on Mac OS, which has Apple Swift overriding Openstack swift package, explicitly invoking swiftclient as /usr/bin/local/swift works.
-> In case the absolute path is not `/usr/bin/local/swift`, try `sudo find / -name swift` which will give you a list that contains the right > executable path
+> If you are on Mac OS, which has Apple Swift overriding Openstack swift package, explicitly invoking swiftclient as
+> /usr/bin/local/swift works.
 >
-> For example, `/usr/local/bin/swift -A http://127.0.0.1:12345/auth/v1.0 -U chris:chris1234 -K testing stat` should work. We will keep using
-> `/usr/local/bin/swift` afterwards
+> In case the absolute path is not `/usr/bin/local/swift`, try `sudo find / -name swift` which will give you a list
+> that contains the right > executable path
+>
+> For example, `/usr/local/bin/swift -A http://127.0.0.1:12345/auth/v1.0 -U chris:chris1234 -K testing stat` should
+> work. We will keep using `/usr/local/bin/swift` afterwards
 
 Create, Upload, and Download a Test File
 ----------------------------------------
@@ -72,12 +75,13 @@ touch test-file.txt
 To upload this file onto Swift:
 
 ```bash
-/usr/local/bin/swift -A http://127.0.0.1:12345/auth/v1.0 -U chris:chris1234 -K testing upload --object-name test-file.txt user_uploads ./test-file.txt
+/usr/local/bin/swift -A http://127.0.0.1:12345/auth/v1.0 -U chris:chris1234 -K testing upload --object-name
+test-file.txt user_uploads ./test-file.txt
 ```
 
 which will print the name of the file if the upload was successful:
 
-```
+```bash
 test-file.txt
 ```
 

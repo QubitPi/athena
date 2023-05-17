@@ -6,7 +6,7 @@ description: System Configuration
 version: 1
 ---
 
-Athena has two main configuration avenues, the domain object configuration (File Store, Meta Store, and Data Fetchers) 
+Athena has two main configuration avenues, the domain object configuration (File Store, Meta Store, and Data Fetchers)
 which happens via compiled Java code, and system configuration via properties. The domain configuration is
 covered elsewhere, and we'll only cover the system configuration infrastructure here.
 
@@ -18,7 +18,7 @@ configuring Athena.
 Configuration Sources and Overrides
 -----------------------------------
 
-Configuration for Athena modules come from only one location (that is, within the [sub-module][athena-system-config] 
+Configuration for Athena modules come from only one location (that is, within the [sub-module][athena-system-config]
 itself) and allows for overriding other settings. This is particularly useful when overriding a property set in a module
 to turn off a feature, or to override a default configuration for your application in a certain environment, for
 example.
@@ -27,15 +27,15 @@ Configuration sources are shown below, and are resolved in priority order, with 
 settings from lower-priority sources. Sources that are files will available to Athena on the Classpath for them to be
 loaded.
 
-| Priority | Source                              | Notes                                                                  |
-| -------: | ----------------------------------- | ---------------------------------------------------------------------- |
-| (High) 1 | Environment variables               |                                                                        |
-|        2 | Java properties                     |                                                                        |
-|        3 | `userConfig.properties`<sup>*</sup> | For a controlling a specific, non-standard environment, like a dev box |
-|        5 | `applicationConfig.properties`      | Every application MUST provide one of these                            |
+| Priority | Source                              | Notes                                       |
+| -------: | ----------------------------------- |---------------------------------------------|
+| (High) 1 | Environment variables               |                                             |
+|        2 | Java properties                     |                                             |
+|        3 | `userConfig.properties`<sup>*</sup> |                                             |
+|        5 | `applicationConfig.properties`      | Every application MUST provide one of these |
 {:.table}
 
-<sub>* Since `userConfig.properties` is often used while developing to turn features on and off, `.gitignore` includes a
-rule to ignore this file by default to help prevent checking it in accidentally.</sub>
+<sub>* Since `userConfig.properties` is often used while developing to turn features on and off, `.gitignore` includes
+a  rule to ignore this file by default to help prevent checking it in accidentally.</sub>
 
 [athena-system-config]: https://github.com/QubitPi/athena/tree/master/athena-system-config

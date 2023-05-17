@@ -10,8 +10,7 @@ Welcome to Athena's documentation hub! We're still building out documentation on
 find what documentation we do have. To make it easier to find the help you need, we've broken the documentation down
 into a few categories, but if you can't find what you're looking for, please don't hesitate to
 [create an issue](https://github.com/QubitPi/athena/issues/new), or pop into the Discord chat room.
-[ ![Discord](https://img.shields.io/discord/1001320502960324658?logo=discord&logoColor=white&style=for-the-badge) ](https://discord.com/widget?id=1001320502960324658&theme=dark)
-
+[![Discord](https://img.shields.io/discord/1001320502960324658?logo=discord&logoColor=white&style=for-the-badge)](https://discord.com/widget?id=1001320502960324658&theme=dark)
 
 General
 -------

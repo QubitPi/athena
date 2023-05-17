@@ -26,7 +26,6 @@ Details and examples are below, but here's a summary of the log levels and their
 | Trace | Most verbose. Full data flow. Not intended to be used in production, or very rarely.                         |
 {:.table}
 
-
 Log Levels
 ----------
 
@@ -70,7 +69,7 @@ looked at by a human, but should not typically require urgent intervention. Here
 
 Should be used to indicate status and telemetry for each HTTP request processed, as well as non-recurring events and
 information about the state of Athena. It is expected that Athena will be running at the `Info` logging level when
-running in production. As such, the information logged at this level should be the information needed for monitoring 
+running in production. As such, the information logged at this level should be the information needed for monitoring
 purposes, meaning that it effectively answers "Is the application healthy?" and "How is the application being used?"
 
 - Startup / shutdown information (success or failure of main components starting or stopping)

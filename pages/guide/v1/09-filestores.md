@@ -27,7 +27,7 @@ Athena comes bundled with a number of file stores:
    explicit support for Swift
 2. HDFS Store - File is persisted on Hadoop HDFS.
 
-> 📋 It is assumed that the "HDFS Store" means a **single-cluster** HDFS. However, the Athena architecture does not 
+> 📋 It is assumed that the "HDFS Store" means a **single-cluster** HDFS. However, the Athena architecture does not
 > preclude implementing a multi-cluster HDFS store
 
 Stores can be included through the following artifact dependencies:
@@ -118,7 +118,7 @@ Multiple Stores
 
 A common pattern in Athena is the need to support multiple file stores. Typically, one file store manages most files,
 but some others may require a different object storage backend or have other needs to specialize the behavior of the
-store. The multiplex store in Athena manages multiple stores - delegating calls to the appropriate store which is 
+store. The multiplex store in Athena manages multiple stores - delegating calls to the appropriate store which is
 responsible for a particular file.
 
 This is a [feature](https://trello.com/c/bHwNl4sk) yet to be offered soon.

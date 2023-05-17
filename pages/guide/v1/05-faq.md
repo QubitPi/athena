@@ -6,8 +6,8 @@ description: Frequently Asked Questions about Athena
 version: 1
 ---
 
-I Use IntelliJ. Is There Any Way to Easily Sync up with Athena's Code styles?
------------------------------------------------------------------------------
+I Use IntelliJ. Is There Any Way to Easily Sync up with Athena's Code styles
+----------------------------------------------------------------------------
 
 For the moment, we have distilled the most important code style conventions with respect to Athena's code as IntelliJ
 settings. If you are using IntelliJ, you may import these code style settings by importing the

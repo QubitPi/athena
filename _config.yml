@@ -19,15 +19,7 @@ google-analytics:
 
 # exclude: ['package.json', 'src' , 'node_modules']
 
-
-
-
-
-
-
-
-
-
+# doc-site configs:
 # build settings
 markdown: kramdown
 sass:

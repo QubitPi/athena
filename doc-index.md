@@ -5,7 +5,10 @@ layout: doc-default
 <div class="text-light background-dark">
   <div class="jumbotron">
     <div class="container text-center">
-      <h2>File <span class="text-primary">{json:api}</span> & Meta Data <span class="text-primary">GraphQL</span> web services for file management</h2>
+      <h2>
+        File <span class="text-primary">{json:api}</span> & Meta Data <span class="text-primary">GraphQL</span> web
+        services for file management
+      </h2>
       <a href="pages/guide/v1/01-welcome.html">
         <button type="button" class="btn btn-primary text-light my-3">Get Started</button>
       </a>
@@ -23,10 +26,6 @@ layout: doc-default
 
 <hr class="mx-5">
 
-
-
-
-
 <div class="usage container my-3">
   <div class="text-center display-4 mb-2">How to use it</div>
   <div class="tab-content">
@@ -42,7 +41,10 @@ layout: doc-default
         <div class="col-sm">
           <div class="mr-3">
             <h4>2. Pickup a File Store</h4>
-            <p>Choose either Swift or HDFS file store that Athena already offered for you or implement a custom file store against any arbitrary database as file storage</p>
+            <p>
+              Choose either Swift or HDFS file store that Athena already offered for you or implement a custom file
+              store against any arbitrary database as file storage
+            </p>
           </div>
         </div>
         <div class="col-sm">
@@ -102,7 +104,10 @@ layout: doc-default
       </div>
       <div class="col-sm my-3 my-sm-0">
         <h4>Production Quality</h4>
-        <p>Quickly build and deploy production quality web services that expose your data as a service. Athena APIs support complex filtering rules, sorting, and pagination.</p>
+        <p>
+          Quickly build and deploy production quality web services that expose your data as a service. Athena APIs
+          support complex filtering rules, sorting, and pagination.
+        </p>
       </div>
       <div class="col-sm text-right d-none d-sm-block">
         <img src="assets/images/features/code-icon.png" class="img-fluid" alt="Features: Production Quality">
@@ -133,7 +138,10 @@ layout: doc-default
       </div>
       <div class="col-sm my-3 my-sm-0">
         <h4>Mobile Friendly</h4>
-        <p>Fetch entire object graphs in a single round trip. Subscribe to changes in your data model in realtime.  Only requested elements of the file meta data are returned.</p>
+        <p>
+          Fetch entire object graphs in a single round trip. Subscribe to changes in your data model in realtime. Only
+          requested elements of the file meta data are returned.
+        </p>
       </div>
       <div class="col-sm text-right d-none d-sm-block">
         <img src="assets/images/features/mobile-icon.png" class="img-fluid" alt="Features: Mobile Friendly">
@@ -165,7 +173,11 @@ layout: doc-default
       </div>
       <div class="col-sm my-3 my-sm-0">
         <h4>Analytic Queries</h4>
-        <p>Athena supports analytic queries against files crafted with its powerful semantic layer.  Athena APIs work natively with <a href="https://github.com/yahoo/fili">Fili</a> to visualize, explore, and report on your data.</p>
+        <p>
+          Athena supports analytic queries against files crafted with its powerful semantic layer. Athena API's work
+          natively with <a href="https://github.com/yahoo/fili">Fili</a> to visualize, explore, and report on your
+          data.
+        </p>
       </div>
       <div class="col-sm text-right d-none d-sm-block">
         <img src="assets/images/features/analytics-icon.png" class="img-fluid" alt="Features: Analytic Queries">
@@ -183,7 +195,10 @@ layout: doc-default
       </div>
       <div class="col-sm my-3 my-sm-0">
         <h4>Open API</h4>
-        <p>Explore, understand, and compose queries against your Athena API through generated <a>Swagger</a> documentation or GraphQL schema.</p>
+        <p>
+          Explore, understand, and compose queries against your Athena API through generated <a>Swagger</a>
+          documentation or GraphQL schema.
+        </p>
       </div>
     </div>
     <div class="feature row align-items-center elbow">
@@ -215,7 +230,10 @@ layout: doc-default
       </div>
       <div class="col-sm my-3 my-sm-0">
         <h4>Storage Agnostic</h4>
-        <p>Athena is agnostic to your particular persistence strategy. Use Swift/HDFS or provide your own implementation of a data store.</p>
+        <p>
+          Athena is agnostic to your particular persistence strategy. Use Swift/HDFS or provide your own implementation
+          of a data store.
+        </p>
       </div>
     </div>
 
@@ -231,7 +249,10 @@ layout: doc-default
       </div>
       <div class="col-sm my-3 my-sm-0">
         <h4>Open Source</h4>
-        <p>Athena is 100% open source and available on <a href="https://github.com/QubitPi/athena">Github</a>. Released under the commercial-friendly <a href="pages/license.html">Apache License, Version 2.0</a>.</p>
+        <p>
+          Athena is 100% open source and available on <a href="https://github.com/QubitPi/athena">Github</a>.
+          Released under the commercial-friendly <a href="pages/license.html">Apache License, Version 2.0</a>.
+        </p>
       </div>
       <div class="col-sm text-right d-none d-sm-block">
         <img src="assets/images/features/open-source-icon.png" class="img-fluid" alt="Features: Open Source">
@@ -242,7 +263,7 @@ layout: doc-default
 </div>
 
 <div class="container text-center my-5">
-  <h2>Opinionated APIs for web & mobile</h2>
+  <h2>Opinionated API's for web & mobile</h2>
   <p>Improve the velocity and quality of your team's work.</p>
   <a href="pages/guide/v1/01-welcome.html">
     <button type="button" class="btn btn-primary text-light">Get Started</button>

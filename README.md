@@ -1,4 +1,5 @@
-# Particle Jekyll Theme
+Particle Jekyll Theme
+=====================
 
 ![](./particle.jpg)
 
@@ -15,17 +16,19 @@ The Theme features:
 - Google Analytics
 - Info Customization
 
-## Basic Setup
+Basic Setup
+-----------
 
 1. [Install Jekyll](http://jekyllrb.com)
 2. Clone the particle theme: `git clone https://github.com/nrandecker/particle.git`
 3. Edit `_config.yml` to personalize your site.
 
-## Site and User Settings
+Site and User Settings
+----------------------
 
 You have to fill some informations on `_config.yml` to customize your site.
 
-```
+```bash
 # Site settings
 description: A blog about lorem ipsum dolor sit amet
 baseurl: "" # the subpath of your site, e.g. /blog/
@@ -43,14 +46,17 @@ gplus_username:  lorem_ipsum
 
 **Don't forget to change your url before you deploy your site!**
 
-## Color and Particle Customization
+Color and Particle Customization
+--------------------------------
+
 - Color Customization
   - Edit the sass variables
 - Particle Customization
   - Edit the json data in particle function in app.js
   - Refer to [Particle.js](https://github.com/VincentGarreau/particles.js/) for help
 
-## Running the blog in local
+Running the blog in local
+-------------------------
 
 In order to compile the assets and run Jekyll on local you need to follow those steps:
 
@@ -59,13 +65,3 @@ In order to compile the assets and run Jekyll on local you need to follow those 
 - Install [Yarn](https://yarnpkg.com/): `npm install -g yarn`
 - Install dependencies: `yarn`
 - Run: `gulp`
-
-## License
-
-This theme is free and open source software, distributed under the The MIT License. So feel free to use this Jekyll theme anyway you want.
-
-## Credits
-
-This theme was partially designed with the inspiration from these fine folks
-- [Willian Justen](https://github.com/willianjusten/will-jekyll-template)
-- [Vincent Garreau](https://github.com/VincentGarreau/particles.js/)

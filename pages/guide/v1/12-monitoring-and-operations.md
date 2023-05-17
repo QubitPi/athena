@@ -29,7 +29,7 @@ summary of the log levels and what they contain:
 
 Athena also has a tracing mechanism that records and collects information about each request as it flows through the
 system. This information is called the **Request Log** and it gets logged at the
-[INFO]({{site.baseurl}}/pages/guide/v{{ page.version }}/17-logging-guidelines.html#Info) level when the response for a 
+[INFO]({{site.baseurl}}/pages/guide/v{{ page.version }}/17-logging-guidelines.html#Info) level when the response for a
 request is sent.
 
 The Request Log is modular, and has a number of different components, depending on which type of request is being
@@ -45,7 +45,7 @@ the UUID value in MDC. Here are some examples for common logging frameworks:
 
 [Logback](http://logback.qos.ch/manual/layouts.html#mdc)
 
-```
+```bash
 %mdc{logid:-unset}
 %X{logid:-unset}
 ```
@@ -55,13 +55,13 @@ for logs emitted outside of processing a request, like background processes.
 
 [Log4J](https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/PatternLayout.html)
 
-```
+```bash
 %X{logid}
 ```
 
 [Log4J2](https://logging.apache.org/log4j/2.x/manual/layouts.html)
 
-```
+```bash
 %X{logid}
 %mdc{logid}
 %MDC{logid}
@@ -73,7 +73,7 @@ Metrics
 Athena uses the [Metrics](http://metrics.dropwizard.io/) library (formerly Dropwizard Metrics) for gathering and
 reporting on runtime metrics and indicators. Typically, these are exposed through an admin servlet, and if that's
 enabled then there is
-[a list of Key Performance Indicators (KPIs)]({{site.baseurl}}/pages/guide/v{{ page.version }}/13-kpi.html) that are 
+[a list of Key Performance Indicators (KPIs)]({{site.baseurl}}/pages/guide/v{{ page.version }}/13-kpi.html) that are
 exposed through the `/metrics` endpoint. The KPI document doesn't go into detail about what each of the KPIs mean, but
 it gives a rough overview of why they matter.
 

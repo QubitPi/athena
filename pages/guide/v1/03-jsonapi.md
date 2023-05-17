@@ -11,9 +11,9 @@ version: 1
 operations.
 
 Similar to GraphQL:It allows the client to control what is returned in the response payload. Unlike GraphQL, the
-JSON-API spells out hot to perform file operations instead of file metadata operations. 
+JSON-API spells out hot to perform file operations instead of file metadata operations.
 
-JSON-API has no standardized schema introspection. However, Athena adds this capability to file service by exporting an 
+JSON-API has no standardized schema introspection. However, Athena adds this capability to file service by exporting an
 [Open API Initiative](https://www.openapis.org) document (formerly known as [Swagger](https://swagger.io)). The
 [json-api specification](https://jsonapi.org/format/) is the best reference for understanding JSON-API.
 The following sections describe commonly used JSON-API features as well as Athena additions for filtering and swagger.
@@ -37,7 +37,7 @@ Athena supports two mechanisms by which a newly uploaded file is assigned an ID:
 > Note that in order to replace the [default file ID generator][FileNameAndUploadedTimeBasedIdGenerator], the custom
 > implementation must be bound explicitly through [BinderFactory][AbstractBinderFactory]. For example, when application
 > implements a generator called 'MyIdGenerator', it will load via
-> 
+>
 > ```java
 > @Override
 > protected Class<? extends FileIdGenerator> buildFileIdGenerator() {
@@ -45,7 +45,8 @@ Athena supports two mechanisms by which a newly uploaded file is assigned an ID:
 > }
 > ```
 >
-> For more info on custom binding, please checkout [Basic Dependency Injection using Jersey's HK2]({{site.baseurl}}/pages/guide/v{{ page.version }}/16-jersey-di-using-hk2.html)
+> For more info on custom binding, please checkout
+> [Basic Dependency Injection using Jersey's HK2]({{site.baseurl}}/pages/guide/v{{ page.version }}/16-jersey-di-using-hk2.html)
 
 [FileNameAndUploadedTimeBasedIdGenerator]: https://github.com/QubitPi/athena/blob/master/athena-core/src/main/java/com/qubitpi/athena/file/identifier/FileNameAndUploadedTimeBasedIdGenerator.java
 [FileIdGenerator]: https://github.com/QubitPi/athena/blob/master/athena-core/src/main/java/com/qubitpi/athena/file/identifier/FileIdGenerator.java
