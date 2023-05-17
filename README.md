@@ -106,7 +106,7 @@ Documentation
 
 More information about Athena can be found [here](https://qubitpi.github.io/athena/)
 
-Binaries (How to Get It) <sup>[![GitHub Workflow Status][GitHub Workflow Status]](https://github.com/QubitPi/athena/actions/workflows/ci-cd.yml)</sup>
+Binaries (How to Get It) <sup>[![GitHub Workflow Status][GitHub Workflow Status sup]](https://github.com/QubitPi/athena/actions/workflows/ci-cd.yml)</sup>
 ------------------------
 
 Binaries for Athena are stored in [GitHub Packages][GitHub Packages]. To install the packages from there, edit the
@@ -204,7 +204,8 @@ The use and distribution terms for [Athena][Athena Home] are covered by the
 
 [GitHub Packages]: https://github.com/QubitPi?tab=packages&repo_name=athena
 [GitHub Packages example]: https://github.com/QubitPi/athena/packages/1557510
-[GitHub Workflow Status]: https://img.shields.io/github/actions/workflow/status/QubitPi/athena/release.yml?branch=master&logo=github&style=for-the-badge
+[GitHub Workflow Status]: https://img.shields.io/github/actions/workflow/status/QubitPi/athena/ci-cd.yml?branch=master&logo=github&style=for-the-badge
+[GitHub Workflow Status sup]: https://img.shields.io/github/actions/workflow/status/QubitPi/athena/ci-cd.yml?branch=master&logo=github&style=flat-square
 
 [Hadoop HDFS]: https://hadoop.apache.org/
 
