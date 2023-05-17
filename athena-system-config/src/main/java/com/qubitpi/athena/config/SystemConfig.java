@@ -156,6 +156,13 @@ public interface SystemConfig {
      * Returns the properties used to hold the highest-priority config values.
      * <p>
      * <b>This method is intended primarily for interface support and not for client interactions</b>
+     * <p>
+     * Notes: this is a design flaw based on how it is used in method such as {@link #setProperty(String, String)}. If
+     * implementations produces a shallow copy of the runtime properties, then {@link #setProperty(String, String)} will
+     * fail to accomplish what it supposed to do. The fact that this method is "not being called by client" pushes us to
+     * look at problem at a higher level: this method assumes the returned properties are directly mutable and will
+     * mutate the config instance directly. This violates encapsulation. we should remove this method and ask client to
+     * implement {@link #setProperty(String, String)}
      *
      * @return a properties object which act as a runtime mask against other configuration properties
      */

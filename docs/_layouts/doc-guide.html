@@ -1,0 +1,39 @@
+---
+layout: doc-default
+---
+{% include setup %}
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-sm side-bar hidden-phone">
+      <ul class="nav flex-column">
+        {% assign sorted_pages = site.pages | sort:"name" %} {% for pages in sorted_pages %} 
+        {% if pages.group == "guide" and page.version == pages.version %}
+        {% if pages.subtopic == true %}
+        <li class="subtopic"><a href="{{ site.baseurl }}{{ pages.url }}">{{ pages.title }}</a></li>
+        {% else %}
+        <li><a href="{{ site.baseurl }}{{ pages.url }}">{{ pages.title }}</a></li>
+        {% endif %} 
+        {% endif %} 
+        {% endfor %}
+<!--        {% if page.version == 4 %}-->
+<!--        <li><a href="{{ site.baseurl }}/pages/guide/v6/08-start.html">Version 6 Documentation</a></li>-->
+<!--        <li><a href="{{ site.baseurl }}/pages/guide/v5/08-start.html">Version 5 Documentation</a></li>-->
+<!--        {% elsif page.version == 5 %}-->
+<!--        <li><a href="{{ site.baseurl }}/pages/guide/v6/08-start.html">Version 6 Documentation</a></li>-->
+<!--        <li><a href="{{ site.baseurl }}/pages/guide/v4/08-start.html">Version 4 Documentation</a></li>-->
+<!--        {% else %}-->
+<!--        <li><a href="{{ site.baseurl }}/pages/guide/v5/08-start.html">Version 5 Documentation</a></li>-->
+<!--        <li><a href="{{ site.baseurl }}/pages/guide/v4/08-start.html">Version 4 Documentation</a></li>-->
+<!--        {% endif %} -->
+      </ul>
+    </div>
+    <div class="col-sm-9 docs">
+      {% if pages.title != blank %}
+      <h1>{{ page.title }} {% if page.tagline %} <small>{{ page.tagline }}</small>{% endif %}</h1>
+      {% endif %}
+      <div class="row-fluid">
+        {{ content }}
+      </div>
+    </div>
+  </div>
+</div>

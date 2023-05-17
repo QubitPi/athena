@@ -63,14 +63,15 @@
         <version.commons.dbcp2>2.0.1</version.commons.dbcp2>
         <version.mysql.connector.java>5.1.38</version.mysql.connector.java>
         <version.servlet>6.0.0</version.servlet>
-        <version.jersey>3.0.8</version.jersey>
+        <version.jersey>3.1.1</version.jersey>
         <version.derby>10.11.1.1</version.derby>
         <version.flyway.core>5.0.7</version.flyway.core>
+        <version.groovy>4.0.6</version.groovy>
+        <version.jetty>11.0.14</version.jetty>
 
         <version.maven.war.plugin>3.2.2</version.maven.war.plugin>
-        <version.maven.site.plugin>3.7.1</version.maven.site.plugin>
         <version.maven.release.plugin>2.5.3</version.maven.release.plugin>
-        <version.maven.javadoc.plugin>3.2.0</version.maven.javadoc.plugin>
+        <version.maven.javadoc.plugin>3.5.0</version.maven.javadoc.plugin>
         <version.maven.jar.plugin>3.1.1</version.maven.jar.plugin>
         <version.maven.surefire.plugin>3.0.0-M5</version.maven.surefire.plugin>
         <version.maven.compiler.plugin>3.7.0</version.maven.compiler.plugin>
@@ -173,9 +174,11 @@
 
             <!-- JSON Parsing -->
             <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-databind</artifactId>
+                <groupId>com.fasterxml.jackson</groupId>
+                <artifactId>jackson-bom</artifactId>
                 <version>${version.jackson}</version>
+                <scope>import</scope>
+                <type>pom</type>
             </dependency>
 
             <!-- Apache Commons Libraries -->
@@ -206,7 +209,7 @@
             <dependency>
                 <groupId>jakarta.ws.rs</groupId>
                 <artifactId>jakarta.ws.rs-api</artifactId>
-                <version>3.0.0</version>
+                <version>3.1.0</version>
             </dependency>
 
             <!-- Jersey -->
@@ -260,38 +263,18 @@
                 <version>2.0.1</version>
             </dependency>
 
-            <!-- JAXB Binding (JDK 11+) -->
-            <dependency>
-                <groupId>jakarta.xml.bind</groupId>
-                <artifactId>jakarta.xml.bind-api</artifactId>
-                <version>3.0.0</version>
-            </dependency>
-            <dependency>
-                <groupId>org.glassfish.jaxb</groupId>
-                <artifactId>jaxb-runtime</artifactId>
-                <version>3.0.0</version>
-            </dependency>
-
             <!-- Testing -->
             <dependency>
                 <groupId>org.spockframework</groupId>
                 <artifactId>spock-bom</artifactId>
-                <version>2.0-M5-groovy-3.0</version>
+                <version>2.4-M1-groovy-4.0</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
             <dependency>
-                <groupId>org.codehaus.groovy</groupId>
-                <artifactId>groovy-all</artifactId>
-                <version>3.0.7</version>
-                <type>pom</type>
-                <scope>test</scope>
-                <exclusions>
-                    <exclusion>
-                        <artifactId>groovy-testng</artifactId>
-                        <groupId>org.codehaus.groovy</groupId>
-                    </exclusion>
-                </exclusions>
+                <groupId>org.apache.groovy</groupId>
+                <artifactId>groovy</artifactId>
+                <version>${version.groovy}</version>
             </dependency>
             <dependency> <!-- Import JsonSlurper - https://stackoverflow.com/a/71218832/14312712 -->
                 <groupId>org.apache.groovy</groupId>
@@ -327,11 +310,46 @@
                 <version>${version.flyway.core}</version>
                 <scope>test</scope>
             </dependency>
+
+            <!--Jetty-->
+            <dependency>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-server</artifactId>
+                <version>${version.jetty}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-webapp</artifactId>
+                <version>${version.jetty}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.rest-assured</groupId>
+                <artifactId>rest-assured</artifactId>
+                <version>5.3.0</version>
+                <scope>test</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.apache.groovy</groupId>
+                        <artifactId>groovy</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
     <!-- Common things that all modules need -->
     <dependencies>
+        <!-- Fix Jetty startup "WARNING: JAXBContext implementation could not be found. WADL feature is disabled" -->
+        <!-- This WARNING turns all endpoints into 404 -->
+        <!-- See https://stackoverflow.com/a/66198370 for more details -->
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>4.0.2</version>
+        </dependency>
+
         <dependency>
             <groupId>jakarta.validation</groupId>
             <artifactId>jakarta.validation-api</artifactId>
@@ -357,6 +375,11 @@
         <dependency>
             <groupId>org.spockframework</groupId>
             <artifactId>spock-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.groovy</groupId>
+            <artifactId>groovy</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.groovy</groupId>
@@ -422,24 +445,29 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
                     <version>${version.maven.javadoc.plugin}</version>
+                    <configuration>
+                        <doclint>none</doclint>  <!-- Turnoff all checks -->
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>attach-javadocs</id>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
                 </plugin>
 
                 <!-- Groovy Spock -->
                 <plugin>
                     <groupId>org.codehaus.gmavenplus</groupId>
                     <artifactId>gmavenplus-plugin</artifactId>
-                    <version>1.12.1</version> <!-- https://stackoverflow.com/a/66701302/14312712 -->
+                    <version>2.1.0</version>
                     <executions>
                         <execution>
                             <goals>
-                                <goal>addSources</goal>
-                                <goal>addTestSources</goal>
-                                <goal>generateStubs</goal>
                                 <goal>compile</goal>
-                                <goal>generateTestStubs</goal>
                                 <goal>compileTests</goal>
-                                <goal>removeStubs</goal>
-                                <goal>removeTestStubs</goal>
                             </goals>
                         </execution>
                     </executions>
@@ -511,12 +539,6 @@
 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-site-plugin</artifactId>
-                    <version>${version.maven.site.plugin}</version>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
                     <version>${version.maven.war.plugin}</version>
                 </plugin>
@@ -527,6 +549,7 @@
                     <version>${version.maven.jar.plugin}</version>
                 </plugin>
 
+                <!-- SonarCloud -->
                 <plugin>
                     <groupId>org.sonarsource.scanner.maven</groupId>
                     <artifactId>sonar-maven-plugin</artifactId>
@@ -569,25 +592,16 @@
             <plugin>
                 <groupId>org.codehaus.gmavenplus</groupId>
                 <artifactId>gmavenplus-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>add-groovy-sources</id>
-                    </execution>
-                    <execution>
-                        <id>compile-groovy</id>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>test-compile-groovy</id>
-                    </execution>
-                </executions>
             </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-site-plugin</artifactId>
+                <artifactId>maven-surefire-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
@@ -630,7 +644,7 @@
                     <encoding>UTF-8</encoding>
                     <charset>UTF-8</charset>
                     <docencoding>UTF-8</docencoding>
-                    <additionalparam>-Xdoclint:none</additionalparam>
+                    <doclint>none</doclint>
 
                     <!-- https://maven.apache.org/plugins/maven-javadoc-plugin/examples/javadoc-resources.html -->
                     <!-- https://stackoverflow.com/a/28849620 -->
