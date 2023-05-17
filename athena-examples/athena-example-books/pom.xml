@@ -32,6 +32,11 @@
         </dependency>
         <dependency>
             <groupId>com.qubitpi.athena</groupId>
+            <artifactId>athena-core</artifactId>
+            <type>test-jar</type>
+        </dependency>
+        <dependency>
+            <groupId>com.qubitpi.athena</groupId>
             <artifactId>athena-filestore-swift</artifactId>
         </dependency>
         <dependency>

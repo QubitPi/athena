@@ -22,6 +22,7 @@ import org.glassfish.hk2.utilities.Binder
 
 import spock.lang.Specification
 
+import java.lang.reflect.InvocationTargetException
 import java.util.function.Consumer
 
 class ResourceConfigSpec extends Specification {
@@ -76,9 +77,9 @@ class ResourceConfigSpec extends Specification {
         SYSTEM_CONFIG.clearProperty(BINDER_KEY)
 
         when: "resource config is constructed"
-        resourceConfigClass.newInstance()
+        resourceConfigClass.getDeclaredConstructor().newInstance()
 
-        then: "error is thrown"
-        thrown(IllegalStateException)
+        then: "new instance cannot be constructed"
+        thrown(InvocationTargetException)
     }
 }

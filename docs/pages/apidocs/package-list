@@ -1,0 +1,12 @@
+com.qubitpi.athena.application
+com.qubitpi.athena.config
+com.qubitpi.athena.file
+com.qubitpi.athena.file.identifier
+com.qubitpi.athena.filestore
+com.qubitpi.athena.filestore.swift
+com.qubitpi.athena.metadata
+com.qubitpi.athena.metastore
+com.qubitpi.athena.metastore.graphql
+com.qubitpi.athena.metastore.graphql.query
+com.qubitpi.athena.web.endpoints
+com.qubitpi.athena.web.graphql
