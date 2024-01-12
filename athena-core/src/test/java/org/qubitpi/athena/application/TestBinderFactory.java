@@ -24,8 +24,6 @@ import org.qubitpi.athena.metastore.TestMetaStore;
 
 import org.glassfish.hk2.api.TypeLiteral;
 import org.glassfish.hk2.utilities.binding.AbstractBinder;
-import org.qubitpi.athena.web.endpoints.FileServletSpec;
-import org.qubitpi.athena.web.endpoints.MetaServletSpec;
 
 import graphql.schema.DataFetcher;
 
@@ -65,8 +63,8 @@ public class TestBinderFactory extends AbstractBinderFactory {
      *
      * @param applicationState  An entry point for setting up test data
      *
-     * @see MetaServletSpec
-     * @see FileServletSpec
+     * see MetaServletSpec
+     * see FileServletSpec
      */
     public TestBinderFactory(final ApplicationState applicationState) {
         this.applicationState = applicationState;

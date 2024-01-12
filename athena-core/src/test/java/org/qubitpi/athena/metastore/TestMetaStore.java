@@ -23,7 +23,6 @@ import org.qubitpi.athena.application.JerseyTestBinder;
 import org.qubitpi.athena.application.TestBinderFactory;
 import org.qubitpi.athena.application.TestMutationDataFetcher;
 import org.qubitpi.athena.application.TestQueryDataFetcher;
-import org.qubitpi.athena.web.endpoints.MetaServletSpec;
 
 import graphql.ExecutionInput;
 import graphql.ExecutionResult;
@@ -49,7 +48,7 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 /**
- * A {@link MetaStore} test stub that facilitates {@link MetaServletSpec} mocking
+ * A {@link MetaStore} test stub that facilitates MetaServletSpec mocking
  * through {@link TestBinderFactory} and
  * {@link JerseyTestBinder}.
  * <p>

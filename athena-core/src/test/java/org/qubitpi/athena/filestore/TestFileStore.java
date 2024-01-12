@@ -20,7 +20,6 @@ import org.qubitpi.athena.file.identifier.FileIdGenerator;
 
 import org.qubitpi.athena.application.JerseyTestBinder;
 import org.qubitpi.athena.application.TestBinderFactory;
-import org.qubitpi.athena.web.endpoints.FileServletSpec;
 
 import jakarta.validation.constraints.NotNull;
 import net.jcip.annotations.GuardedBy;
@@ -38,7 +37,7 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 /**
- * A {@link FileStore} test stub that facilitates {@link FileServletSpec} mocking
+ * A {@link FileStore} test stub that facilitates FileServletSpec mocking
  * through {@link TestBinderFactory} and
  * {@link JerseyTestBinder}.
  */
