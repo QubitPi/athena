@@ -279,9 +279,9 @@
                 <version>4.0.6</version>
             </dependency>
             <dependency> <!-- Enable mocking of non-interface types -->
-                <groupId>cglib</groupId>
-                <artifactId>cglib-nodep</artifactId>
-                <version>3.3.0</version>
+                <groupId>net.bytebuddy</groupId>
+                <artifactId>byte-buddy</artifactId>
+                <version>1.14.11</version>
             </dependency>
             <dependency> <!-- enables mocking of classes without default constructor (together with CGLIB) -->
                 <groupId>org.objenesis</groupId>
@@ -383,8 +383,8 @@
             <artifactId>groovy-json</artifactId>
         </dependency>
         <dependency> <!-- Enable mocking of non-interface types -->
-            <groupId>cglib</groupId>
-            <artifactId>cglib-nodep</artifactId>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy</artifactId>
         </dependency>
         <dependency>
             <groupId>org.objenesis</groupId>
