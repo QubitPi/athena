@@ -11,6 +11,7 @@
 
     <name>Athena: Parent POM</name>
     <url>https://github.com/QubitPi/athena</url>
+    <description>Parent pom for Athena project</description>
 
     <modules>
         <module>athena-core</module>
@@ -45,6 +46,12 @@
             <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
+
+    <scm>
+        <developerConnection>scm:git:ssh://git@github.com/QubitPi/athena.git</developerConnection>
+        <url>https://github.com/QubitPi/athena.git</url>
+        <tag>HEAD</tag>
+    </scm>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
