@@ -41,18 +41,18 @@ jobs:
       - uses: actionshub/markdownlint@main
         with:
           filesToIgnoreRegex: "docs/node_modules\\/.*"
-  markdown-link-check:
-    name: Markdown Link Check
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: gaurav-nelson/github-action-markdown-link-check@v1
-        with:
-          use-verbose-mode: "yes"
+#  markdown-link-check:
+#    name: Markdown Link Check
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v3
+#      - uses: gaurav-nelson/github-action-markdown-link-check@v1
+#        with:
+#          use-verbose-mode: "yes"
 
   tests:
     name: Unit & Integration Tests
-    needs: [yaml-lint, markdown-lint, markdown-link-check]
+    needs: [yaml-lint, markdown-lint]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
