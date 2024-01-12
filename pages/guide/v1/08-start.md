@@ -214,9 +214,9 @@ The tests contain 2 parts
      [Flyway migration](../../../../athena-examples/athena-example-books/src/test/groovy/com/qubitpi/athena/example/books/application/SQLDBResourceManager.groovy)
      injects real data into a Derby in-meomroy SQL DB
    - The Derby data is injected via a shared [DBCP DataSource](#reference---apache-commons-dbcp2) declared in
-     [application BinderFactory](../../../../athena-examples/athena-example-books/src/main/java/com/qubitpi/athena/example/books/application/BooksBinderFactory.java)
+     [application BinderFactory](../../../../athena-examples/athena-example-books/src/main/java/org/qubitpi/athena/example/books/application/BooksBinderFactory.java)
    - The application resource is set alive through
-     [JerseyTestBinder](../../../../athena-examples/athena-example-books/src/test/java/com/qubitpi/athena/example/books/application/BookJerseyTestBinder.java)
+     [JerseyTestBinder](../../../../athena-examples/athena-example-books/src/test/java/org/qubitpi/athena/example/books/application/BookJerseyTestBinder.java)
 
 ### Reference - Apache Commons DBCP2
 
