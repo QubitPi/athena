@@ -33,7 +33,7 @@ Servlet Testing Documentation
 
 [Servlet-related testing](https://github.com/QubitPi/athena/tree/master/athena-core/src/main/java/com/qubitpi/athena/web/endpoints)
 is carried out using
-[Jersey Test Framework](https://qubitpi.github.io/jersey-guide/2022/07/11/jersey-test-framework.html).
+[Jersey Test Framework](https://qubitpi.github.io/jersey/test-framework.html).
 
 <img src="../../../assets/img/class-diagram.png" class="img-fluid" alt="Error loading class-diagram.png" width="100%">
 

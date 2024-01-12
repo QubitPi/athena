@@ -7,9 +7,8 @@ description: Helping application with resource binding in Athena
 version: 1
 ---
 
-Jersey uses [HK2](https://qubitpi.github.io/jersey-guide/2022/06/27/hk2.html) as its dependency injection (DI) system.
-We can use other injection systems, but its infrastructure is built with HK2, and allows us to also use it within our
-applications.
+Jersey uses [HK2](https://qubitpi.github.io/glassfish-hk2/) as its dependency injection (DI) system. We can use other
+injection systems, but its infrastructure is built with HK2, and allows us to also use it within our applications.
 
 Setting up simple dependency injection with Jersey takes just a few lines of code. Let say for example we have a service
 we would like to inject into our resources.
