@@ -100,25 +100,21 @@ The use and distribution terms for [Athena][Athena Home] are covered by the
 </div>
 
 [Apache License, Version 2.0]: http://www.apache.org/licenses/LICENSE-2.0.html
-[Athena Home]: https://qubitpi.github.io/athena/
+[Athena Home]: https://athena.qubitpi.org/
 
 [Discord]: https://img.shields.io/discord/1001320502960324658?logo=discord&logoColor=white&style=for-the-badge
 
 [example application]: https://qubitpi.github.io/athena/pages/guide/v1/08-start.html
 
-[GitHub Packages]: https://github.com/QubitPi?tab=packages&repo_name=athena
-[GitHub Packages example]: https://github.com/QubitPi/athena/packages/1557510
 [GitHub Workflow Status]: https://img.shields.io/github/actions/workflow/status/QubitPi/athena/ci-cd.yml?branch=master&logo=github&style=for-the-badge
 [GitHub Workflow Status sup]: https://img.shields.io/github/actions/workflow/status/QubitPi/athena/ci-cd.yml?branch=master&logo=github&style=flat-square
 
-[Hadoop HDFS]: https://hadoop.apache.org/
+[Hadoop HDFS]: https://qubitpi.github.io/hadoop/
 
 [Java Version Badge]: https://img.shields.io/badge/Java-11-brightgreen?style=flat-square&logo=OpenJDK&logoColor=white
 
 [License Badge]: https://img.shields.io/badge/Apache%202.0-F25910.svg?style=for-the-badge&logo=Apache&logoColor=white
 
-[OpenStack Swift]: https://docs.openstack.org/swift/latest/
-
-[Official POM doc]: https://maven.apache.org/guides/introduction/introduction-to-the-pom.html
+[OpenStack Swift]: https://qubitpi.github.io/openstack-swift/
 
 [S3 File Store]: https://qubitpi.github.io/athena/pages/guide/v1/09-filestores.html#custom-stores
