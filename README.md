@@ -1,22 +1,21 @@
-[Athena][Athena Home] <sup>![Java Version Badge][Java Version Badge]</sup>
-==========================================================================
+[Athena] <sup>![Java Version Badge][Java Version Badge]</sup>
+=============================================================
 
-> My sincere thanks to [yahoo/fili](https://github.com/yahoo/fili) & [yahoo/elide](https://github.com/yahoo/elide),
-> which gave tremendous amount of guidance on design and development of [Athena](https://github.com/QubitPi/athena),
-> and to my former employer, Yahoo, who taught me to love software engineering and fundamentally influenced my tech
-> career
+> My sincere thanks to [yahoo/fili] & [yahoo/elide], which gave tremendous amount of guidance on design and development
+> of [Athena], and to my former employer, Yahoo, who taught me to love software engineering and fundamentally
+> influenced my tech career
 
-[![GitHub Workflow Status][GitHub Workflow Status]](https://github.com/QubitPi/athena/actions/workflows/ci-cd.yml)
-![Last Commit](https://img.shields.io/github/last-commit/QubitPi/athena/master?logo=github&style=for-the-badge)
-[![Discord][Discord]](https://discord.com/widget?id=1001320502960324658&theme=dark)
-[![License Badge]](https://www.apache.org/licenses/LICENSE-2.0)
+[![GitHub Workflow Status][GitHub Workflow Status badge]][GitHub Workflow Status URL]
+![[GitHub Last Commit][GitHub Last Commit badge]
+[![Discord][Discord badge]][Discord URL]
+[![License Badge]][License URL]
 
 Athena is a Java library that lets you set up object storage webservice with minimal effort. Athena is meant to be
 specialized on managing **files**, such as books, videos, and photos. It supports object storage through two variants of
 APIs:
 
-- A [JSON API](https://jsonapi.org/) for uploading and downloading files
-- A [GraphQL](https://graphql.com/) API for reading file metadata, including
+- A [JSON API] for uploading and downloading files
+- A [GraphQL] API for reading file metadata, including
 
     - File name
     - File type
@@ -47,7 +46,8 @@ Quick Start
 
 Athena comes with a pre-configured [example application][example application] to help you get started and serve as a
 jumping-off-point for building your own web service using Athena. The example application lets you upload and download
-books you love to read, and picks up where [Swift's quick-start tutorial][Swift's quick-start tutorial] leaves off.
+books you love to read, and picks up where [Swift's quick-start tutorial][OpenStack Swift's quick-start tutorial]
+leaves off.
 
 Features
 --------
@@ -85,13 +85,12 @@ REST-based, allowing the use of many standard HTTP calls.
 Documentation
 -------------
 
-More information about Athena can be found [here](https://qubitpi.github.io/athena/)
+More information about Athena can be found [here][Athena Documentation]
 
 License
 -------
 
-The use and distribution terms for [Athena][Athena Home] are covered by the
-[Apache License, Version 2.0][Apache License, Version 2.0].
+The use and distribution terms for [Athena] are covered by the [Apache License, Version 2.0].
 
 <div align="center">
     <a href="https://opensource.org/licenses">
@@ -100,21 +99,32 @@ The use and distribution terms for [Athena][Athena Home] are covered by the
 </div>
 
 [Apache License, Version 2.0]: http://www.apache.org/licenses/LICENSE-2.0.html
-[Athena Home]: https://athena.qubitpi.org/
+[Athena]: https://athena.qubitpi.org/
+[Athena Documentation]: https://qubitpi.github.io/athena/doc-index.html
 
-[Discord]: https://img.shields.io/discord/1001320502960324658?logo=discord&logoColor=white&style=for-the-badge
+[Discord badge]: https://img.shields.io/discord/1001320502960324658?logo=discord&logoColor=white&style=for-the-badge
+[Discord URL]: https://discord.com/widget?id=1001320502960324658&theme=dark
 
 [example application]: https://qubitpi.github.io/athena/pages/guide/v1/08-start.html
 
-[GitHub Workflow Status]: https://img.shields.io/github/actions/workflow/status/QubitPi/athena/ci-cd.yml?branch=master&logo=github&style=for-the-badge
+[GitHub Last Commit badge]: https://img.shields.io/github/last-commit/QubitPi/athena/master?logo=github&style=for-the-badge
+[GitHub Workflow Status badge]: https://img.shields.io/github/actions/workflow/status/QubitPi/athena/ci-cd.yml?branch=master&logo=github&style=for-the-badge
+[GitHub Workflow Status URL]: https://github.com/QubitPi/athena/actions/workflows/ci-cd.yml
 [GitHub Workflow Status sup]: https://img.shields.io/github/actions/workflow/status/QubitPi/athena/ci-cd.yml?branch=master&logo=github&style=flat-square
+[GraphQL]: https://qubitpi.github.io/graphql.github.io/
 
 [Hadoop HDFS]: https://qubitpi.github.io/hadoop/
 
 [Java Version Badge]: https://img.shields.io/badge/Java-11-brightgreen?style=flat-square&logo=OpenJDK&logoColor=white
+[JSON API]: https://qubitpi.github.io/json-api/
 
 [License Badge]: https://img.shields.io/badge/Apache%202.0-F25910.svg?style=for-the-badge&logo=Apache&logoColor=white
+[License URL]: https://www.apache.org/licenses/LICENSE-2.0
 
 [OpenStack Swift]: https://qubitpi.github.io/openstack-swift/
+[OpenStack Swift's quick-start tutorial]: https://qubitpi.github.io/athena/pages/guide/v1/10-local-swift.html
 
 [S3 File Store]: https://qubitpi.github.io/athena/pages/guide/v1/09-filestores.html#custom-stores
+
+[yahoo/elide]: https://github.com/yahoo/elide
+[yahoo/fili]: https://github.com/yahoo/fili
