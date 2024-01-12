@@ -6,7 +6,7 @@
 > influenced my tech career
 
 [![GitHub Workflow Status][GitHub Workflow Status badge]][GitHub Workflow Status URL]
-![[GitHub Last Commit][GitHub Last Commit badge]
+![[GitHub Last Commit]][GitHub Last Commit badge]
 [![Discord][Discord badge]][Discord URL]
 [![License Badge]][License URL]
 
