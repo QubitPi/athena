@@ -50,8 +50,8 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../com/qubitpi/athena/config/LayeredFileSystemConfig.html" title="class in com.qubitpi.athena.config"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../com/qubitpi/athena/config/SystemConfig.html" title="interface in com.qubitpi.athena.config"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../com/qubitpi/athena/config/LayeredFileSystemConfig.html" title="class in org.qubitpi.athena.config"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../com/qubitpi/athena/config/SystemConfig.html" title="interface in org.qubitpi.athena.config"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../index.html?com/qubitpi/athena/config/MessageFormatter.html" target="_top">Frames</a></li>
@@ -93,7 +93,7 @@ var activeTableTab = "activeTableTab";
 <!-- ========= END OF TOP NAVBAR ========= -->
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
-<div class="subTitle">com.qubitpi.athena.config</div>
+<div class="subTitle">org.qubitpi.athena.config</div>
 <h2 title="Interface MessageFormatter" class="title">Interface MessageFormatter</h2>
 </div>
 <div class="contentContainer">
@@ -102,12 +102,12 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Known Implementing Classes:</dt>
-<dd><a href="../../../../com/qubitpi/athena/config/ErrorMessageFormat.html" title="enum in com.qubitpi.athena.config">ErrorMessageFormat</a></dd>
+<dd><a href="../../../../com/qubitpi/athena/config/ErrorMessageFormat.html" title="enum in org.qubitpi.athena.config">ErrorMessageFormat</a></dd>
 </dl>
 <hr>
 <br>
 <pre>public interface <span class="typeNameLabel">MessageFormatter</span></pre>
-<div class="block"><a href="../../../../com/qubitpi/athena/config/MessageFormatter.html" title="interface in com.qubitpi.athena.config"><code>MessageFormatter</code></a> provides shared functionality to provide formatted logging and messaging.
+<div class="block"><a href="../../../../com/qubitpi/athena/config/MessageFormatter.html" title="interface in org.qubitpi.athena.config"><code>MessageFormatter</code></a> provides shared functionality to provide formatted logging and messaging.
  <p>
  Webservice applications deals with unchecked exceptions frequently. The application catches the exception, logs a
  custom message, and send another custom user-face error message back to client (also often passed to downstream
@@ -126,16 +126,16 @@ var activeTableTab = "activeTableTab";
  "num connections". <a href="../../../../com/qubitpi/athena/config/MessageFormatter.html#getLoggingFormat--"><code>getLoggingFormat()</code></a> in this case returns "%s has to be positive" and the argument to
  <a href="../../../../com/qubitpi/athena/config/MessageFormatter.html#format-java.lang.Object...-"><code>format(Object...)</code></a> will be "age" and "num connections", respectively.
  <p>
- <a href="../../../../com/qubitpi/athena/config/MessageFormatter.html" title="interface in com.qubitpi.athena.config"><code>MessageFormatter</code></a> also gives you flexibility to customize the message content based on the reader of the
+ <a href="../../../../com/qubitpi/athena/config/MessageFormatter.html" title="interface in org.qubitpi.athena.config"><code>MessageFormatter</code></a> also gives you flexibility to customize the message content based on the reader of the
  message. In the example of people age above, the error message to Webservice client might be "age has to be
  positive", but in the server log, a message like "endpoint 'xyz' has an invalid request parameter 'people.age'" will
  be much more useful to an engineer. To support that, <a href="../../../../com/qubitpi/athena/config/MessageFormatter.html#getMessageFormat--"><code>getMessageFormat()</code></a> and <a href="../../../../com/qubitpi/athena/config/MessageFormatter.html#format-java.lang.Object...-"><code>format(Object...)</code></a> will
  be used for message that is sent to the client, while <a href="../../../../com/qubitpi/athena/config/MessageFormatter.html#getLoggingFormat--"><code>getLoggingFormat()</code></a> and <a href="../../../../com/qubitpi/athena/config/MessageFormatter.html#logFormat-java.lang.Object...-"><code>logFormat(Object...)</code></a>
  will be used for message for the logging.
  <p>
- A recommended implementation of <a href="../../../../com/qubitpi/athena/config/MessageFormatter.html" title="interface in com.qubitpi.athena.config"><code>MessageFormatter</code></a> is enum such as the following:
+ A recommended implementation of <a href="../../../../com/qubitpi/athena/config/MessageFormatter.html" title="interface in org.qubitpi.athena.config"><code>MessageFormatter</code></a> is enum such as the following:
  <pre>
- 
+
  public enum ErrorMessageFormat implements MessageFormatter {
      NEGATIVE_NUMBER("'%s' has to be positive", "Negative invalid value found at component '%s'"),
      ...
@@ -297,8 +297,8 @@ default&nbsp;@NotNull <a href="https://docs.oracle.com/javase/8/docs/api/java/la
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../com/qubitpi/athena/config/LayeredFileSystemConfig.html" title="class in com.qubitpi.athena.config"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../com/qubitpi/athena/config/SystemConfig.html" title="interface in com.qubitpi.athena.config"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../com/qubitpi/athena/config/LayeredFileSystemConfig.html" title="class in org.qubitpi.athena.config"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../com/qubitpi/athena/config/SystemConfig.html" title="interface in org.qubitpi.athena.config"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../index.html?com/qubitpi/athena/config/MessageFormatter.html" target="_top">Frames</a></li>
