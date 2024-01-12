@@ -1,5 +1,5 @@
-[Athena] <sup>![Java Version Badge][Java Version Badge]</sup>
-=============================================================
+Athena <sup>![Java Version Badge][Java Version Badge]</sup>
+===========================================================
 
 > My sincere thanks to [yahoo/fili] & [yahoo/elide], which gave tremendous amount of guidance on design and development
 > of [Athena], and to my former employer, Yahoo, who taught me to love software engineering and fundamentally
@@ -110,12 +110,11 @@ The use and distribution terms for [Athena] are covered by the [Apache License, 
 [GitHub Last Commit badge]: https://img.shields.io/github/last-commit/QubitPi/athena/master?logo=github&style=for-the-badge
 [GitHub Workflow Status badge]: https://img.shields.io/github/actions/workflow/status/QubitPi/athena/ci-cd.yml?branch=master&logo=github&style=for-the-badge
 [GitHub Workflow Status URL]: https://github.com/QubitPi/athena/actions/workflows/ci-cd.yml
-[GitHub Workflow Status sup]: https://img.shields.io/github/actions/workflow/status/QubitPi/athena/ci-cd.yml?branch=master&logo=github&style=flat-square
 [GraphQL]: https://qubitpi.github.io/graphql.github.io/
 
 [Hadoop HDFS]: https://qubitpi.github.io/hadoop/
 
-[Java Version Badge]: https://img.shields.io/badge/Java-11-brightgreen?style=flat-square&logo=OpenJDK&logoColor=white
+[Java Version Badge]: https://img.shields.io/badge/Java-17-brightgreen?style=for-the-badge&logo=OpenJDK&logoColor=white
 [JSON API]: https://qubitpi.github.io/json-api/
 
 [License Badge]: https://img.shields.io/badge/Apache%202.0-F25910.svg?style=for-the-badge&logo=Apache&logoColor=white

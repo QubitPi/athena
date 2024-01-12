@@ -45,8 +45,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
 
         <version.athena>1.0-SNAPSHOT</version.athena>
         <version.validation.api>3.0.1</version.validation.api>
@@ -402,7 +402,7 @@
                     <version>${version.maven.release.plugin}</version>
                 </plugin>
 
-                <!-- Use Java 11 -->
+                <!-- Use Java 17 -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>

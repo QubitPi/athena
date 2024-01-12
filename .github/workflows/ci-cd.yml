@@ -21,8 +21,6 @@ name: Athena CI/CD
       - master
 
 env:
-  JDK_VERSION: 11
-  JDK_DISTRIBUTION: 'adopt'
   USER: QubitPi
   EMAIL: jack20220723@gmail.com
 
@@ -56,13 +54,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: Set up JDK ${{ env.JDK_VERSION }}
-        uses: actions/setup-java@v3
-        with:
-          java-version: ${{ env.JDK_VERSION }}
-          distribution: ${{ env.JDK_DISTRIBUTION }}
+      - name: Set up JDK
+        uses: QubitPi/hashicorp-aws/hashicorp/webservice/auxiliary/github/actions/jdk-setup@master
       - name: Run unit & integration tests
         run: mvn -B clean verify
 
@@ -83,11 +76,8 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.0'
-      - name: Set up JDK ${{ env.JDK_VERSION }}
-        uses: actions/setup-java@v3
-        with:
-          java-version: ${{ env.JDK_VERSION }}
-          distribution: ${{ env.JDK_DISTRIBUTION }}
+      - name: Set up JDK
+        uses: QubitPi/hashicorp-aws/hashicorp/webservice/auxiliary/github/actions/jdk-setup@master
       - name: Install dependencies and build documentation
         working-directory: docs
         run: |
@@ -115,6 +105,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Set up JDK
+        uses: QubitPi/hashicorp-aws/hashicorp/webservice/auxiliary/github/actions/jdk-setup@master
       - name: Build App WAR file so that Docker can pickup during image build
         run: mvn clean package
       - name: Set up QEMU
