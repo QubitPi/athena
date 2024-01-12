@@ -28,10 +28,10 @@ Servlet Testing Documentation
 >
 > One noticeable deviation is that since some of Fili's classes have made it possible for themselves to be mutable,
 > which Athena doesn't do, the stubbing is defined not on these classes, but on
-> [ApplicationState](../../../../athena-core/src/test/java/com/qubitpi/athena/application/ApplicationState.java), which
+> [ApplicationState](../../../../athena-core/src/test/java/org/qubitpi/athena/application/ApplicationState.java), which
 > is a modified adaption of Fili ApplicationState
 
-[Servlet-related testing](https://github.com/QubitPi/athena/tree/master/athena-core/src/main/java/com/qubitpi/athena/web/endpoints)
+[Servlet-related testing](https://github.com/QubitPi/athena/tree/master/athena-core/src/main/java/org/qubitpi/athena/web/endpoints)
 is carried out using
 [Jersey Test Framework](https://qubitpi.github.io/jersey/test-framework.html).
 
@@ -44,7 +44,7 @@ follows the following pattern to setup, run, and shutdown tests:
 ### 1. Initialize ApplicationState
 
 Test specs initializes test data and mocking through
-[ApplicationState](../../../../athena-core/src/test/java/com/qubitpi/athena/application/ApplicationState.java) in
+[ApplicationState](../../../../athena-core/src/test/java/org/qubitpi/athena/application/ApplicationState.java) in
 `setup()`
 
 ```groovy
@@ -77,7 +77,7 @@ Executing the statement above will start a [Grizzly container](https://javaee.gi
 endpoints are ready to receive test requests.
 
 > 📋 When writing tests for
-> [FileServlet](../../../../athena-core/src/main/java/com/qubitpi/athena/web/endpoints/FileServlet.java), make sure
+> [FileServlet](../../../../athena-core/src/main/java/org/qubitpi/athena/web/endpoints/FileServlet.java), make sure
 > `MultiPartFeature.class` is also passed in as a
 > resource class since the file uploading involves a separate Jersey component enabled by it. For example:
 >
@@ -94,12 +94,12 @@ jerseyTestBinder.start()
 ```
 
 Internally
-[JerseyTestBinder](../../../../athena-core/src/test/java/com/qubitpi/athena/application/JerseyTestBinder.java) sets
-[TestBinderFactory](../../../../athena-core/src/test/java/com/qubitpi/athena/application/TestBinderFactory.java) to
+[JerseyTestBinder](../../../../athena-core/src/test/java/org/qubitpi/athena/application/JerseyTestBinder.java) sets
+[TestBinderFactory](../../../../athena-core/src/test/java/org/qubitpi/athena/application/TestBinderFactory.java) to
 bind those data and behaviors into the actual test
 
 > Note that the
-> [JerseyTestBinder](../../../../athena-core/src/test/java/com/qubitpi/athena/application/JerseyTestBinder.java)
+> [JerseyTestBinder](../../../../athena-core/src/test/java/org/qubitpi/athena/application/JerseyTestBinder.java)
 > creates separate container for each test. Setup method is named `setup()` and teardown method `cleanup()` by Groovy
 > Spock convention.
 
@@ -150,7 +150,7 @@ failed during application initialization.
 ```
 
 Athena uses ResourceConfig type for configuration. We need to register the `MultiPartFeature`. Instead of using
-[Athena ResourceConfig](../../../../athena-core/src/main/java/com/qubitpi/athena/application/ResourceConfig.java),
+[Athena ResourceConfig](../../../../athena-core/src/main/java/org/qubitpi/athena/application/ResourceConfig.java),
 servlet test spec configures with the native
 [Jersey ResourceConfig](https://github.com/eclipse-ee4j/jersey/blob/master/core-server/src/main/java/org/glassfish/jersey/server/ResourceConfig.java).
 The reason is so that we could bind certain resource classes that we only need in a test spec to enhance test

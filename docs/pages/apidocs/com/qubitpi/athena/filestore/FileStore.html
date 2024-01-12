@@ -93,7 +93,7 @@ var activeTableTab = "activeTableTab";
 <!-- ========= END OF TOP NAVBAR ========= -->
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
-<div class="subTitle">com.qubitpi.athena.filestore</div>
+<div class="subTitle">org.qubitpi.athena.filestore</div>
 <h2 title="Interface FileStore" class="title">Interface FileStore</h2>
 </div>
 <div class="contentContainer">
@@ -102,14 +102,14 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Known Implementing Classes:</dt>
-<dd><a href="../../../../com/qubitpi/athena/filestore/swift/SwiftFileStore.html" title="class in com.qubitpi.athena.filestore.swift">SwiftFileStore</a></dd>
+<dd><a href="../../../../com/qubitpi/athena/filestore/swift/SwiftFileStore.html" title="class in org.qubitpi.athena.filestore.swift">SwiftFileStore</a></dd>
 </dl>
 <hr>
 <br>
 <pre>@NotThreadSafe
 public interface <span class="typeNameLabel">FileStore</span></pre>
-<div class="block"><a href="../../../../com/qubitpi/athena/filestore/FileStore.html" title="interface in com.qubitpi.athena.filestore"><code>FileStore</code></a> is an abstraction layer between Athena application and object storage; it can persist an
- <a href="../../../../com/qubitpi/athena/file/File.html" title="class in com.qubitpi.athena.file"><code>in-memory representation</code></a> of a file into object storage as well as retrieving it from that storage.</div>
+<div class="block"><a href="../../../../com/qubitpi/athena/filestore/FileStore.html" title="interface in org.qubitpi.athena.filestore"><code>FileStore</code></a> is an abstraction layer between Athena application and object storage; it can persist an
+ <a href="../../../../com/qubitpi/athena/file/File.html" title="class in org.qubitpi.athena.file"><code>in-memory representation</code></a> of a file into object storage as well as retrieving it from that storage.</div>
 </li>
 </ul>
 </div>
@@ -136,7 +136,7 @@ public interface <span class="typeNameLabel">FileStore</span></pre>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>@NotNull <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/qubitpi/athena/filestore/FileStore.html#upload-com.qubitpi.athena.file.File-">upload</a></span>(@NotNull <a href="../../../../com/qubitpi/athena/file/File.html" title="class in com.qubitpi.athena.file">File</a>&nbsp;file)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/qubitpi/athena/filestore/FileStore.html#upload-file.org.qubitpi.athena.File-">upload</a></span>(@NotNull <a href="../../../../com/qubitpi/athena/file/File.html" title="class in org.qubitpi.athena.file">File</a>&nbsp;file)</code>
 <div class="block">Persists a file into object storage database.</div>
 </td>
 </tr>
@@ -155,7 +155,7 @@ public interface <span class="typeNameLabel">FileStore</span></pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="upload-com.qubitpi.athena.file.File-">
+<a name="upload-file.org.qubitpi.athena.File-">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -163,14 +163,14 @@ public interface <span class="typeNameLabel">FileStore</span></pre>
 <h4>upload</h4>
 <pre>@NotNull
 @NotNull <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;upload(@NotNull
-                                @NotNull <a href="../../../../com/qubitpi/athena/file/File.html" title="class in com.qubitpi.athena.file">File</a>&nbsp;file)</pre>
+                                @NotNull <a href="../../../../com/qubitpi/athena/file/File.html" title="class in org.qubitpi.athena.file">File</a>&nbsp;file)</pre>
 <div class="block">Persists a file into object storage database.
  <p>
  Note that calling this method does NOT automatically update the managed metadata of this file in
- <a href="../../../../com/qubitpi/athena/metastore/MetaStore.html" title="interface in com.qubitpi.athena.metastore"><code>MetaStore</code></a>. The metadata must be saved separately using
- <a href="../../../../com/qubitpi/athena/metastore/MetaStore.html#saveMetaData-java.lang.String-com.qubitpi.athena.metadata.MetaData-"><code>MetaStore.saveMetaData(String, MetaData)</code></a>.
+ <a href="../../../../com/qubitpi/athena/metastore/MetaStore.html" title="interface in org.qubitpi.athena.metastore"><code>MetaStore</code></a>. The metadata must be saved separately using
+ <a href="../../../../com/qubitpi/athena/metastore/MetaStore.html#saveMetaData-java.lang.String-metadata.org.qubitpi.athena.MetaData-"><code>MetaStore.saveMetaData(String, MetaData)</code></a>.
  <p>
- The implementation does NOT have to be thread-safe. <a href="../../../../com/qubitpi/athena/filestore/FileStore.html" title="interface in com.qubitpi.athena.filestore"><code>FileStore</code></a> assumes that it is the callers'
+ The implementation does NOT have to be thread-safe. <a href="../../../../com/qubitpi/athena/filestore/FileStore.html" title="interface in org.qubitpi.athena.filestore"><code>FileStore</code></a> assumes that it is the callers'
  responsibilities to implement the thread safety themselves.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -194,9 +194,9 @@ public interface <span class="typeNameLabel">FileStore</span></pre>
 <div class="block">Retrieves a file identified by a specified file ID from object storage.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>fileId</code> - The provided file ID, which is the same as the return value of <a href="../../../../com/qubitpi/athena/filestore/FileStore.html#upload-com.qubitpi.athena.file.File-"><code>upload(File)</code></a></dd>
+<dd><code>fileId</code> - The provided file ID, which is the same as the return value of <a href="../../../../com/qubitpi/athena/filestore/FileStore.html#upload-file.org.qubitpi.athena.File-"><code>upload(File)</code></a></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>a previously <a href="../../../../com/qubitpi/athena/filestore/FileStore.html#upload-com.qubitpi.athena.file.File-"><code>uploaded file stream</code></a></dd>
+<dd>a previously <a href="../../../../com/qubitpi/athena/filestore/FileStore.html#upload-file.org.qubitpi.athena.File-"><code>uploaded file stream</code></a></dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/NullPointerException.html?is-external=true" title="class or interface in java.lang">NullPointerException</a></code> - if <code>fileId</code> is <code>null</code></dd>
 </dl>
