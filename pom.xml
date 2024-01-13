@@ -702,8 +702,6 @@
                                     <goal>sign</goal>
                                 </goals>
                                 <configuration>
-                                    <keyname>${env.GPG_KEYNAME}</keyname>
-                                    <passphraseServerId>${env.GPG_KEYNAME}</passphraseServerId>
                                     <gpgArguments>
                                         <arg>--pinentry-mode</arg>
                                         <arg>loopback</arg>
