@@ -167,4 +167,6 @@ jobs:
               }
             ]
       - name: Publish to Maven Central
-        run: mvn --batch-mode deploy
+        run: mvn -B deploy -P ossrh
+        env:
+          GPG_KEYNAME: ${{ secrets.GPG_KEYNAME }}
