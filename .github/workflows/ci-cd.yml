@@ -167,6 +167,8 @@ jobs:
               }
             ]
       - name: Publish to Maven Central
-        run: mvn -B deploy -P ossrh
+        run: |
+          git config user.signingkey ${{ secrets.GPG_KEY }}
+          mvn -B deploy -P ossrh
         env:
           GPG_KEYNAME: ${{ secrets.GPG_KEYNAME }}
