@@ -39,18 +39,18 @@ jobs:
       - uses: actionshub/markdownlint@main
         with:
           filesToIgnoreRegex: "docs/node_modules\\/.*"
-#  markdown-link-check:
-#    name: Markdown Link Check
-#    runs-on: ubuntu-latest
-#    steps:
-#      - uses: actions/checkout@v3
-#      - uses: gaurav-nelson/github-action-markdown-link-check@v1
-#        with:
-#          use-verbose-mode: "yes"
+  markdown-link-check:
+    name: Markdown Link Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: gaurav-nelson/github-action-markdown-link-check@v1
+        with:
+          use-verbose-mode: "yes"
 
   tests:
     name: Unit & Integration Tests
-    needs: [yaml-lint, markdown-lint]
+    needs: [yaml-lint, markdown-lint, markdown-link-check]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -131,3 +131,50 @@ jobs:
           context: athena-examples/athena-example-books
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/athena-example-books:latest
+
+  maven-release:
+    name: Publish Athena to Maven Central
+    if: github.ref == 'refs/heads/master'
+    needs: tests
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # allow for pushing tag
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # https://github.com/actions/checkout/issues/338#issuecomment-732300720
+      - name: Set up JDK
+        uses: QubitPi/hashicorp-aws/hashicorp/webservice/auxiliary/github/actions/jdk-setup@master
+      - name: Tag for release
+        run: |
+          git config --global user.name '$USER'
+          git config --global user.email '$EMAIL'
+          .github/tag-for-release.bash
+      - name: Set release version
+        run: |
+          VERSION=$(git describe)
+          mvn versions:set -DnewVersion=$VERSION -DgenerateBackupPoms=false
+          mvn versions:update-property -Dproperty=version.athena -DnewVersion=$VERSION -DgenerateBackupPoms=false
+      - name: Generate settings file
+        uses: whelk-io/maven-settings-xml-action@v20
+        with:
+          servers: >
+            [
+              {
+                "id": "ossrh",
+                "username": "${{ secrets.USERNAME }}",
+                "password": "${{ secrets.PASSWORD }}"
+              }
+            ]
+          profiles: >
+            [
+              {
+                "id": "ossrh",
+                "properties": {
+                  "gpg.executable": "gpg",
+                  "gpg.passphrase": "${{ secrets.GPG_PASSPHRASE }}"
+                }
+              }
+            ]
+      - name: Publish to Maven Central
+        run: mvn -B deploy -P ossrh

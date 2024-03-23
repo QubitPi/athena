@@ -38,7 +38,7 @@ is carried out using
 <img src="../../../assets/img/class-diagram.png" class="img-fluid" alt="Error loading class-diagram.png" width="100%">
 
 Each
-[`***ServletSpec.groovy`](https://github.com/QubitPi/athena/tree/master/athena-core/src/test/groovy/com/qubitpi/athena/web/endpoints)
+[`***ServletSpec.groovy`](https://github.com/QubitPi/athena/tree/master/athena-core/src/test/groovy/org/qubitpi/athena/web/endpoints)
 follows the following pattern to setup, run, and shutdown tests:
 
 ### 1. Initialize ApplicationState
