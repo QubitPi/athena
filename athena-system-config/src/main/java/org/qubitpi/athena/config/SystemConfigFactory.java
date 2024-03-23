@@ -75,9 +75,9 @@ public final class SystemConfigFactory {
             try {
                 return (SystemConfig) Class.forName(systemConfigImplementation).newInstance();
             } catch (final ClassNotFoundException | InstantiationException | IllegalAccessException exception) {
-                LOG.error(ErrorMessageFormat.SYSTEM_CONFIG_LOADING_ERROR_MESSAGE.logFormat());
+                LOG.error(ErrorMessageFormat.CLASS_LOADING_ERROR.logFormat(systemConfigImplementation));
                 throw new IllegalStateException(
-                        ErrorMessageFormat.SYSTEM_CONFIG_LOADING_ERROR_MESSAGE.format(),
+                        ErrorMessageFormat.CLASS_LOADING_ERROR.format(),
                         exception
                 );
             }
