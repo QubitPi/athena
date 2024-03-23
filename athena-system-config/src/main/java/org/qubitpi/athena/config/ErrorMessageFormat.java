@@ -63,7 +63,40 @@ public enum ErrorMessageFormat implements MessageFormatter {
     /**
      * When meta data not found.
      */
-    META_DATA_NOT_FOUND("No meta data found for file ID '%s'");
+    META_DATA_NOT_FOUND("No meta data found for file ID '%s'"),
+
+    /**
+     * Whenever READ operation fails Athena local disk.
+     */
+    DISK_IO_FETCH_ERROR(
+            "Athena could not process the request due to an internal error with local dist read.",
+                    "Local disk IO fetch error: %s"
+    ),
+
+    /**
+     * Whenever Write operation fails Athena local disk.
+     */
+    DISK_IO_WRITE_ERROR(
+            "Athena could not process the request due to an internal error with local dist update.",
+                    "Local disk IO write error: %s"
+    ),
+
+    /**
+     * Whenever READ operation fails between HDFS and Athena.
+     */
+    HDFS_FETCH_IO_ERROR(
+            "Athena could not process the request due to an internal error reading from HDFS.",
+                    "HDFS reading IO error: %s"
+    ),
+
+    /**
+     * Whenever WRITE operation fails between HDFS and Athena.
+     */
+    HDFS_WRITE_IO_ERROR(
+            "Athena could not process the request due to an internal error writing to HDFS.",
+                    "HDFS writing IO error: %s"
+    )
+    ;
 
     private final String messageFormat;
     private final String loggingFormat;
@@ -81,8 +114,8 @@ public enum ErrorMessageFormat implements MessageFormatter {
     /**
      * Constructor.
      *
-     * @param messageFormat User facing message format
-     * @param loggingFormat Server log message format
+     * @param messageFormat  User facing message format
+     * @param loggingFormat  Server log message format
      * @throws NullPointerException if any argument is {@code null}
      */
     ErrorMessageFormat(final @NotNull String messageFormat, final @NotNull String loggingFormat) {
