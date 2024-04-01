@@ -107,9 +107,9 @@ The use and distribution terms for [Athena] are covered by the [Apache License, 
 
 [example application]: https://qubitpi.github.io/athena/pages/guide/v1/08-start.html
 
-[GitHub Last Commit badge]: https://img.shields.io/github/last-commit/QubitPi/athena/master?logo=github&style=for-the-badge
-[GitHub Workflow Status badge]: https://img.shields.io/github/actions/workflow/status/QubitPi/athena/ci-cd.yml?branch=master&logo=github&style=for-the-badge
-[GitHub Workflow Status URL]: https://github.com/QubitPi/athena/actions/workflows/ci-cd.yml
+[GitHub Last Commit badge]: https://img.shields.io/github/last-commit/paion-data/athena/master?logo=github&style=for-the-badge
+[GitHub Workflow Status badge]: https://img.shields.io/github/actions/workflow/status/paion-data/athena/ci-cd.yml?branch=master&logo=github&style=for-the-badge
+[GitHub Workflow Status URL]: https://github.com/paion-data/athena/actions/workflows/ci-cd.yml
 [GraphQL]: https://qubitpi.github.io/graphql.github.io/
 
 [Hadoop HDFS]: https://qubitpi.github.io/hadoop/

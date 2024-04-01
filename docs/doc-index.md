@@ -250,7 +250,7 @@ layout: doc-default
       <div class="col-sm my-3 my-sm-0">
         <h4>Open Source</h4>
         <p>
-          Athena is 100% open source and available on <a href="https://github.com/QubitPi/athena">Github</a>.
+          Athena is 100% open source and available on <a href="https://github.com/paiondata/athena">Github</a>.
           Released under the commercial-friendly <a href="pages/license.html">Apache License, Version 2.0</a>.
         </p>
       </div>
@@ -287,7 +287,7 @@ layout: doc-default
         <a href="https://github.com/QubitPi?tab=packages&repo_name=athena">Releases</a>
       </div>
       <div class="col-sm">
-        <a href="https://github.com/QubitPi/athena">
+        <a href="https://github.com/paiondata/athena">
           <button type="button" class="btn btn-secondary github">
             <img src="assets/images/GitHub-Mark-Light-32px.png" class="img-fluid" alt="Github Logo">
             <span>Github</span>

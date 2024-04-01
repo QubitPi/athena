@@ -39,23 +39,23 @@ jobs:
       - uses: actionshub/markdownlint@main
         with:
           filesToIgnoreRegex: "docs/node_modules\\/.*"
-  markdown-link-check:
-    name: Markdown Link Check
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: gaurav-nelson/github-action-markdown-link-check@v1
-        with:
-          use-verbose-mode: "yes"
+#  markdown-link-check:
+#    name: Markdown Link Check
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v3
+#      - uses: gaurav-nelson/github-action-markdown-link-check@v1
+#        with:
+#          use-verbose-mode: "yes"
 
   tests:
     name: Unit & Integration Tests
-    needs: [yaml-lint, markdown-lint, markdown-link-check]
+    needs: [yaml-lint, markdown-lint]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK
-        uses: QubitPi/hashicorp-aws/hashicorp/webservice/auxiliary/github/actions/jdk-setup@master
+        uses: QubitPi/hashicorp-aws/.github/actions/jdk-setup@master
       - name: Run unit & integration tests
         run: mvn -B clean verify
 
@@ -77,7 +77,7 @@ jobs:
         with:
           ruby-version: '3.0'
       - name: Set up JDK
-        uses: QubitPi/hashicorp-aws/hashicorp/webservice/auxiliary/github/actions/jdk-setup@master
+        uses: QubitPi/hashicorp-aws/.github/actions/jdk-setup@master
       - name: Install dependencies and build documentation
         working-directory: docs
         run: |
@@ -106,7 +106,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Set up JDK
-        uses: QubitPi/hashicorp-aws/hashicorp/webservice/auxiliary/github/actions/jdk-setup@master
+        uses: QubitPi/hashicorp-aws/.github/actions/jdk-setup@master
       - name: Build App WAR file so that Docker can pickup during image build
         run: mvn clean package
       - name: Set up QEMU

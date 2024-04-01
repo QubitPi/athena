@@ -38,4 +38,4 @@ loaded.
 <sub>* Since `userConfig.properties` is often used while developing to turn features on and off, `.gitignore` includes
 a  rule to ignore this file by default to help prevent checking it in accidentally.</sub>
 
-[athena-system-config]: https://github.com/QubitPi/athena/tree/master/athena-system-config
+[athena-system-config]: https://github.com/paion-data/athena/tree/master/athena-system-config

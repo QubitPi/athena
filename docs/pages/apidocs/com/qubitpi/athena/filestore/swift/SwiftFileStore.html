@@ -54,7 +54,7 @@ var activeTableTab = "activeTableTab";
 <li>Next&nbsp;Class</li>
 </ul>
 <ul class="navList">
-<li><a href="../../../../../index.html?com/qubitpi/athena/filestore/swift/SwiftFileStore.html" target="_top">Frames</a></li>
+<li><a href="../../../../../index.html?com/paiondata/athena/filestore/swift/SwiftFileStore.html" target="_top">Frames</a></li>
 <li><a href="SwiftFileStore.html" target="_top">No&nbsp;Frames</a></li>
 </ul>
 <ul class="navList" id="allclasses_navbar_top">
@@ -93,7 +93,7 @@ var activeTableTab = "activeTableTab";
 <!-- ========= END OF TOP NAVBAR ========= -->
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
-<div class="subTitle">com.qubitpi.athena.filestore.swift</div>
+<div class="subTitle">com.paiondata.athena.filestore.swift</div>
 <h2 title="Class SwiftFileStore" class="title">Class SwiftFileStore</h2>
 </div>
 <div class="contentContainer">
@@ -101,7 +101,7 @@ var activeTableTab = "activeTableTab";
 <li><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
-<li>com.qubitpi.athena.filestore.swift.SwiftFileStore</li>
+<li>swift.filestore.com.paiondata.athena.SwiftFileStore</li>
 </ul>
 </li>
 </ul>
@@ -110,7 +110,7 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd><a href="../../../../../com/qubitpi/athena/filestore/FileStore.html" title="interface in com.qubitpi.athena.filestore">FileStore</a></dd>
+<dd><a href="../../../../../com/paiondata/athena/filestore/FileStore.html" title="interface in com.paiondata.athena.filestore">FileStore</a></dd>
 </dl>
 <hr>
 <br>
@@ -118,8 +118,8 @@ var activeTableTab = "activeTableTab";
  @NotThreadSafe
 public class <span class="typeNameLabel">SwiftFileStore</span>
 extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
-implements <a href="../../../../../com/qubitpi/athena/filestore/FileStore.html" title="interface in com.qubitpi.athena.filestore">FileStore</a></pre>
-<div class="block">An OpenStack Swift implementation of <a href="../../../../../com/qubitpi/athena/filestore/FileStore.html" title="interface in com.qubitpi.athena.filestore"><code>FileStore</code></a>.</div>
+implements <a href="../../../../../com/paiondata/athena/filestore/FileStore.html" title="interface in com.paiondata.athena.filestore">FileStore</a></pre>
+<div class="block">An OpenStack Swift implementation of <a href="../../../../../com/paiondata/athena/filestore/FileStore.html" title="interface in com.paiondata.athena.filestore"><code>FileStore</code></a>.</div>
 </li>
 </ul>
 </div>
@@ -140,7 +140,7 @@ implements <a href="../../../../../com/qubitpi/athena/filestore/FileStore.html" 
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/qubitpi/athena/filestore/swift/SwiftFileStore.html#DEFAULT_CONTAINER">DEFAULT_CONTAINER</a></span></code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/paiondata/athena/filestore/swift/SwiftFileStore.html#DEFAULT_CONTAINER">DEFAULT_CONTAINER</a></span></code>
 <div class="block">The container name where all files are going to be stored in.</div>
 </td>
 </tr>
@@ -159,8 +159,8 @@ implements <a href="../../../../../com/qubitpi/athena/filestore/FileStore.html" 
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../com/qubitpi/athena/filestore/swift/SwiftFileStore.html#SwiftFileStore-org.javaswift.joss.model.Account-com.qubitpi.athena.file.identifier.FileIdGenerator-">SwiftFileStore</a></span>(@NotNull org.javaswift.joss.model.Account&nbsp;account,
-              @NotNull <a href="../../../../../com/qubitpi/athena/file/identifier/FileIdGenerator.html" title="interface in com.qubitpi.athena.file.identifier">FileIdGenerator</a>&nbsp;fileIdGenerator)</code>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../com/paiondata/athena/filestore/swift/SwiftFileStore.html#SwiftFileStore-org.javaswift.joss.model.Account-identifier.file.com.paiondata.athena.FileIdGenerator-">SwiftFileStore</a></span>(@NotNull org.javaswift.joss.model.Account&nbsp;account,
+              @NotNull <a href="../../../../../com/paiondata/athena/file/identifier/FileIdGenerator.html" title="interface in com.paiondata.athena.file.identifier">FileIdGenerator</a>&nbsp;fileIdGenerator)</code>
 <div class="block">DI constructor.</div>
 </td>
 </tr>
@@ -181,13 +181,13 @@ implements <a href="../../../../../com/qubitpi/athena/filestore/FileStore.html" 
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io">InputStream</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/qubitpi/athena/filestore/swift/SwiftFileStore.html#download-java.lang.String-">download</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;fileId)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/paiondata/athena/filestore/swift/SwiftFileStore.html#download-java.lang.String-">download</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;fileId)</code>
 <div class="block">Retrieves a file identified by a specified file ID from object storage.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/qubitpi/athena/filestore/swift/SwiftFileStore.html#upload-com.qubitpi.athena.file.File-">upload</a></span>(<a href="../../../../../com/qubitpi/athena/file/File.html" title="class in com.qubitpi.athena.file">File</a>&nbsp;file)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/paiondata/athena/filestore/swift/SwiftFileStore.html#upload-file.com.paiondata.athena.File-">upload</a></span>(<a href="../../../../../com/paiondata/athena/file/File.html" title="class in com.paiondata.athena.file">File</a>&nbsp;file)</code>
 <div class="block">Persists a file into object storage database.</div>
 </td>
 </tr>
@@ -223,7 +223,7 @@ implements <a href="../../../../../com/qubitpi/athena/filestore/FileStore.html" 
 <div class="block">The container name where all files are going to be stored in.</div>
 <dl>
 <dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../../constant-values.html#com.qubitpi.athena.filestore.swift.SwiftFileStore.DEFAULT_CONTAINER">Constant Field Values</a></dd>
+<dd><a href="../../../../../constant-values.html#swift.filestore.com.paiondata.athena.SwiftFileStore.DEFAULT_CONTAINER">Constant Field Values</a></dd>
 </dl>
 </li>
 </ul>
@@ -235,7 +235,7 @@ implements <a href="../../../../../com/qubitpi/athena/filestore/FileStore.html" 
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="SwiftFileStore-org.javaswift.joss.model.Account-com.qubitpi.athena.file.identifier.FileIdGenerator-">
+<a name="SwiftFileStore-org.javaswift.joss.model.Account-identifier.file.com.paiondata.athena.FileIdGenerator-">
 <!--   -->
 </a>
 <ul class="blockListLast">
@@ -245,7 +245,7 @@ implements <a href="../../../../../com/qubitpi/athena/filestore/FileStore.html" 
 public&nbsp;SwiftFileStore(@NotNull
                               @NotNull org.javaswift.joss.model.Account&nbsp;account,
                               @NotNull
-                              @NotNull <a href="../../../../../com/qubitpi/athena/file/identifier/FileIdGenerator.html" title="interface in com.qubitpi.athena.file.identifier">FileIdGenerator</a>&nbsp;fileIdGenerator)</pre>
+                              @NotNull <a href="../../../../../com/paiondata/athena/file/identifier/FileIdGenerator.html" title="interface in com.paiondata.athena.file.identifier">FileIdGenerator</a>&nbsp;fileIdGenerator)</pre>
 <div class="block">DI constructor.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -269,25 +269,25 @@ public&nbsp;SwiftFileStore(@NotNull
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="upload-com.qubitpi.athena.file.File-">
+<a name="upload-file.com.paiondata.athena.File-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>upload</h4>
-<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;upload(<a href="../../../../../com/qubitpi/athena/file/File.html" title="class in com.qubitpi.athena.file">File</a>&nbsp;file)</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../com/qubitpi/athena/filestore/FileStore.html#upload-com.qubitpi.athena.file.File-">FileStore</a></code></span></div>
+<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;upload(<a href="../../../../../com/paiondata/athena/file/File.html" title="class in com.paiondata.athena.file">File</a>&nbsp;file)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../com/paiondata/athena/filestore/FileStore.html#upload-file.com.paiondata.athena.File-">FileStore</a></code></span></div>
 <div class="block">Persists a file into object storage database.
  <p>
  Note that calling this method does NOT automatically update the managed metadata of this file in
- <a href="../../../../../com/qubitpi/athena/metastore/MetaStore.html" title="interface in com.qubitpi.athena.metastore"><code>MetaStore</code></a>. The metadata must be saved separately using
- <a href="../../../../../com/qubitpi/athena/metastore/MetaStore.html#saveMetaData-java.lang.String-com.qubitpi.athena.metadata.MetaData-"><code>MetaStore.saveMetaData(String, MetaData)</code></a>.
+ <a href="../../../../../com/paiondata/athena/metastore/MetaStore.html" title="interface in com.paiondata.athena.metastore"><code>MetaStore</code></a>. The metadata must be saved separately using
+ <a href="../../../../../com/paiondata/athena/metastore/MetaStore.html#saveMetaData-java.lang.String-metadata.com.paiondata.athena.MetaData-"><code>MetaStore.saveMetaData(String, MetaData)</code></a>.
  <p>
- The implementation does NOT have to be thread-safe. <a href="../../../../../com/qubitpi/athena/filestore/FileStore.html" title="interface in com.qubitpi.athena.filestore"><code>FileStore</code></a> assumes that it is the callers'
+ The implementation does NOT have to be thread-safe. <a href="../../../../../com/paiondata/athena/filestore/FileStore.html" title="interface in com.paiondata.athena.filestore"><code>FileStore</code></a> assumes that it is the callers'
  responsibilities to implement the thread safety themselves.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../../com/qubitpi/athena/filestore/FileStore.html#upload-com.qubitpi.athena.file.File-">upload</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../com/qubitpi/athena/filestore/FileStore.html" title="interface in com.qubitpi.athena.filestore">FileStore</a></code></dd>
+<dd><code><a href="../../../../../com/paiondata/athena/filestore/FileStore.html#upload-file.com.paiondata.athena.File-">upload</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../com/paiondata/athena/filestore/FileStore.html" title="interface in com.paiondata.athena.filestore">FileStore</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>file</code> - An object representing the file to be persisted</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -302,15 +302,15 @@ public&nbsp;SwiftFileStore(@NotNull
 <li class="blockList">
 <h4>download</h4>
 <pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io">InputStream</a>&nbsp;download(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;fileId)</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../com/qubitpi/athena/filestore/FileStore.html#download-java.lang.String-">FileStore</a></code></span></div>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../com/paiondata/athena/filestore/FileStore.html#download-java.lang.String-">FileStore</a></code></span></div>
 <div class="block">Retrieves a file identified by a specified file ID from object storage.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../../com/qubitpi/athena/filestore/FileStore.html#download-java.lang.String-">download</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../com/qubitpi/athena/filestore/FileStore.html" title="interface in com.qubitpi.athena.filestore">FileStore</a></code></dd>
+<dd><code><a href="../../../../../com/paiondata/athena/filestore/FileStore.html#download-java.lang.String-">download</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../com/paiondata/athena/filestore/FileStore.html" title="interface in com.paiondata.athena.filestore">FileStore</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>fileId</code> - The provided file ID, which is the same as the return value of <a href="../../../../../com/qubitpi/athena/filestore/FileStore.html#upload-com.qubitpi.athena.file.File-"><code>FileStore.upload(File)</code></a></dd>
+<dd><code>fileId</code> - The provided file ID, which is the same as the return value of <a href="../../../../../com/paiondata/athena/filestore/FileStore.html#upload-file.com.paiondata.athena.File-"><code>FileStore.upload(File)</code></a></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>a previously <a href="../../../../../com/qubitpi/athena/filestore/FileStore.html#upload-com.qubitpi.athena.file.File-"><code>uploaded file stream</code></a></dd>
+<dd>a previously <a href="../../../../../com/paiondata/athena/filestore/FileStore.html#upload-file.com.paiondata.athena.File-"><code>uploaded file stream</code></a></dd>
 </dl>
 </li>
 </ul>
@@ -346,7 +346,7 @@ public&nbsp;SwiftFileStore(@NotNull
 <li>Next&nbsp;Class</li>
 </ul>
 <ul class="navList">
-<li><a href="../../../../../index.html?com/qubitpi/athena/filestore/swift/SwiftFileStore.html" target="_top">Frames</a></li>
+<li><a href="../../../../../index.html?com/paiondata/athena/filestore/swift/SwiftFileStore.html" target="_top">Frames</a></li>
 <li><a href="SwiftFileStore.html" target="_top">No&nbsp;Frames</a></li>
 </ul>
 <ul class="navList" id="allclasses_navbar_bottom">

@@ -4,13 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.qubitpi.athena</groupId>
+    <groupId>com.paiondata.athena</groupId>
     <artifactId>athena-parent-pom</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>Athena: Parent POM</name>
-    <url>https://github.com/QubitPi/athena</url>
+    <url>https://github.com/paiondata/athena</url>
 
     <modules>
         <module>athena-core</module>
@@ -39,7 +39,7 @@
         <repository>
             <id>github</id>
             <name>GitHub QubitPi Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/QubitPi/athena</url>
+            <url>https://maven.pkg.github.com/paiondata/athena</url>
         </repository>
     </distributionManagement>
 
@@ -87,37 +87,37 @@
         <dependencies>
             <!-- Local module dependencies -->
             <dependency>
-                <groupId>com.qubitpi.athena</groupId>
+                <groupId>com.paiondata.athena</groupId>
                 <artifactId>athena-core</artifactId>
                 <version>${version.athena}</version>
             </dependency>
             <dependency>
-                <groupId>com.qubitpi.athena</groupId>
+                <groupId>com.paiondata.athena</groupId>
                 <artifactId>athena-filestore</artifactId>
                 <version>${version.athena}</version>
             </dependency>
             <dependency>
-                <groupId>com.qubitpi.athena</groupId>
+                <groupId>com.paiondata.athena</groupId>
                 <artifactId>athena-filestore-swift</artifactId>
                 <version>${version.athena}</version>
             </dependency>
             <dependency>
-                <groupId>com.qubitpi.athena</groupId>
+                <groupId>com.paiondata.athena</groupId>
                 <artifactId>athena-metastore</artifactId>
                 <version>${version.athena}</version>
             </dependency>
             <dependency>
-                <groupId>com.qubitpi.athena</groupId>
+                <groupId>com.paiondata.athena</groupId>
                 <artifactId>athena-metastore-graphql</artifactId>
                 <version>${version.athena}</version>
             </dependency>
             <dependency>
-                <groupId>com.qubitpi.athena</groupId>
+                <groupId>com.paiondata.athena</groupId>
                 <artifactId>athena-system-config</artifactId>
                 <version>${version.athena}</version>
             </dependency>
             <dependency>
-                <groupId>com.qubitpi.athena</groupId>
+                <groupId>com.paiondata.athena</groupId>
                 <artifactId>athena-core</artifactId>
                 <version>${version.athena}</version>
                 <type>test-jar</type>

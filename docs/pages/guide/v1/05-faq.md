@@ -11,7 +11,7 @@ I Use IntelliJ. Is There Any Way to Easily Sync up with Athena's Code styles
 
 For the moment, we have distilled the most important code style conventions with respect to Athena's code as IntelliJ
 settings. If you are using IntelliJ, you may import these code style settings by importing the
-[Athena-Project-intellij-code-style.xml](https://github.com/QubitPi/athena/blob/master/Athena-Project-intellij-code-style.xml)
+[Athena-Project-intellij-code-style.xml](https://github.com/paion-data/athena/blob/master/Athena-Project-intellij-code-style.xml)
 file in the root of the repo. The setting for the project will appear as a new Scheme named *Athena-Project* under your
 `Editor -> Code Style` section.
 

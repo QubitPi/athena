@@ -36,7 +36,7 @@ Stores can be included through the following artifact dependencies:
 
 ```xml
 <dependency>
-    <groupId>com.qubitpi.athena</groupId>
+    <groupId>com.paiondata.athena</groupId>
     <artifactId>athena-filestore-swift</artifactId>
     <version>${version.athena}</version>
 </dependency>
@@ -46,7 +46,7 @@ Stores can be included through the following artifact dependencies:
 
 ```xml
 <dependency>
-    <groupId>com.qubitpi.athena</groupId>
+    <groupId>com.paiondata.athena</groupId>
     <artifactId>athena-filestore-hdfs</artifactId>
     <version>${version.athena}</version>
 </dependency>
