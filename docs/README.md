@@ -1,67 +1,41 @@
-Particle Jekyll Theme
-=====================
+# Website
 
-![](./particle.jpg)
+This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
 
-This is a simple and minimalist template for Jekyll designed for developers that want to show of their portfolio.
+### Installation
 
-The Theme features:
-
-- Gulp
-- SASS
-- Sweet Scroll
-- Particle.js
-- BrowserSync
-- Font Awesome and Devicon icons
-- Google Analytics
-- Info Customization
-
-Basic Setup
------------
-
-1. [Install Jekyll](http://jekyllrb.com)
-2. Clone the particle theme: `git clone https://github.com/nrandecker/particle.git`
-3. Edit `_config.yml` to personalize your site.
-
-Site and User Settings
-----------------------
-
-You have to fill some informations on `_config.yml` to customize your site.
-
-```bash
-# Site settings
-description: A blog about lorem ipsum dolor sit amet
-baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://localhost:3000" # the base hostname & protocol for your site
-
-# User settings
-username: Lorem Ipsum
-user_description: Anon Developer at Lorem Ipsum Dolor
-user_title: Anon Developer
-email: anon@anon.com
-twitter_username: lorem_ipsum
-github_username:  lorem_ipsum
-gplus_username:  lorem_ipsum
+```
+$ yarn
 ```
 
-**Don't forget to change your url before you deploy your site!**
+### Local Development
 
-Color and Particle Customization
---------------------------------
+```
+$ yarn start
+```
 
-- Color Customization
-  - Edit the sass variables
-- Particle Customization
-  - Edit the json data in particle function in app.js
-  - Refer to [Particle.js](https://github.com/VincentGarreau/particles.js/) for help
+This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
 
-Running the blog in local
--------------------------
+### Build
 
-In order to compile the assets and run Jekyll on local you need to follow those steps:
+```
+$ yarn build
+```
 
-- Install [NodeJS](https://nodejs.org/)
-- Install [Jekyll](https://jekyllrb.com): `sudo gem install bundler jekyll`
-- Install [Yarn](https://yarnpkg.com/): `npm install -g yarn`
-- Install dependencies: `yarn`
-- Run: `gulp`
+This command generates static content into the `build` directory and can be served using any static contents hosting service.
+
+### Deployment
+
+Using SSH:
+
+```
+$ USE_SSH=true yarn deploy
+```
+
+Not using SSH:
+
+```
+$ GIT_USER=<Your GitHub username> yarn deploy
+```
+
+If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
