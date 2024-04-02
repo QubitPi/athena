@@ -10,32 +10,37 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    title: 'GraphQL',
+    Svg: require('@site/static/img/graphql.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Athena makes it easy to build and maintain GraphQL web services for
+        managing file metadata. Athena's API is clean and user-friendly,
+        hiding the complexities of complicated data storage and query
+        optimization from end-users
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: 'Big Data',
+    Svg: require('@site/static/img/bigdata.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Designed for Big Data and scalability, Athena has first-class
+        support for OpenStack Swift and Hadoop HDFS as back-ends and
+        flexible pipeline-style architecture which handles nearly any
+        back-end for data storage
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: 'OpenStack',
+    Svg: require('@site/static/img/openstack.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        The long-term goal of Athena is to make it part of OpenStack
+        ecosystem so to make it a quickly-provisioned and easily-managed
+        SaaS infrastructural component
       </>
     ),
   },
