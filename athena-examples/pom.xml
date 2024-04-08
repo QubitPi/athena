@@ -16,7 +16,6 @@
 
     <modules>
         <module>athena-example-books</module>
-        <module>athena-examples-acceptance-tests</module>
     </modules>
 
     <licenses>

@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
 
     <name>Athena: Parent POM</name>
+    <description>A GraphQL Object Storage Webservice Backed by OpenStack Swift and Hadoop HDFS</description>
     <url>https://github.com/QubitPi/athena</url>
 
     <modules>
@@ -35,13 +36,11 @@
         </license>
     </licenses>
 
-    <distributionManagement>
-        <repository>
-            <id>github</id>
-            <name>GitHub QubitPi Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/QubitPi/athena</url>
-        </repository>
-    </distributionManagement>
+    <scm>
+        <developerConnection>scm:git:ssh://git@github.com/QubitPi/athena.git</developerConnection>
+        <url>https://github.com/QubitPi/athena.git</url>
+        <tag>HEAD</tag>
+    </scm>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -70,6 +69,7 @@
         <version.maven.release.plugin>2.5.3</version.maven.release.plugin>
         <version.maven.javadoc.plugin>3.5.0</version.maven.javadoc.plugin>
         <version.maven.jar.plugin>3.1.1</version.maven.jar.plugin>
+        <version.maven.source.plugin>3.1.0</version.maven.source.plugin>
         <version.maven.surefire.plugin>3.0.0-M5</version.maven.surefire.plugin>
         <version.maven.compiler.plugin>3.7.0</version.maven.compiler.plugin>
         <version.maven.failsafe.plugin>3.0.0-M4</version.maven.failsafe.plugin>
@@ -454,6 +454,20 @@
                         </execution>
                     </executions>
                 </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>${version.maven.source.plugin}</version>
+                    <executions>
+                        <execution>
+                            <id>attach-sources</id>
+                            <phase>verify</phase>
+                            <goals>
+                                <goal>jar-no-fork</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
 
                 <!-- Groovy Spock -->
                 <plugin>
@@ -644,4 +658,47 @@
             </plugin>
         </plugins>
     </reporting>
+
+    <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.sonatype.central</groupId>
+                        <artifactId>central-publishing-maven-plugin</artifactId>
+                        <version>0.4.0</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <tokenAuth>true</tokenAuth>
+                            <autoPublish>true</autoPublish>
+                            <publishingServerId>${gpg.keyname}</publishingServerId>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>3.1.0</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                                <configuration>
+                                    <gpgArguments>
+                                        <arg>--pinentry-mode</arg>
+                                        <arg>loopback</arg>
+                                    </gpgArguments>
+                                    <keyname>${gpg.keyname}</keyname>
+                                    <passphraseServerId>${gpg.keyname}</passphraseServerId>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>

@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 ---
-name: Athena CI/CD
+name: CI/CD
 
 "on":
   pull_request:
@@ -111,3 +111,19 @@ jobs:
           context: athena-examples/athena-example-books
           push: true
           tags: jack20191124/athena-example-books:latest
+
+  release:
+    name: Release
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Release
+        uses: QubitPi/maven-central-release-action@master
+        with:
+          user: QubitPi
+          email: jack20220723@gmail.com
+          gpg-keyname: ${{ secrets.GPG_KEYNAME }}
+          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
+          gpg-passphrase: ${{ secrets.GPG_PASSPHRASE }}
+          server-username: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
+          server-password: ${{ secrets.MAVEN_CENTRAL_TOKEN }}
