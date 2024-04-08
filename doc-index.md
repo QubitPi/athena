@@ -21,7 +21,7 @@ layout: doc-default
 
 <div class="container text-center my-5">
   <img src="assets/img/athena-logo.png" class="img-fluid mb-3" alt="Athena Logo" width="20%">
-  <h4 class="mx-2">Athena is a Java library that lets you setup object storage webservice with minimal effort.</h4>
+  <h4 class="mx-2">Athena is a Java library that lets you set up object storage webservice with minimal effort.</h4>
 </div>
 
 <hr class="mx-5">
