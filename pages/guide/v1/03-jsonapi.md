@@ -48,6 +48,6 @@ Athena supports two mechanisms by which a newly uploaded file is assigned an ID:
 > For more info on custom binding, please checkout
 > [Basic Dependency Injection using Jersey's HK2]({{site.baseurl}}/pages/guide/v{{ page.version }}/16-jersey-di-using-hk2.html)
 
-[FileNameAndUploadedTimeBasedIdGenerator]: https://github.com/QubitPi/athena/blob/master/athena-core/src/main/java/org/qubitpi/athena/file/identifier/FileNameAndUploadedTimeBasedIdGenerator.java
-[FileIdGenerator]: https://github.com/QubitPi/athena/blob/master/athena-core/src/main/java/org/qubitpi/athena/file/identifier/FileIdGenerator.java
-[AbstractBinderFactory]: https://github.com/QubitPi/athena/blob/master/athena-core/src/main/java/org/qubitpi/athena/application/AbstractBinderFactory.java
+[FileNameAndUploadedTimeBasedIdGenerator]: https://github.com/QubitPi/athena/blob/master/athena-core/src/main/java/io/github/qubitpi/athena/file/identifier/FileNameAndUploadedTimeBasedIdGenerator.java
+[FileIdGenerator]: https://github.com/QubitPi/athena/blob/master/athena-core/src/main/java/io/github/qubitpi/athena/file/identifier/FileIdGenerator.java
+[AbstractBinderFactory]: https://github.com/QubitPi/athena/blob/master/athena-core/src/main/java/io/github/qubitpi/athena/application/AbstractBinderFactory.java
