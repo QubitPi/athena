@@ -39,45 +39,6 @@ jobs:
       - name: Run unit & integration tests
         run: mvn -B clean verify
 
-  documentation:
-    name: Test & Release Documentation (including Javadoc)
-    needs: tests
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - uses: actions/setup-python@v4
-        with:
-          python-version: '3.8'
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.0'
-      - name: Set up JDK
-        uses: QubitPi/hashicorp-aws/.github/actions/jdk-setup@master
-      - name: Install dependencies and build documentation
-        working-directory: docs
-        run: |
-          bundle install
-          bundle exec jekyll build
-      - name: Generate Javadoc
-        run: mvn -B clean javadoc:aggregate
-      - name: Move Javadoc into documentation directory
-        if: github.ref == 'refs/heads/master'
-        run: mv target/site/apidocs/ docs/pages/apidocs/
-      - name: Deploy documentation (including Javadoc) to GitHub Pages
-        if: github.ref == 'refs/heads/master'
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: docs
-          enable_jekyll: true
-          user_name: ${{ env.USER }}
-          user_email: ${{ env.EMAIL }}
-
   examples-basic-app-docker-image:
     name: Test & Release aristotle-example-basic App Docker Image
     needs: tests
@@ -111,6 +72,37 @@ jobs:
           context: athena-examples/athena-example-books
           push: true
           tags: jack20191124/athena-example-books:latest
+
+  documentation:
+    name: Test Documentation Build & Deploy Documentation to GitHub Pages
+    needs: tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Set up JDK
+        uses: QubitPi/hashicorp-aws/.github/actions/jdk-setup@master
+      - name: Install dependencies
+        run: yarn
+        working-directory: docs
+      - name: Build website
+        run: yarn build
+        working-directory: docs
+      - name: Generate Javadoc
+        run: mvn -B clean javadoc:aggregate
+      - name: Move Javadoc into documentation directory
+        if: github.ref == 'refs/heads/master'
+        run: mv target/site/apidocs/ docs/build/apidocs/
+      - name: Deploy to GitHub Pages
+        if: github.ref == 'refs/heads/master'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/build
+          user_name: QubitPi
+          user_email: jack20220723@gmail.com
 
   release:
     name: Release Athena to Maven Central
