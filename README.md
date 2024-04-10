@@ -5,6 +5,7 @@ Athena <sup>![Java Version Badge][Java Version Badge]</sup>
 > of [Athena], and to my former employer, Yahoo, who taught me to love software engineering and fundamentally
 > influenced my tech career
 
+[![Maven Central Version][Maven Central Version Badge]][Maven Central Version URL]
 [![GitHub Workflow Status][GitHub Workflow Status badge]][GitHub Workflow Status URL]
 ![[GitHub Last Commit]][GitHub Last Commit badge]
 [![Discord][Discord badge]][Discord URL]
@@ -100,12 +101,12 @@ The use and distribution terms for [Athena] are covered by the [Apache License, 
 
 [Apache License, Version 2.0]: http://www.apache.org/licenses/LICENSE-2.0.html
 [Athena]: https://athena.qubitpi.org/
-[Athena Documentation]: https://qubitpi.github.io/athena/doc-index.html
+[Athena Documentation]: https://qubitpi.github.io/athena/
 
 [Discord badge]: https://img.shields.io/discord/1001320502960324658?logo=discord&logoColor=white&style=for-the-badge
 [Discord URL]: https://discord.com/widget?id=1001320502960324658&theme=dark
 
-[example application]: https://qubitpi.github.io/athena/pages/guide/v1/08-start.html
+[example application]: https://qubitpi.github.io/athena/docs/intro
 
 [GitHub Last Commit badge]: https://img.shields.io/github/last-commit/QubitPi/athena/master?logo=github&style=for-the-badge
 [GitHub Workflow Status badge]: https://img.shields.io/github/actions/workflow/status/QubitPi/athena/ci-cd.yml?branch=master&logo=github&style=for-the-badge
@@ -120,10 +121,13 @@ The use and distribution terms for [Athena] are covered by the [Apache License, 
 [License Badge]: https://img.shields.io/badge/Apache%202.0-F25910.svg?style=for-the-badge&logo=Apache&logoColor=white
 [License URL]: https://www.apache.org/licenses/LICENSE-2.0
 
-[OpenStack Swift]: https://qubitpi.github.io/openstack-swift/
-[OpenStack Swift's quick-start tutorial]: https://qubitpi.github.io/athena/pages/guide/v1/10-local-swift.html
+[Maven Central Version Badge]: https://img.shields.io/maven-central/v/io.github.qubitpi.athena/athena-parent-pom?style=for-the-badge&logo=apachemaven&labelColor=1B1C30&color=4D9FEA
+[Maven Central Version URL]: https://central.sonatype.com/namespace/io.github.qubitpi.athena
 
-[S3 File Store]: https://qubitpi.github.io/athena/pages/guide/v1/09-filestores.html#custom-stores
+[OpenStack Swift]: https://qubitpi.github.io/openstack-swift/
+[OpenStack Swift's quick-start tutorial]: https://qubitpi.github.io/athena/docs/filestores/local-swift
+
+[S3 File Store]: https://qubitpi.github.io/athena/docs/filestore#custom-stores
 
 [yahoo/elide]: https://github.com/yahoo/elide
 [yahoo/fili]: https://github.com/yahoo/fili
