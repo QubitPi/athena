@@ -3,8 +3,8 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
+  title: 'Athena',
+  tagline: 'A GraphQL Object Storage Webservice Backed by OpenStack Swift and Hadoop HDFS',
   favicon: 'img/favicon.ico',
 
   url: 'https://qubitpi.github.io/',
@@ -47,26 +47,26 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      title: 'My Site',
+      title: 'Athena',
       logo: {
-        alt: 'My Site Logo',
+        alt: 'Athena Logo',
         src: 'img/logo.svg',
       },
       items: [
         {
           type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
+          sidebarId: 'docSidebar',
           position: 'left',
-          label: 'Tutorial',
+          label: 'Documentation',
         },
         {to: '/blog', label: 'Blog', position: 'left'},
         {
-          href: "https://QubitPi.github.io/athena/apidocs",
+          href: "https://qubitpi.github.io/athena/apidocs",
           label: "API",
           position: "left",
         },
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/QubitPi/athena',
           label: 'GitHub',
           position: 'right',
         },
@@ -76,10 +76,10 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Docs',
+          title: 'Documentation',
           items: [
             {
-              label: 'Tutorial',
+              label: 'Getting Started',
               to: '/docs/intro',
             },
           ],
@@ -88,17 +88,13 @@ const config: Config = {
           title: 'Community',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              label: 'GitHub Issue',
+              href: 'https://github.com/QubitPi/athena/issues',
             },
             {
               label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
-            },
+              href: 'https://discord.com/widget?id=1001320502960324658&theme=dark',
+            }
           ],
         },
         {
@@ -110,12 +106,12 @@ const config: Config = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              href: 'https://github.com/QubitPi/athena',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Jiaqi Liu. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
