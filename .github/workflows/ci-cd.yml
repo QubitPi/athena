@@ -73,9 +73,29 @@ jobs:
           push: true
           tags: jack20191124/athena-example-books:latest
 
+  acceptance-tests:
+    name: Run example acceptance tests
+    needs: examples-basic-app-docker-image
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK
+        uses: QubitPi/hashicorp-aws/.github/actions/jdk-setup@master
+      - name: Package up WAR
+        run: mvn clean package
+      - name: Start Book example application Docker Compose
+        run: docker compose up &
+        working-directory: athena-examples/athena-example-books
+      - name: Wait until Docker Compose is up
+        run: |
+          npm install -g wait-on
+          wait-on http://localhost:8080
+      - name: Run acceptance tests
+        run: mvn clean verify -P acceptance-test
+
   documentation:
     name: Test Documentation Build & Deploy Documentation to GitHub Pages
-    needs: tests
+    needs: acceptance-tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -106,7 +126,7 @@ jobs:
 
   release:
     name: Release Athena to Maven Central
-    needs: tests
+    needs: acceptance-tests
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:

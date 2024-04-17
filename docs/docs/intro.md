@@ -36,7 +36,7 @@ Using Athena Compose is basically a three-step process:
 
 1. Package Athena at project root with `mvn clean package`
 2. cd into [compose top directory][Athena Book App Starter] and fire-up `docker compose up`
-3. hit Athena at `http://localhost/v1/metadata/graphql?query={metaData(fileId:%221%22){fileName}}` with your favorite
+3. hit Athena at `http://localhost:8080/v1/metadata/graphql?query={metaData(fileId:%221%22){fileName}}` with your favorite
    browser
 
 For more information about the Athena Compose the [Compose file definition][Athena Book App Starter].
@@ -52,6 +52,12 @@ Athena Compose has ability for managing the whole lifecycle of an Athena applica
 
 Happy with Athena? You can go further with productionizing Athena from
 here <img src="https://user-images.githubusercontent.com/16126939/174438007-b9adae25-baf8-42a7-bf39-83786435d397.gif" width="40"/>
+
+:::tip
+
+Athena also comes with an example acceptance testing module which can be pull out separately for our own project needs.
+
+:::
 
 If you would like to go from basic Athena Compose setup and changed anything, rebuild it with
 
@@ -92,7 +98,7 @@ services:
   web:
     build: .
     ports:
-      - "80:8080"
+      - "8080:8080"
     depends_on:
       db:
         condition: service_healthy

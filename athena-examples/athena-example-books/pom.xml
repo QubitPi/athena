@@ -34,6 +34,7 @@
             <groupId>io.github.qubitpi.athena</groupId>
             <artifactId>athena-core</artifactId>
             <type>test-jar</type>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.github.qubitpi.athena</groupId>
