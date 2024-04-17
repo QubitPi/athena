@@ -57,6 +57,59 @@ mvn clean install -f athena-core
 Pull requests and release builds leverage GitHub Action. PR builds simply run the complete build along with code
 coverage.
 
+Running Webservice in Standalone Jetty
+--------------------------------------
+
+### Download Jetty
+
+For JDK **17**, which is the version JWT runs on, it's been tested that Jetty _11.0.15_ worked. Hence, we will use
+["11.0.15" release](https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-home/11.0.15/jetty-home-11.0.15.tar.gz) as
+an example:
+
+![Error loading download-jetty.png](img/download-jetty.png)
+
+Put the `tar.gz` file into a location of your choice as the installation path and extract the Jetty binary using
+
+```bash
+tar -xzvf jetty-home-11.0.15.tar.gz
+```
+
+The extracted directory *jetty-home-11.0.15* is the Jetty distribution. We call this directory **$JETTY_HOME**, which
+should not be modified.
+
+### Setting Up Standalone Jetty
+
+Our [WAR file](#building) will be dropped to a directory where Jetty can pick up and run. We call this directory
+**$JETTY_BASE**, which is usually different from the _$JETTY_HOME_. The _$JETTY_BASE_ also contains container runtime
+configs. In short, the Standalone Jetty container will be setup with
+
+```bash
+export JETTY_HOME=/path/to/jetty-home-11.0.15
+mkdir -p /path/to/jetty-base
+cd /path/to/jetty-base
+java -jar $JETTY_HOME/start.jar --add-module=annotations,server,http,deploy,servlet,webapp,resources,jsp
+```
+
+where `/path/to/` is the _absolute_ path to the directory containing the `jetty-home-11.0.15` directory
+
+The `--add-module=annotations,server,http,deploy,servlet,webapp,resources,jsp` is how we configure the Jetty
+container.
+
+Lastly, drop the [WAR file](#building) into **/path/to/jetty-base/webapps** directory and rename the WAR file to
+**ROOT.war**:
+
+```bash
+mv /path/to/war-file /path/to/jetty-base/webapps/ROOT.war
+```
+
+### Running Webservice
+
+```bash
+java -jar $JETTY_HOME/start.jar
+```
+
+The webservice will run on port **8080**, and you will see the data you inserted
+
 Release Versions
 ----------------
 
