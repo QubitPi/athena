@@ -562,6 +562,28 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jar-plugin</artifactId>
                     <version>${version.maven.jar.plugin}</version>
+                    <executions>
+                        <execution>
+                            <id>javadoc-jar</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                            <configuration>
+                                <classifier>javadoc</classifier>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>sources-jar</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                            <configuration>
+                                <classifier>sources</classifier>
+                            </configuration>
+                        </execution>
+                    </executions>
                 </plugin>
             </plugins>
         </pluginManagement>
