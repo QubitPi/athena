@@ -18,7 +18,10 @@ docker compose up
 Then navigate to the project root and run all acceptance tests with
 
 ```console
-mvn clean verify
+mvn clean verify -P acceptance-test
 ```
+
+> [!NOTE]
+> The `acceptance-test` profiles runs acceptance tests only and skips all Groovy Spock and IT tests.
 
 [Cucumber Badge]: https://img.shields.io/badge/Cucumber-23D96C?style=for-the-badge&logo=cucumber&logoColor=white
