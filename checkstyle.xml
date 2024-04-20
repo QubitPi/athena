@@ -388,8 +388,8 @@
         </module>
 	</module>
     <!-- Headers -->
-    <module name="Header">
-        <property name="header" value="/*\n * Copyright Jiaqi Liu"/>
+    <module name="RegexpHeader">
+        <property name="header" value="/*\n * Copyright 20[0-2][0-9],? Jiaqi Liu"/>
         <property name="fileExtensions" value="java,groovy,g4" />
         <property name="severity" value="error"/>
     </module>
