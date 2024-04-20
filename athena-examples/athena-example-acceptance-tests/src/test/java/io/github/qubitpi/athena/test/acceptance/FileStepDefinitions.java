@@ -53,7 +53,7 @@ public class FileStepDefinitions extends AbstractStepDefinitions {
     @When("^a text file is uploaded$")
     //CHECKSTYLE:OFF
     public void uploadTextFile() throws URISyntaxException {
-    //CHECKSTYLE:ON
+        //CHECKSTYLE:ON
         response = RestAssured.given()
                 .multiPart(
                         Paths.get(

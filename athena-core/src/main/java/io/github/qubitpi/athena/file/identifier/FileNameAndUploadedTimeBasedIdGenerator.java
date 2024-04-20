@@ -82,13 +82,9 @@ public class FileNameAndUploadedTimeBasedIdGenerator implements FileIdGenerator 
         final String fileName = Objects.requireNonNull(file).getMetaData().getFileName();
         final Date now = new Date();
 
-        getMessageDigest().update(fileName.getBytes(StandardCharsets.US_ASCII));
-        getMessageDigest().update(now.toString().getBytes(StandardCharsets.US_ASCII));
+        messageDigest.update(fileName.getBytes(StandardCharsets.US_ASCII));
+        messageDigest.update(now.toString().getBytes(StandardCharsets.US_ASCII));
 
-        return new String(Base64.getEncoder().encode(getMessageDigest().digest()));
-    }
-
-    public MessageDigest getMessageDigest() {
-        return messageDigest;
+        return new String(Base64.getEncoder().encode(messageDigest.digest()));
     }
 }

@@ -29,9 +29,11 @@ import java.util.Objects;
  * <p>
  * A {@link File} has two parts
  * <ol>
- *     <li> file content, and
+ *     <li> file content wrapped inside an {@link InputStream}, and
  *     <li> file {@link MetaData metadata}
  * </ol>
+ *
+ * Note that an instance of it is guaranteed not to {@link InputStream#close() close} the encapsulated file at any time.
  */
 @Immutable
 @ThreadSafe
@@ -44,7 +46,8 @@ public class File {
      * Constructor.
      *
      * @param metaData  File metadata
-     * @param fileContent  File content
+     * @param fileContent  File content wrapped inside an {@link InputStream}, which cannot be
+     * {@link InputStream#close() closed} when passed in
      *
      * @throws NullPointerException if {@code metaData} or {@code fileContent} is {@code null}
      */
@@ -53,11 +56,21 @@ public class File {
         this.fileContent = Objects.requireNonNull(fileContent);
     }
 
+    /**
+     * Returns an immutable representation of all metadata associated with this {@code File}.
+     *
+     * @return a read-only object
+     */
     @NotNull
     public MetaData getMetaData() {
         return metaData;
     }
 
+    /**
+     * Returns the content of the file wrapped in an {@link InputStream}.
+     *
+     * @return an unclosed {@link InputStream}
+     */
     @NotNull
     public InputStream getFileContent() {
         return fileContent;

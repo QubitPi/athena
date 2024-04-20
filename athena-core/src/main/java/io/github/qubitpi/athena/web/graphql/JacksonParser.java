@@ -44,6 +44,12 @@ public class JacksonParser implements JsonDocumentParser {
 
     private static final JsonDocumentParser INSTANCE = new JacksonParser();
 
+    /**
+     * Returns a fully initialized {@link JsonDocumentParser} of this implementation.
+     *
+     * @return the same instance all the time
+     */
+    @NotNull
     public static JsonDocumentParser getInstance() {
         return INSTANCE;
     }
