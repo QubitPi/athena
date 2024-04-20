@@ -92,7 +92,7 @@ public class MetaServlet {
     public Response get(final @NotNull @QueryParam("query") String query) {
         return Response
                 .status(Response.Status.OK)
-                .entity(getMetaStore().executeNative(Objects.requireNonNull(query)))
+                .entity(metaStore.executeNative(Objects.requireNonNull(query)))
                 .build();
     }
 
@@ -122,7 +122,7 @@ public class MetaServlet {
     public Response post(final @NotNull String graphQLDocument) {
         Objects.requireNonNull(graphQLDocument);
 
-        final List<String> requestedMetadataFields = getJsonDocumentParser().getFields(graphQLDocument);
+        final List<String> requestedMetadataFields = jsonDocumentParser.getFields(graphQLDocument);
         if (requestedMetadataFields.isEmpty()) {
             LOG.error(ErrorMessageFormat.INVALID_GRAPHQL_REQUEST.logFormat("No metadata field found", graphQLDocument));
             throw new IllegalArgumentException(
@@ -133,21 +133,11 @@ public class MetaServlet {
         return Response
                 .status(Response.Status.OK)
                 .entity(
-                        getMetaStore().getMetaData(
-                                getJsonDocumentParser().getFileId(graphQLDocument),
+                        metaStore.getMetaData(
+                                jsonDocumentParser.getFileId(graphQLDocument),
                                 requestedMetadataFields
                         )
                 )
                 .build();
-    }
-
-    @NotNull
-    private MetaStore getMetaStore() {
-        return metaStore;
-    }
-
-    @NotNull
-    private JsonDocumentParser getJsonDocumentParser() {
-        return jsonDocumentParser;
     }
 }

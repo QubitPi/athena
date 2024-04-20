@@ -70,7 +70,7 @@ public class SQLQueryDataFetcher implements DataFetcher<MetaData> {
         final String fileId = dataFetchingEnvironment.getArgument(FILE_ID);
         final ResultSet resultSet;
         try (
-                Connection connection = getDataSource().getConnection();
+                Connection connection = dataSource.getConnection();
                 PreparedStatement statement = connection.prepareStatement(META_DATA_FETCH_QUERY_TEMPLATE)
         ) {
             statement.setString(1, fileId);
@@ -99,10 +99,5 @@ public class SQLQueryDataFetcher implements DataFetcher<MetaData> {
 
             return metaData;
         }
-    }
-
-    @NotNull
-    private DataSource getDataSource() {
-        return dataSource;
     }
 }

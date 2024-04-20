@@ -19,7 +19,6 @@ import io.github.qubitpi.athena.metadata.MetaData;
 
 import graphql.schema.DataFetcher;
 import graphql.schema.DataFetchingEnvironment;
-import jakarta.validation.constraints.NotNull;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -61,7 +60,7 @@ public class SQLMutationDataFetcher implements DataFetcher<MetaData> {
         final String fileType = dataFetchingEnvironment.getArgument(MetaData.FILE_TYPE);
 
         try (
-                Connection connection = getDataSource().getConnection();
+                Connection connection = dataSource.getConnection();
                 PreparedStatement statement = connection.prepareStatement(META_DATA_PERSIST_QUERY_TEMPLATE)
         ) {
             statement.setString(1, fileId);
@@ -76,10 +75,5 @@ public class SQLMutationDataFetcher implements DataFetcher<MetaData> {
                         new AbstractMap.SimpleImmutableEntry<>(MetaData.FILE_TYPE, fileType)
                 ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue))
         );
-    }
-
-    @NotNull
-    private DataSource getDataSource() {
-        return dataSource;
     }
 }
