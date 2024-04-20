@@ -71,6 +71,8 @@ public class LayeredFileSystemConfig implements SystemConfig {
 
     /**
      * Constructor.
+     *
+     * @throws IllegalStateException if loading an existing {@code userConfig.properties} file fails
      */
     public LayeredFileSystemConfig() {
         this.compositeConfiguration = new CompositeConfiguration();

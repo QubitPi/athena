@@ -76,6 +76,7 @@ public class GraphQLFactory {
      * @return a resource file content
      *
      * @throws NullPointerException if {@code resourceName} is {@code null}
+     * @throws IllegalStateException if {@code resourceName} corresponds a non-existing file source
      */
     @NotNull
     public static String getGraphQLSchemaResourceAsString(@NotNull final String resourceName) {
@@ -97,6 +98,11 @@ public class GraphQLFactory {
         throw new IllegalStateException(message);
     }
 
+    /**
+     * Returns the {@link GraphQL native GraphQL API} factorized.
+     *
+     * @return the same instance
+     */
     @NotNull
     public GraphQL getApi() {
         return api;

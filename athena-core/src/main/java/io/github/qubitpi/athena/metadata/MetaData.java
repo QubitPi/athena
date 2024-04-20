@@ -140,11 +140,21 @@ public class MetaData {
         return new MetaData(fieldMap.get(FILE_NAME).toString(), FileType.valueOf(fieldMap.get(FILE_TYPE).toString()));
     }
 
+    /**
+     * Returns the name of the file associated with this metadata instance.
+     *
+     * @return the file name, including its extension
+     */
     @NotNull
     public String getFileName() {
         return fileName;
     }
 
+    /**
+     * Returns the extension info of the file associated with this metadata instance.
+     *
+     * @return file type information
+     */
     @NotNull
     public FileType getFileType() {
         return fileType;
