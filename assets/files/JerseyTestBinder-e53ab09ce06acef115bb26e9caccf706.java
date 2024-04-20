@@ -59,6 +59,7 @@ public class JerseyTestBinder {
          * Start the test harness and track it for timeouts.
          *
          * @throws InterruptedException if the harness is interrupted
+         * @throws IllegalStateException if stopping the harness throws an error
          */
         @SuppressWarnings("IllegalCatch")
         public void startHarness() throws InterruptedException {
@@ -199,7 +200,7 @@ public class JerseyTestBinder {
      * @throws Exception if there's a problem tearing things down
      */
     public void tearDown() throws Exception {
-        getHarness().tearDown();
+        harness.tearDown();
         applicationState.resetAllStates();
     }
 
@@ -235,7 +236,7 @@ public class JerseyTestBinder {
      */
     public Builder makeRequest(final String target, final Map<String, Object> queryParams) {
         // Set target of call
-        WebTarget httpCall = getHarness().target(target);
+        WebTarget httpCall = harness.target(target);
 
         // Add query params to call
         for (final Map.Entry<String, Object> entry : queryParams.entrySet()) {
@@ -243,16 +244,6 @@ public class JerseyTestBinder {
         }
 
         return httpCall.request();
-    }
-
-    @NotNull
-    public AbstractBinder getBinder() {
-        return binder;
-    }
-
-    @NotNull
-    public JerseyTest getHarness() {
-        return harness;
     }
 
     /**
