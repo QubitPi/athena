@@ -3,7 +3,7 @@ title: Logging Guidelines
 sidebar_position: 6
 ---
 
-[//]: # (Copyright Jiaqi Liu)
+[//]: # (Copyright 2024 Jiaqi Liu)
 
 [//]: # (Licensed under the Apache License, Version 2.0 &#40;the "License"&#41;;)
 [//]: # (you may not use this file except in compliance with the License.)
