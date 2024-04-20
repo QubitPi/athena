@@ -51,11 +51,6 @@ public class TestQueryDataFetcher implements DataFetcher<MetaData> {
     @Override
     public MetaData get(final DataFetchingEnvironment dataFetchingEnvironment) {
         final String fileId = dataFetchingEnvironment.getArgument(FILE_ID);
-        return getMetaDataByFileId().get(fileId);
-    }
-
-    @NotNull
-    private Map<String, MetaData> getMetaDataByFileId() {
-        return metaDataByFileId;
+        return metaDataByFileId.get(fileId);
     }
 }

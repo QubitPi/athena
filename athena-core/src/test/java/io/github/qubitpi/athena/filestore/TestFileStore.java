@@ -81,9 +81,9 @@ public class TestFileStore implements FileStore {
 
     @Override
     public String upload(final File file) {
-        final String fileId = getFileIdGenerator().apply(file);
-        getFileByFileId().put(
-                getFileIdGenerator().apply(file),
+        final String fileId = fileIdGenerator.apply(file);
+        fileByFileId.put(
+                fileIdGenerator.apply(file),
                 new BufferedReader(new InputStreamReader(file.getFileContent()))
                         .lines().collect(Collectors.joining("\n"))
         );
@@ -92,16 +92,6 @@ public class TestFileStore implements FileStore {
 
     @Override
     public InputStream download(final String fileId) {
-        return new ByteArrayInputStream(getFileByFileId().get(fileId).getBytes());
-    }
-
-    @NotNull
-    private Map<String, String> getFileByFileId() {
-        return fileByFileId;
-    }
-
-    @NotNull
-    private FileIdGenerator getFileIdGenerator() {
-        return fileIdGenerator;
+        return new ByteArrayInputStream(fileByFileId.get(fileId).getBytes());
     }
 }

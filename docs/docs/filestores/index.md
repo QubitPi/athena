@@ -103,7 +103,7 @@ public class S3FileStore implements FileStore {
     public String upload(final File file) {
         final String fileId = fileIdGenerator.apply(file);
 
-        getS3client().putObject(
+        s3client.putObject(
                 file.getMetaData().getFileType().name(),
                 fileId,
                 file.getFileContent(),
@@ -116,11 +116,6 @@ public class S3FileStore implements FileStore {
     @Override
     public InputStream download(final String fileId) {
        return getS3client().getObject(...);
-    }
-
-    @NotNull
-    private AmazonS3 getS3client() {
-        return s3client;
     }
 }
 ```

@@ -25,7 +25,6 @@ import org.glassfish.jersey.media.multipart.MultiPartFeature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import jakarta.validation.constraints.NotNull;
 import jakarta.ws.rs.ApplicationPath;
 
 import jakarta.inject.Inject;
@@ -59,7 +58,7 @@ public class ResourceConfig extends org.glassfish.jersey.server.ResourceConfig {
      */
     @Inject
     public ResourceConfig() throws ClassNotFoundException, InstantiationException, IllegalAccessException {
-        final Class<? extends BinderFactory> binderClass = Class.forName(getBindingFactory())
+        final Class<? extends BinderFactory> binderClass = Class.forName(bindingFactory)
                 .asSubclass(BinderFactory.class);
         LOG.info("Application resource binder is '{}'", binderClass.getCanonicalName());
         final BinderFactory binderFactory = binderClass.newInstance();
@@ -71,10 +70,5 @@ public class ResourceConfig extends org.glassfish.jersey.server.ResourceConfig {
 
         // Call post-registration hook to allow for additional registration
         binderFactory.afterRegistration(this);
-    }
-
-    @NotNull
-    private String getBindingFactory() {
-        return bindingFactory;
     }
 }

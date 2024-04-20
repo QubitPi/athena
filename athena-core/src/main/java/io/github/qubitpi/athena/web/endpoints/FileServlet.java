@@ -90,8 +90,8 @@ public class FileServlet {
             final @NotNull @FormDataParam("file") FormDataContentDisposition fileMetaData
     ) {
         final File file = new File(MetaData.of(fileMetaData), fileContent);
-        final String fileId = getFileStore().upload(file);
-        getMetaStore().saveMetaData(fileId, file.getMetaData());
+        final String fileId = fileStore.upload(file);
+        metaStore.saveMetaData(fileId, file.getMetaData());
         return Response
                 .status(Response.Status.CREATED)
                 .entity(Collections.singletonMap(FILE_ID, fileId))
@@ -115,29 +115,19 @@ public class FileServlet {
     public Response downloadFile(@QueryParam(FILE_ID) final String fileId) {
         return Response
                 .ok(
-                        getFileStore().download(Objects.requireNonNull(fileId)),
+                        fileStore.download(Objects.requireNonNull(fileId)),
                         MediaType.APPLICATION_OCTET_STREAM
                 )
                 .header(
                         "content-disposition",
                         String.format(
                                 "attachment; filename = %s",
-                                ((Map<?, ?>) ((Map<?, ?>) getMetaStore()
+                                ((Map<?, ?>) ((Map<?, ?>) metaStore
                                         .getMetaData(fileId, Collections.singletonList(MetaData.FILE_NAME))
                                         .toSpecification().get("data")).get("metaData"))
                                         .get(MetaData.FILE_NAME).toString()
                         )
                 )
                 .build();
-    }
-
-    @NotNull
-    private FileStore getFileStore() {
-        return fileStore;
-    }
-
-    @NotNull
-    private MetaStore getMetaStore() {
-        return metaStore;
     }
 }

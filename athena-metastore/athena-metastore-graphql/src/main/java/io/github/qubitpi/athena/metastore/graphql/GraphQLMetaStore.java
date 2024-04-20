@@ -92,7 +92,7 @@ public class GraphQLMetaStore implements MetaStore {
 
     @Override
     public ExecutionResult executeNative(final String query) {
-        return getGraphQL().execute(Objects.requireNonNull(query));
+        return graphQL.execute(Objects.requireNonNull(query));
     }
 
     @Override
@@ -104,30 +104,20 @@ public class GraphQLMetaStore implements MetaStore {
             throw new IllegalArgumentException(EMPTY_LIST.format());
         }
 
-        return getGraphQL().execute(
+        return graphQL.execute(
                 ExecutionInput.newExecutionInput()
-                        .query(getGraphQLQueryProvider().query(fileId, metadataFields))
+                        .query(graphQLQueryProvider.query(fileId, metadataFields))
                         .build()
         );
     }
 
     @Override
     public void saveMetaData(final String fileId, final MetaData metaData) {
-        getGraphQL().execute(
-                getGraphQLQueryProvider().mutation(
+        graphQL.execute(
+                graphQLQueryProvider.mutation(
                         Objects.requireNonNull(fileId),
                         Objects.requireNonNull(metaData)
                 )
         );
-    }
-
-    @NotNull
-    private GraphQL getGraphQL() {
-        return graphQL;
-    }
-
-    @NotNull
-    private GraphQLQueryProvider getGraphQLQueryProvider() {
-        return graphQLQueryProvider;
     }
 }

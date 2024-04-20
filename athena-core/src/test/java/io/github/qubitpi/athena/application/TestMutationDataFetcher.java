@@ -21,7 +21,6 @@ import io.github.qubitpi.athena.metadata.MetaData;
 
 import graphql.schema.DataFetcher;
 import graphql.schema.DataFetchingEnvironment;
-import jakarta.validation.constraints.NotNull;
 import net.jcip.annotations.GuardedBy;
 import net.jcip.annotations.NotThreadSafe;
 
@@ -68,13 +67,8 @@ public class TestMutationDataFetcher implements DataFetcher<MetaData> {
                 ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue))
         );
 
-        getMetaDataByFileId().put(fileId, newMetaData);
+        metaDataByFileId.put(fileId, newMetaData);
 
         return newMetaData;
-    }
-
-    @NotNull
-    private Map<String, MetaData> getMetaDataByFileId() {
-        return metaDataByFileId;
     }
 }

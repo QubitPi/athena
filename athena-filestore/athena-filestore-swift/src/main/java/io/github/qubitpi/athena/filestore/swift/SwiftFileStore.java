@@ -68,9 +68,9 @@ public class SwiftFileStore implements FileStore {
     @Override
     public String upload(final File file) {
         Objects.requireNonNull(file);
-        final String fileId = getFileIdGenerator().apply(file);
+        final String fileId = fileIdGenerator.apply(file);
 
-        getAccount()
+        account
                 .getContainer(DEFAULT_CONTAINER)
                 .getObject(fileId)
                 .uploadObject(file.getFileContent());
@@ -80,19 +80,9 @@ public class SwiftFileStore implements FileStore {
 
     @Override
     public InputStream download(final String fileId) {
-        return getAccount()
+        return account
                 .getContainer(DEFAULT_CONTAINER)
                 .getObject(Objects.requireNonNull(fileId))
                 .downloadObjectAsInputStream();
-    }
-
-    @NotNull
-    private Account getAccount() {
-        return account;
-    }
-
-    @NotNull
-    private FileIdGenerator getFileIdGenerator() {
-        return fileIdGenerator;
     }
 }
