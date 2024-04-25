@@ -22,7 +22,8 @@ import java.util.function.Function;
 /**
  * {@link FileIdGenerator} is responsible for generating unique identifiers as strings for any types of files.
  * <p>
- * To generate ID of arbitrary file, use {@link #apply(Object)}
+ * To generate ID of arbitrary file, use {@link #apply(Object)}. Please use {@link FileIdGeneratorFactory} to get
+ * instance of this type.
  * <p>
  * This is a functional interface and can therefore be used as the assignment target for a lambda expression or method
  * reference.
