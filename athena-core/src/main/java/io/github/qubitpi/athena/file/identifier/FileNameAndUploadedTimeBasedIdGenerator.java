@@ -38,7 +38,7 @@ import java.util.Objects;
  */
 @Immutable
 @ThreadSafe
-public class FileNameAndUploadedTimeBasedIdGenerator implements FileIdGenerator {
+class FileNameAndUploadedTimeBasedIdGenerator implements FileIdGenerator {
 
     private final MessageDigest messageDigest;
 
