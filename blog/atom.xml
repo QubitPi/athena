@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://qubitpi.github.io/athena/blog</id>
+    <id>https://athena.qubitpi.org/blog</id>
     <title>Athena Blog</title>
     <updated>2021-08-01T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://qubitpi.github.io/athena/blog"/>
+    <link rel="alternate" href="https://athena.qubitpi.org/blog"/>
     <subtitle>Athena Blog</subtitle>
-    <icon>https://qubitpi.github.io/athena/img/favicon.ico</icon>
+    <icon>https://athena.qubitpi.org/img/favicon.ico</icon>
     <entry>
         <title type="html"><![CDATA[MDX Blog Post]]></title>
-        <id>https://qubitpi.github.io/athena/blog/mdx-blog-post</id>
-        <link href="https://qubitpi.github.io/athena/blog/mdx-blog-post"/>
+        <id>https://athena.qubitpi.org/blog/mdx-blog-post</id>
+        <link href="https://athena.qubitpi.org/blog/mdx-blog-post"/>
         <updated>2021-08-01T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Blog posts support Docusaurus Markdown features, such as]]></summary>
         <content type="html"><![CDATA[<p>Blog posts support <a href="https://docusaurus.io/docs/markdown-features" target="_blank" rel="noopener noreferrer">Docusaurus Markdown features</a>, such as
