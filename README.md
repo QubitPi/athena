@@ -100,7 +100,7 @@ The use and distribution terms for [Athena] are covered by the [Apache License, 
 </div>
 
 [Apache License, Version 2.0]: http://www.apache.org/licenses/LICENSE-2.0.html
-[Athena]: https://athena.qubitpi.org/
+[Athena]: https://qubitpi.github.io/athena/
 [Athena Documentation]: https://qubitpi.github.io/athena/
 
 [Discord badge]: https://img.shields.io/discord/1001320502960324658?logo=discord&logoColor=white&style=for-the-badge

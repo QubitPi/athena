@@ -110,6 +110,9 @@ jobs:
       - name: Build website
         run: yarn build
         working-directory: docs
+      - name: Load CNAME file
+        run: cp CNAME build
+        working-directory: docs
       - name: Generate Javadoc
         run: mvn -B clean javadoc:aggregate
       - name: Move Javadoc into documentation directory
