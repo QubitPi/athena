@@ -3,20 +3,6 @@ title: Getting Started
 sidebar_position: 1
 ---
 
-[//]: # (Copyright 2024 Jiaqi Liu)
-
-[//]: # (Licensed under the Apache License, Version 2.0 &#40;the "License"&#41;;)
-[//]: # (you may not use this file except in compliance with the License.)
-[//]: # (You may obtain a copy of the License at)
-
-[//]: # (    http://www.apache.org/licenses/LICENSE-2.0)
-
-[//]: # (Unless required by applicable law or agreed to in writing, software)
-[//]: # (distributed under the License is distributed on an "AS IS" BASIS,)
-[//]: # (WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.)
-[//]: # (See the License for the specific language governing permissions and)
-[//]: # (limitations under the License.)
-
 The easiest way to get started with Athena is to use the [Athena Book App Starter]. The starter bundles all of the
 dependencies we will need to stand up a web service. This tutorial uses the starter, and all of the code is
 [available here][Athena Book App Starter]. We will deploy and play with this example locally
@@ -55,7 +41,9 @@ here <img src="https://user-images.githubusercontent.com/16126939/174438007-b9ad
 
 :::tip
 
-Athena also comes with an example acceptance testing module which can be pull out separately for our own project needs.
+Athena also comes with
+[an example acceptance testing module](https://github.com/QubitPi/athena/tree/master/athena-examples/athena-example-acceptance-tests)
+which can be pull out separately for our own project needs.
 
 :::
 
@@ -66,7 +54,8 @@ docker compose up --build --force-recreate
 ```
 
 Athena Compose has been tested with [MySQL 5.7](https://hub.docker.com/_/mysql) connected using
-_mysql-connector-java 5.1.38_ within Athena running on [Jetty 9.3](https://hub.docker.com/_/jetty).
+_mysql-connector-java 5.1.38_ within Athena running on
+[Jetty 11.0.15](https://download.eclipse.org/oomph/jetty/release/11.0.15/).
 
 :::warning
 
@@ -127,8 +116,8 @@ When you run docker compose up, the following happens:
 Each container can now look up the hostname `web` or `db` and get back the appropriate container's IP address. For
 example, web's application code could connect to the URL `mysql://db:3306` and start using the MySQL database.
 
-Build From Source
------------------
+Production
+----------
 
 ### Creating a Deployable War File
 

@@ -49,4 +49,4 @@ Using SSH:
 USE_SSH=true yarn deploy
 ```
 
-hashicorp-aws is using GitHub pages for hosting, this command builds the website and push to the `gh-pages` branch.
+Athena is using GitHub pages for hosting, this command builds the website and push to the `gh-pages` branch.

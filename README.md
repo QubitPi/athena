@@ -9,7 +9,7 @@ Athena <sup>![Java Version Badge][Java Version Badge]</sup>
 [![GitHub Workflow Status][GitHub Workflow Status badge]][GitHub Workflow Status URL]
 ![[GitHub Last Commit]][GitHub Last Commit badge]
 [![Discord][Discord badge]][Discord URL]
-[![License Badge]][License URL]
+[![Apache License Badge][Apache License Badge]][Apache License, Version 2.0]
 
 Athena is a Java library that lets you set up object storage webservice with minimal effort. Athena is meant to be
 specialized on managing **files**, such as books, videos, and photos. It supports object storage through two variants of
@@ -93,13 +93,8 @@ License
 
 The use and distribution terms for [Athena] are covered by the [Apache License, Version 2.0].
 
-<div align="center">
-    <a href="https://opensource.org/licenses">
-        <img align="center" width="50%" alt="License Illustration" src="https://github.com/QubitPi/QubitPi/blob/master/img/apache-2.png?raw=true">
-    </a>
-</div>
-
-[Apache License, Version 2.0]: http://www.apache.org/licenses/LICENSE-2.0.html
+[Apache License Badge]: https://img.shields.io/badge/Apache%202.0-F25910.svg?style=for-the-badge&logo=Apache&logoColor=white
+[Apache License, Version 2.0]: https://www.apache.org/licenses/LICENSE-2.0
 [Athena]: https://qubitpi.github.io/athena/
 [Athena Documentation]: https://qubitpi.github.io/athena/
 
@@ -111,15 +106,12 @@ The use and distribution terms for [Athena] are covered by the [Apache License, 
 [GitHub Last Commit badge]: https://img.shields.io/github/last-commit/QubitPi/athena/master?logo=github&style=for-the-badge
 [GitHub Workflow Status badge]: https://img.shields.io/github/actions/workflow/status/QubitPi/athena/ci-cd.yml?branch=master&logo=github&style=for-the-badge
 [GitHub Workflow Status URL]: https://github.com/QubitPi/athena/actions/workflows/ci-cd.yml
-[GraphQL]: https://qubitpi.github.io/graphql.github.io/
+[GraphQL]: https://graphql.org/
 
 [Hadoop HDFS]: https://qubitpi.github.io/hadoop/
 
 [Java Version Badge]: https://img.shields.io/badge/Java-17-brightgreen?style=for-the-badge&logo=OpenJDK&logoColor=white
 [JSON API]: https://qubitpi.github.io/json-api/
-
-[License Badge]: https://img.shields.io/badge/Apache%202.0-F25910.svg?style=for-the-badge&logo=Apache&logoColor=white
-[License URL]: https://www.apache.org/licenses/LICENSE-2.0
 
 [Maven Central Version Badge]: https://img.shields.io/maven-central/v/io.github.qubitpi.athena/athena-parent-pom?style=for-the-badge&logo=apachemaven&labelColor=1B1C30&color=4D9FEA
 [Maven Central Version URL]: https://central.sonatype.com/namespace/io.github.qubitpi.athena
