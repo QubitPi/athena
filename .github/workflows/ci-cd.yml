@@ -26,7 +26,7 @@ env:
 
 jobs:
   yml-md-style-and-link-checks:
-    uses: QubitPi/hashicorp-aws/.github/workflows/yml-md-style-and-link-checks.yml@master
+    uses: QubitPi/hashistack/.github/workflows/yml-md-style-and-link-checks.yml@master
 
   tests:
     name: Unit & Integration Tests
@@ -35,7 +35,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK
-        uses: QubitPi/hashicorp-aws/.github/actions/jdk-setup@master
+        uses: QubitPi/hashistack/.github/actions/jdk-setup@master
       - name: Run unit & integration tests
         run: mvn -B clean verify
 
@@ -47,7 +47,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Set up JDK
-        uses: QubitPi/hashicorp-aws/.github/actions/jdk-setup@master
+        uses: QubitPi/hashistack/.github/actions/jdk-setup@master
       - name: Build App WAR file so that Docker can pickup during image build
         run: mvn clean package
       - name: Set up QEMU
@@ -80,7 +80,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK
-        uses: QubitPi/hashicorp-aws/.github/actions/jdk-setup@master
+        uses: QubitPi/hashistack/.github/actions/jdk-setup@master
       - name: Package up WAR
         run: mvn clean package
       - name: Start Book example application Docker Compose
@@ -103,7 +103,7 @@ jobs:
         with:
           node-version: 18
       - name: Set up JDK
-        uses: QubitPi/hashicorp-aws/.github/actions/jdk-setup@master
+        uses: QubitPi/hashistack/.github/actions/jdk-setup@master
       - name: Install dependencies
         run: yarn
         working-directory: docs
