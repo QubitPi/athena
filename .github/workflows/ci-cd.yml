@@ -25,12 +25,42 @@ env:
   EMAIL: jack20220723@gmail.com
 
 jobs:
-  yml-md-style-and-link-checks:
-    uses: QubitPi/hashistack/.github/workflows/yml-md-style-and-link-checks.yml@master
+  cancel-previous:
+    name: Cancel Previous Runs In Order to Allocate Action Resources Immediately for Current Run
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancel previous
+        uses: styfle/cancel-workflow-action@0.10.1
+        with:
+          access_token: ${{ github.token }}
+
+  yaml-lint:
+    name: YAML Style Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actionshub/yamllint@main
+
+  markdown-lint:
+    name: Markdown Style Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actionshub/markdownlint@main
+
+  linkChecker:
+    name: Link Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Link Checker
+        uses: lycheeverse/lychee-action@v1.9.0
+        with:
+          fail: true
 
   tests:
     name: Unit & Integration Tests
-    needs: yml-md-style-and-link-checks
+    needs: [yaml-lint, markdown-lint, linkChecker]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
