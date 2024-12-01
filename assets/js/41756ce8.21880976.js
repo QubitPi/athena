@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[616],{5205:e=>{e.exports=JSON.parse('{"tags":[{"label":"Object Storage","permalink":"/blog/tags/object-storage","count":1}]}')}}]);
