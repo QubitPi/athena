@@ -7,8 +7,6 @@ Athena <sup>![Java Version Badge][Java Version Badge]</sup>
 
 [![Maven Central Version][Maven Central Version Badge]][Maven Central Version URL]
 [![GitHub Workflow Status][GitHub Workflow Status badge]][GitHub Workflow Status URL]
-![[GitHub Last Commit]][GitHub Last Commit badge]
-[![Discord][Discord badge]][Discord URL]
 [![Apache License Badge][Apache License Badge]][Apache License, Version 2.0]
 
 Athena is a Java library that lets you set up object storage webservice with minimal effort. Athena is meant to be
@@ -98,12 +96,8 @@ The use and distribution terms for [Athena] are covered by the [Apache License, 
 [Athena]: https://qubitpi.github.io/athena/
 [Athena Documentation]: https://qubitpi.github.io/athena/
 
-[Discord badge]: https://img.shields.io/discord/1001320502960324658?logo=discord&logoColor=white&style=for-the-badge
-[Discord URL]: https://discord.com/widget?id=1001320502960324658&theme=dark
-
 [example application]: https://qubitpi.github.io/athena/docs/intro
 
-[GitHub Last Commit badge]: https://img.shields.io/github/last-commit/QubitPi/athena/master?logo=github&style=for-the-badge
 [GitHub Workflow Status badge]: https://img.shields.io/github/actions/workflow/status/QubitPi/athena/ci-cd.yml?branch=master&logo=github&style=for-the-badge
 [GitHub Workflow Status URL]: https://github.com/QubitPi/athena/actions/workflows/ci-cd.yml
 [GraphQL]: https://graphql.org/
