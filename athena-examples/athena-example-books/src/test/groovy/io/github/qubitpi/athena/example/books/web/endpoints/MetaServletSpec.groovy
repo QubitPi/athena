@@ -15,51 +15,43 @@
  */
 package io.github.qubitpi.athena.example.books.web.endpoints
 
-
-import io.github.qubitpi.athena.example.books.application.BookJerseyTestBinder
-import io.github.qubitpi.athena.web.endpoints.MetaServlet
+import static org.hamcrest.Matchers.equalTo
 
 import groovy.json.JsonSlurper
-import jakarta.ws.rs.client.Entity
-import jakarta.ws.rs.core.MediaType
+import io.restassured.RestAssured
+import io.restassured.http.ContentType
 
 class MetaServletSpec extends AbstractServletSpec {
 
-    @Override
-    def childSetup() {
-        jerseyTestBinder = new BookJerseyTestBinder(true, MetaServlet.class)
-    }
-
     def "File meta data can be accessed through GraphQL GET endpoint"() {
-        when: "we get meta data via GraphQL GET"
-        String actual = jerseyTestBinder.makeRequest(
-                "/metadata/graphql",
-                [query: URLEncoder.encode("""{metaData(fileId:"1"){fileName\nfileType}}""", "UTF-8")]
-        ).get(String.class)
-
-        then: "the response contains all requested metadata info without error"
-        new JsonSlurper().parseText(actual) == new JsonSlurper().parseText(expectedMultiFieldMetadataResponse())
+        expect:
+        RestAssured.given()
+                .contentType(ContentType.JSON)
+                .queryParam("query", """{metaData(fileId:"1"){fileName\nfileType}}""")
+                .when()
+                .get("/metadata/graphql")
+                .then()
+                .statusCode(200)
+                .body("", equalTo(new JsonSlurper().parseText(expectedMultiFieldMetadataResponse())))
     }
 
     def "File metadata can be accessed through GraphQL POST endpoint"() {
-        when: "we get meta data via GraphQL POST"
-        String actual = jerseyTestBinder.makeRequest("/metadata/graphql")
-                .post(
-                        Entity.entity(
-                                """
+        expect:
+        RestAssured.given()
+                .contentType(ContentType.JSON)
+                .body(
+                        """
                                 {
                                     "query": "{ metaData(fileId: \\"1\\") { fileName fileType } }",
                                     "variables": null
                                 }
-                                """,
-                                MediaType.APPLICATION_JSON
-                        )
-
+                                """
                 )
-                .readEntity(String.class)
-
-        then: "the response contains all requested metadata info without error"
-        new JsonSlurper().parseText(actual) == new JsonSlurper().parseText(expectedMultiFieldMetadataResponse())
+                .when()
+                .post("/metadata/graphql")
+                .then()
+                .statusCode(200)
+                .body("", equalTo(new JsonSlurper().parseText(expectedMultiFieldMetadataResponse())))
     }
 
     def expectedMultiFieldMetadataResponse() {

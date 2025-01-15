@@ -15,27 +15,47 @@
  */
 package io.github.qubitpi.athena.example.books.web.endpoints
 
+import org.eclipse.jetty.server.Server
 
+import io.github.qubitpi.athena.application.ResourceConfig
+import io.github.qubitpi.athena.example.books.JettyServerFactory
 import io.github.qubitpi.athena.example.books.application.SQLDBResourceManager
 import io.github.qubitpi.athena.config.SystemConfig
 import io.github.qubitpi.athena.config.SystemConfigFactory
 
-import io.github.qubitpi.athena.application.JerseyTestBinder
+import io.restassured.RestAssured
 import spock.lang.Specification
+import spock.lang.Subject
 
 abstract class AbstractServletSpec extends Specification {
 
     static final SystemConfig SYSTEM_CONFIG = SystemConfigFactory.getInstance()
+    static final int PORT = 8080
 
-    JerseyTestBinder jerseyTestBinder
+    @Subject
+    Server SERVER
+
+    def setupSpec() {
+        RestAssured.baseURI = "http://localhost"
+        RestAssured.port = PORT
+        RestAssured.basePath = "/v1"
+        SYSTEM_CONFIG.setProperty('athena__data_source_provider', 'io.github.qubitpi.athena.example.books.application.BooksBinderFactory$DerbyDataSourceProvider')
+    }
 
     def childSetup() {
         // intentionally left blank
     }
 
     def setup() {
-        SYSTEM_CONFIG.setProperty('athena__data_source_provider', 'io.github.qubitpi.athena.example.books.application.BooksBinderFactory$DerbyDataSourceProvider')
         SQLDBResourceManager.migrateDatabase()
+
+        SERVER = JettyServerFactory.newInstance(PORT, "/v1/*", new ResourceConfig())
+        SERVER.start()
+
         childSetup()
+    }
+
+    def cleanup() {
+        SERVER.stop()
     }
 }
