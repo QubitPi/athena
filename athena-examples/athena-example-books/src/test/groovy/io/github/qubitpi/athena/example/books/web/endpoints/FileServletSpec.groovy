@@ -15,45 +15,35 @@
  */
 package io.github.qubitpi.athena.example.books.web.endpoints
 
-
-import org.glassfish.jersey.media.multipart.FormDataContentDisposition
-import org.glassfish.jersey.media.multipart.FormDataMultiPart
-import org.glassfish.jersey.media.multipart.MultiPart
-import org.glassfish.jersey.media.multipart.MultiPartFeature
-import org.glassfish.jersey.media.multipart.file.FileDataBodyPart
-import io.github.qubitpi.athena.example.books.application.BookJerseyTestBinder
-import groovy.json.JsonSlurper
-import io.github.qubitpi.athena.web.endpoints.FileServlet
-import jakarta.ws.rs.client.Entity
+import io.restassured.RestAssured
+import io.restassured.http.ContentType
 
 import java.nio.charset.StandardCharsets
 
 class FileServletSpec extends AbstractServletSpec {
 
-    @Override
-    def childSetup() {
-        jerseyTestBinder = new BookJerseyTestBinder(true, FileServlet.class, MultiPartFeature.class)
-    }
-
     def "File can be uploaded and then download"() {
-        when: "we upload a file"
-        FileDataBodyPart filePart = new FileDataBodyPart("file", new File("src/test/resources/pride-and-prejudice-by-jane-austen.txt"))
-        filePart.setContentDisposition(FormDataContentDisposition.name("file").fileName("pride-and-prejudice-by-jane-austen.txt").build())
+        expect: "file uploads successfully with 201"
+        String fileId = RestAssured.given()
+                .multiPart("file", new File("src/test/resources/pride-and-prejudice-by-jane-austen.txt"))
+                .when()
+                .post("/file/upload")
+                .then()
+                .statusCode(201)
+                .extract().path("fileId")
 
-        MultiPart multipartEntity = new FormDataMultiPart().bodyPart(filePart)
-
-        String actual = jerseyTestBinder.makeRequest("/file/upload")
-                .post(Entity.entity(multipartEntity, multipartEntity.getMediaType()))
-                .readEntity(String.class)
-
-        and: "download that file"
-        String fileId = new JsonSlurper().parseText(actual).fileId
-        actual = jerseyTestBinder.makeRequest("/file/download", [fileId: fileId]).get().readEntity(String.class)
-
-        then: "we get the uploaded file back"
-        getClass()
+        and: "the same file can be downloaded with file ID"
+        RestAssured.given()
+                .contentType(ContentType.BINARY)
+                .queryParam("fileId", fileId)
+                .when()
+                .get("/file/download")
+                .then()
+                .statusCode(200)
+                .extract()
+                .asString() == getClass()
                 .getClassLoader()
                 .getResourceAsStream("pride-and-prejudice-by-jane-austen.txt")
-                .getText(StandardCharsets.UTF_8.name()).contains(actual)
+                .getText(StandardCharsets.UTF_8.name())
     }
 }
