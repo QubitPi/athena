@@ -43,36 +43,16 @@
     </scm>
 
     <properties>
-        <checkstyle.skip>false</checkstyle.skip>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <version.athena>1.0-SNAPSHOT</version.athena>
-        <version.validation.api>3.0.1</version.validation.api>
-        <version.jcip.annotations>1.0</version.jcip.annotations>
-        <version.slf4j>1.7.25</version.slf4j>
-        <version.logback>1.2.3</version.logback>
-        <version.graphql.java>14.0</version.graphql.java>
-        <version.joss>0.10.4</version.joss>
-        <version.jackson>2.13.3</version.jackson>
-        <version.apache.commons>2.7</version.apache.commons>
-        <version.commons.dbcp2>2.0.1</version.commons.dbcp2>
-        <version.mysql.connector.java>5.1.38</version.mysql.connector.java>
-        <version.servlet>6.0.0</version.servlet>
-        <version.derby>10.11.1.1</version.derby>
-        <version.flyway.core>5.0.7</version.flyway.core>
-        <version.groovy>4.0.6</version.groovy>
-        <version.jetty>11.0.14</version.jetty>
 
-        <version.maven.war.plugin>3.2.2</version.maven.war.plugin>
-        <version.maven.release.plugin>2.5.3</version.maven.release.plugin>
-        <version.maven.javadoc.plugin>3.5.0</version.maven.javadoc.plugin>
-        <version.maven.jar.plugin>3.1.1</version.maven.jar.plugin>
-        <version.maven.source.plugin>3.1.0</version.maven.source.plugin>
+        <checkstyle.skip>false</checkstyle.skip>
+        <checkstyle.resourceIncludes>**/*.properties*</checkstyle.resourceIncludes>
+
         <version.maven.surefire.plugin>3.0.0-M5</version.maven.surefire.plugin>
-        <version.maven.compiler.plugin>3.7.0</version.maven.compiler.plugin>
-        <version.maven.failsafe.plugin>3.0.0-M4</version.maven.failsafe.plugin>
         <version.maven.surefire.report.plugin>${version.maven.surefire.plugin}</version.maven.surefire.report.plugin>
     </properties>
 
@@ -122,40 +102,40 @@
             <dependency>
                 <groupId>jakarta.validation</groupId>
                 <artifactId>jakarta.validation-api</artifactId>
-                <version>${version.validation.api}</version>
+                <version>3.0.1</version>
             </dependency>
 
             <!-- Concurrency -->
             <dependency>
                 <groupId>net.jcip</groupId>
                 <artifactId>jcip-annotations</artifactId>
-                <version>${version.jcip.annotations}</version>
+                <version>1.0</version>
             </dependency>
 
             <!-- Logging -->
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
-                <version>${version.slf4j}</version>
+                <version>1.7.25</version>
             </dependency>
             <dependency>
                 <groupId>ch.qos.logback</groupId>
                 <artifactId>logback-classic</artifactId>
-                <version>${version.logback}</version>
+                <version>1.2.3</version>
             </dependency>
 
             <!-- GraphQL -->
             <dependency>
                 <groupId>com.graphql-java</groupId>
                 <artifactId>graphql-java</artifactId>
-                <version>${version.graphql.java}</version>
+                <version>14.0</version>
             </dependency>
 
             <!-- OpenStack Swift -->
             <dependency>
                 <groupId>org.javaswift</groupId>
                 <artifactId>joss</artifactId>
-                <version>${version.joss}</version>
+                <version>0.10.4</version>
             </dependency>
             <dependency> <!-- https://github.com/jakartaee/jaf-api/issues/60#issuecomment-758529977 -->
                 <groupId>com.sun.activation</groupId>
@@ -167,7 +147,7 @@
             <dependency>
                 <groupId>com.fasterxml.jackson</groupId>
                 <artifactId>jackson-bom</artifactId>
-                <version>${version.jackson}</version>
+                <version>2.13.3</version>
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
@@ -176,26 +156,26 @@
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-configuration2</artifactId>
-                <version>${version.apache.commons}</version>
+                <version>2.7</version>
             </dependency>
             <!-- Apache Commons -->
             <dependency> <!-- Prefer DBCP over JDBI since lookup should provide low-level speed operations -->
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-dbcp2</artifactId>
-                <version>${version.commons.dbcp2}</version>
+                <version>2.0.1</version>
             </dependency>
 
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
-                <version>${version.mysql.connector.java}</version>
+                <version>5.1.38</version>
             </dependency>
 
             <!-- Servlet API -->
             <dependency>
                 <groupId>jakarta.servlet</groupId>
                 <artifactId>jakarta.servlet-api</artifactId>
-                <version>${version.servlet}</version>
+                <version>6.0.0</version>
                 <scope>provided</scope>
             </dependency>
             <dependency>
@@ -232,7 +212,7 @@
             <dependency>
                 <groupId>org.apache.groovy</groupId>
                 <artifactId>groovy</artifactId>
-                <version>${version.groovy}</version>
+                <version>4.0.6</version>
             </dependency>
             <dependency> <!-- Import JsonSlurper - https://stackoverflow.com/a/71218832/14312712 -->
                 <groupId>org.apache.groovy</groupId>
@@ -259,13 +239,13 @@
             <dependency>
                 <groupId>org.apache.derby</groupId>
                 <artifactId>derby</artifactId>
-                <version>${version.derby}</version>
+                <version>10.11.1.1</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.flywaydb</groupId>
                 <artifactId>flyway-core</artifactId>
-                <version>${version.flyway.core}</version>
+                <version>5.0.7</version>
                 <scope>test</scope>
             </dependency>
 
@@ -273,7 +253,7 @@
             <dependency>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-bom</artifactId>
-                <version>${version.jetty}</version>
+                <version>11.0.14</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -356,14 +336,14 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-release-plugin</artifactId>
-                    <version>${version.maven.release.plugin}</version>
+                    <version>2.5.3</version>
                 </plugin>
 
                 <!-- Use Java 17 -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>${version.maven.compiler.plugin}</version>
+                    <version>3.7.0</version>
                     <configuration>
                         <source>${maven.compiler.source}</source>
                         <target>${maven.compiler.target}</target>
@@ -396,7 +376,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>${version.maven.javadoc.plugin}</version>
+                    <version>3.5.0</version>
                     <configuration>
                         <doclint>none</doclint>  <!-- Turnoff all checks -->
                     </configuration>
@@ -412,7 +392,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-source-plugin</artifactId>
-                    <version>${version.maven.source.plugin}</version>
+                    <version>3.1.0</version>
                     <executions>
                         <execution>
                             <id>attach-sources</id>
@@ -487,7 +467,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-failsafe-plugin</artifactId>
-                    <version>${version.maven.failsafe.plugin}</version>
+                    <version>3.0.0-M4</version>
                     <executions>
                         <execution>
                             <goals>
@@ -506,7 +486,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
-                    <version>${version.maven.war.plugin}</version>
+                    <version>3.2.2</version>
                     <configuration>
                         <failOnMissingWebXml>false</failOnMissingWebXml>
                     </configuration>
@@ -515,7 +495,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jar-plugin</artifactId>
-                    <version>${version.maven.jar.plugin}</version>
+                    <version>3.1.1</version>
                     <executions>
                         <execution>
                             <id>javadoc-jar</id>
@@ -656,7 +636,6 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
-                        <version>${version.maven.surefire.plugin}</version>
                         <configuration>
                             <systemPropertyVariables>
                                 <java.awt.headless>true</java.awt.headless>
@@ -673,7 +652,6 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-report-plugin</artifactId>
-                        <version>${version.maven.surefire.report.plugin}</version>
                     </plugin>
                 </plugins>
             </build>
