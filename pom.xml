@@ -60,7 +60,6 @@
         <version.commons.dbcp2>2.0.1</version.commons.dbcp2>
         <version.mysql.connector.java>5.1.38</version.mysql.connector.java>
         <version.servlet>6.0.0</version.servlet>
-        <version.jersey>3.1.1</version.jersey>
         <version.derby>10.11.1.1</version.derby>
         <version.flyway.core>5.0.7</version.flyway.core>
         <version.groovy>4.0.6</version.groovy>
@@ -109,6 +108,14 @@
                 <groupId>io.github.qubitpi.athena</groupId>
                 <artifactId>athena-system-config</artifactId>
                 <version>${version.athena}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.glassfish.jersey</groupId>
+                <artifactId>jersey-bom</artifactId>
+                <version>3.1.1</version>
+                <scope>import</scope>
+                <type>pom</type>
             </dependency>
 
             <!-- Validation -->
@@ -195,40 +202,6 @@
                 <groupId>jakarta.ws.rs</groupId>
                 <artifactId>jakarta.ws.rs-api</artifactId>
                 <version>3.1.0</version>
-            </dependency>
-
-            <!-- Jersey -->
-            <dependency>
-                <groupId>org.glassfish.jersey.core</groupId>
-                <artifactId>jersey-server</artifactId>
-                <version>${version.jersey}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.glassfish.jersey.containers</groupId>
-                <artifactId>jersey-container-servlet</artifactId>
-                <version>${version.jersey}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.glassfish.jersey.media</groupId>
-                <artifactId>jersey-media-multipart</artifactId>
-                <version>${version.jersey}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.glassfish.jersey.media</groupId>
-                <artifactId>jersey-media-json-jackson</artifactId>
-                <version>${version.jersey}</version>
-            </dependency>
-            <dependency> <!-- Client for running local "integration-style" tests -->
-                <groupId>org.glassfish.jersey.test-framework</groupId>
-                <artifactId>jersey-test-framework-core</artifactId>
-                <version>${version.jersey}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency> <!-- Container for running local "integration-style" tests -->
-                <groupId>org.glassfish.jersey.test-framework.providers</groupId>
-                <artifactId>jersey-test-framework-provider-grizzly2</artifactId>
-                <version>${version.jersey}</version>
-                <scope>test</scope>
             </dependency>
 
             <!-- Injection -->
