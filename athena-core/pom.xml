@@ -88,6 +88,12 @@
             <groupId>org.glassfish.hk2</groupId>
             <artifactId>hk2-locator</artifactId>
         </dependency>
+
+        <!-- Async -->
+        <dependency>
+            <groupId>io.reactivex.rxjava2</groupId>
+            <artifactId>rxjava</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
