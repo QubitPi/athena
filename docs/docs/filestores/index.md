@@ -19,7 +19,13 @@ title: File Stores
 
 A file store is responsible for:
 
-1. reading and writing files (.mp3, .pdf, etc.) to/from an object store.
+1. reading and writing files (.mp3, .pdf, etc.) to/from an object store. Files of the following types are supported by
+   Athena
+
+   - PDF
+   - MP4
+   - .txt file
+
 2. providing "transactions" that make all file operations atomic in a single request.
 3. declaring the native object store client it delegates persistence operations to.
 
