@@ -14,7 +14,7 @@
         <property name="severity" value="error"/>
     </module>
 
-	<module name="TreeWalker">
+    <module name="TreeWalker">
 
         <!-- Filters -->
         <module name="SuppressWarningsHolder" />
@@ -184,7 +184,7 @@
             <property name="severity" value="error"/>
         </module>
         <module name="NonEmptyAtclauseDescription">
-            <property name="javadocTokens" value="	PARAM_LITERAL, RETURN_LITERAL, THROWS_LITERAL, DEPRECATED_LITERAL"/>
+            <property name="javadocTokens" value="PARAM_LITERAL, RETURN_LITERAL, THROWS_LITERAL, DEPRECATED_LITERAL"/>
             <property name="severity" value="error"/>
         </module>
         <module name="SummaryJavadocCheck">
@@ -386,7 +386,7 @@
             <property name="tokens" value="ASSIGN, BAND, BAND_ASSIGN, BOR, BOR_ASSIGN, BSR, BSR_ASSIGN, BXOR, BXOR_ASSIGN, COLON, DIV, DIV_ASSIGN, DO_WHILE, EQUAL, GE, GT, LAMBDA, LAND, LCURLY, LE, LITERAL_CATCH, LITERAL_DO, LITERAL_ELSE, LITERAL_FINALLY, LITERAL_FOR, LITERAL_IF, LITERAL_RETURN, LITERAL_SWITCH, LITERAL_SYNCHRONIZED, LITERAL_TRY, LITERAL_WHILE, LOR, LT, MINUS, MINUS_ASSIGN, MOD, MOD_ASSIGN, NOT_EQUAL, PLUS, PLUS_ASSIGN, QUESTION, RCURLY, SL, SLIST, SL_ASSIGN, SR, SR_ASSIGN, STAR, STAR_ASSIGN, LITERAL_ASSERT, TYPE_EXTENSION_AND"/>
             <property name="severity" value="error" />
         </module>
-	</module>
+    </module>
     <!-- Headers -->
     <module name="RegexpHeader">
         <property name="header" value="/*\n * Copyright 20[0-2][0-9],? Jiaqi Liu"/>
@@ -395,9 +395,9 @@
     </module>
 
     <!-- Miscellaneous -->
-	<module name="NewlineAtEndOfFile">
-		<property name="severity" value="error"/>
-	</module>
+    <module name="NewlineAtEndOfFile">
+        <property name="severity" value="error"/>
+    </module>
     <module name="UniqueProperties">
         <property name="fileExtensions" value="properties" />
     </module>
