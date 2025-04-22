@@ -80,11 +80,11 @@ CREATE TABLE BOOK_META_DATA (
 );
 ```
 
-[AbstractBinderFactory]:
+[AbstractBinderFactory]: https://github.com/QubitPi/athena/blob/master/athena-core/src/main/java/io/github/qubitpi/athena/application/AbstractBinderFactory.java
 
 [BinderFactory]: https://athena.qubitpi.org/apidocs/io/github/qubitpi/athena/application/BinderFactory.html
 
-[DataFetcher]:
+[DataFetcher]: https://graphql-java.qubitpi.org/documentation/data-fetching/
 
 [MetaStore]: https://athena.qubitpi.org/apidocs/io/github/qubitpi/athena/metastore/MetaStore.html
 
