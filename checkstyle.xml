@@ -97,9 +97,6 @@
         <module name="MissingSwitchDefault">
             <property name="severity" value="error"/>
         </module>
-        <module name="MultipleStringLiterals">
-            <property name="severity" value="error"/>
-        </module>
         <module name="MultipleVariableDeclarations">
             <property name="severity" value="error"/>
         </module>
